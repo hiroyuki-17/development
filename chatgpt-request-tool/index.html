@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ChatGPT リクエストツール</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+<h1>ChatGPT リクエストツール</h1>
+<p>ChatGPTからより精度の高い回答を得るための依頼文章作成ツールです。<br>以下に必要事項を入力したあと、下部の「依頼テキストを生成」ボタンをクリックします。</p>
+
+<div class="input-layout-wrap">
+<div class="input-layout">
+<label class="input-layout__label required-label" for="genre">ジャンル：</label>
+<select id="genre" class="input-layout__select" required>
+<option value="">ジャンルを選択してください</option>
+<option value="プログラミング">プログラミング</option>
+<option value="資料作成">資料作成</option>
+<option value="コミュニケーション">コミュニケーション</option>
+</select>
+</div>
+<div class="input-layout">
+<label class="input-layout__label required-label" for="question">依頼したいこと：</label>
+<textarea class="input-layout__input input-main" id="question" placeholder="ChatGPTに依頼したい内容を入力してください" required></textarea>
+</div>
+<div class="input-layout">
+<label class="input-layout__label" for="background">背景情報：</label>
+<textarea class="input-layout__input" id="background" placeholder="関連する背景情報や文脈を入力してください"></textarea>
+</div>
+<div class="input-layout">
+<label class="input-layout__label" for="constraints">制約や条件：</label>
+<textarea class="input-layout__input" id="constraints" placeholder="特定の制約や条件があれば入力してください"></textarea>
+</div>
+</div>
+<button id="generateBtn" class="btn" type="button">依頼テキストを生成</button>
+<div id="errorDiv"></div>
+<div id="output"></div>
+<button id="copyBtn" class="btn" type="button">出力テキストを全文コピー</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
