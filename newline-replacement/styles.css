@@ -1,0 +1,49 @@
+textarea {
+  width: 100%;
+  height: 200px;
+}
+
+.contents {
+  max-width: 890px;
+  margin: 0 auto;
+}
+
+.hdg {
+  margin: 1em 0 0.5em;
+}
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em auto;
+  padding: 1em 2em;
+  color: #444444;
+  font-size: 18px;
+  font-weight: 700;
+  border: 3px solid #dddddd;
+  border-radius: 10px;
+  transition: background-color .4s;
+}
+
+.btn::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  margin-left: 5px;
+  border-top: 3px solid currentColor;
+  border-right: 3px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.btn:hover {
+  color: #333333;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #dddddd;
+}
+
+.btn:hover::after {
+  border-top: 3px solid #333333;
+  border-right: 3px solid #333333;
+}
