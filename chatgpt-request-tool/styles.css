@@ -1,4 +1,5 @@
 body {
+  font-family: 'Meiryo','Hiragino Kaku Gothic Pro';
   padding: 0 16px;
 }
 
@@ -9,54 +10,49 @@ body {
 
 label, input, textarea {
   display: block;
-  margin-bottom: 10px;
   line-height: 1.5;
 }
 
 #output {
   margin-top: 20px;
-  font-weight: bold;
 }
 
 .input-layout-wrap {
   margin-top: 40px;
 }
 
-.input-layout + .input-layout {
-  margin-top: 24px;
+.input-layout {
+  margin-top: 20px;
 }
 
 .input-layout__label {
   min-width: 150px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .input-layout__select {
-  font-size: 16px;
+  font-size: 14px;
   padding: 5px;
 }
 
 .input-layout__input {
   width: 100%;
-  font-size: 16px;
+  font-size: 14px;
   padding: 5px;
-}
-
-.input-main {
-  height: calc( 24px * 5 );
 }
 
 .btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1em auto;
+  margin: 20px auto;
   padding: 0.5em 2em;
   color: #444444;
   font-size: 18px;
   font-weight: bold;
-  border: 3px solid #dddddd;
+  border: 2px solid #dddddd;
   border-radius: 10px;
   transition: background-color .4s;
 }
@@ -88,7 +84,7 @@ label, input, textarea {
   text-align: center;
 }
 
-#copyBtn {
+.hidden {
   display: none;
 }
 
@@ -101,4 +97,23 @@ label, input, textarea {
   background-color: red;
   border-radius: 5px;
   vertical-align: middle;
+}
+
+.input-layout__checkboxes,
+.input-layout__checkboxes label {
+  display: flex;
+}
+
+.input-layout__checkboxes {
+  gap: 20px;
+}
+
+.input-layout__checkboxes span {
+  color: #dddddd;
+  font-weight: bold;
+}
+
+input[type="checkbox"]:checked ~ span,
+.input-layout__checkboxes label:hover span {
+  color: #444444;
 }

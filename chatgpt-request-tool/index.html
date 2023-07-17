@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <title>ChatGPT リクエストツール</title>
@@ -8,7 +8,7 @@
 <body>
 <div class="container">
 <h1>ChatGPT リクエストツール</h1>
-<p>ChatGPTからより精度の高い回答を得るための依頼文章作成ツールです。<br>以下に必要事項を入力したあと、下部の「依頼テキストを生成」ボタンをクリックします。</p>
+<p>ChatGPTリクエストツールは、より精度の高い回答を得るための依頼文章作成ツールです。<br>以下の必要事項を入力し、「依頼テキストを生成」ボタンをクリックしてください。</p>
 
 <div class="input-layout-wrap">
 <div class="input-layout">
@@ -21,22 +21,64 @@
 </select>
 </div>
 <div class="input-layout">
-<label class="input-layout__label required-label" for="question">依頼したいこと：</label>
-<textarea class="input-layout__input input-main" id="question" placeholder="ChatGPTに依頼したい内容を入力してください" required></textarea>
+<label class="input-layout__label required-label" for="question">依頼したい内容：</label>
+<textarea class="input-layout__input input-main" id="question" placeholder="ChatGPTに依頼したい具体的な内容を入力してください" required rows="5"></textarea>
+</div>
+<div id="input-programming" class="hidden">
+<!-- <div class="input-layout">
+<label class="input-layout__label" for="programmingLanguage">プログラミング言語：</label>
+<input class="input-layout__input" id="programmingLanguage" type="text" placeholder="使用しているプログラミング言語を入力してください（例: HTML, CSS, Javascript, Typescript）">
+</div> -->
+<div class="input-layout">
+<label class="input-layout__label">プログラミング言語：</label>
+<div class="input-layout__checkboxes">
+<label>
+<input type="checkbox" name="programmingLanguage" value="HTML"><span>HTML</span></label>
+<label>
+<input type="checkbox" name="programmingLanguage" value="CSS/SCSS"><span>CSS/SCSS</span></label>
+<label>
+<input type="checkbox" name="programmingLanguage" value="Javascript"><span>Javascript</span></label>
+<label>
+<input type="checkbox" name="programmingLanguage" value="TypeScript"><span>TypeScript</span></label>
+<label>
+<input type="checkbox" name="programmingLanguage" value="Python"><span>Python</span></label>
+</div>
 </div>
 <div class="input-layout">
+<label class="input-layout__label" for="codeSnippet">コードサンプル：</label>
+<textarea class="input-layout__input" id="codeSnippet" placeholder="関連するコードのサンプルがあれば記述"></textarea>
+</div>
+<div class="input-layout">
+<label class="input-layout__label" for="errorMessage">エラーメッセージ：</label>
+<textarea class="input-layout__input" id="errorMessage" placeholder="エラーメッセージがある場合は記述"></textarea>
+</div>
+<div class="input-layout">
+<label class="input-layout__label" for="triedSolution">試したこと：</label>
+<textarea class="input-layout__input" id="triedSolution" placeholder="すでに試した解決策や取り組んだことについて記述"></textarea>
+</div>
+<div class="input-layout">
+<label class="input-layout__label" for="expectedResult">期待する結果：</label>
+<textarea class="input-layout__input" id="expectedResult" placeholder="期待する結果や解決策について記述"></textarea>
+</div>
+</div>
+<div class="input-normal">
+<div class="input-layout">
 <label class="input-layout__label" for="background">背景情報：</label>
-<textarea class="input-layout__input" id="background" placeholder="関連する背景情報や文脈を入力してください"></textarea>
+<textarea class="input-layout__input" id="background" placeholder="関連する背景情報や文脈があれば入力してください"></textarea>
 </div>
 <div class="input-layout">
 <label class="input-layout__label" for="constraints">制約や条件：</label>
-<textarea class="input-layout__input" id="constraints" placeholder="特定の制約や条件があれば入力してください"></textarea>
+<textarea class="input-layout__input" id="constraints" placeholder="特定の制約や条件があれば入力してください（例: フォーマット形式、文字数制限など）"></textarea>
+</div>
 </div>
 </div>
 <button id="generateBtn" class="btn" type="button">依頼テキストを生成</button>
-<div id="errorDiv"></div>
-<div id="output"></div>
-<button id="copyBtn" class="btn" type="button">出力テキストを全文コピー</button>
+<div id="errorDiv" class="hidden">※「ジャンル」と「依頼したい内容」は必須項目です。</div>
+
+<div id="output" class="hidden">
+<h2>依頼テキストの出力結果</h2><div id="output-text"></div>
+</div>
+<button id="copyBtn" class="btn hidden" type="button">出力テキストを全文コピー</button>
 </div>
 
 <script src="script.js"></script>
