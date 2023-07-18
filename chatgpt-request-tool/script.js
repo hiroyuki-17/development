@@ -67,14 +67,14 @@ function generateAnswer() {
   digestLength = document.getElementById('digestLength').value;
   digestPoint = document.getElementById('digestPoint').value;
 
-  requestText += `あなたは${genreValue}の専門家です。\n以下の依頼内容・詳細情報をもとに、最高の回答をお願いします。\n`;
+  requestText += `あなたは${genreValue}の専門家です。\n以下の依頼内容・詳細情報をもとに、最善の回答をお願いします。\n`;
   
   if (!(genreValue === "文章の要約")) {
     requestText += `#依頼内容:\n${requestValue}\n`;
   }
 
   if (genreValue === "プログラミング") {
-    if (codeSnippet || errorMessage || triedSolution || expectedResult || constraints) {
+    if (selectedLanguages.length > 0 || codeSnippet || errorMessage || triedSolution || expectedResult || constraints) {
       requestText += `\n#詳細情報：`;
     }
 
@@ -232,11 +232,11 @@ function toggleAdditionalFields() {
   // 「文章の要約」が選択された場合のみ追加の入力欄を表示
   if (genreValue === "文章の要約") {
     digestFields.style.display = 'block';
-    requestContentLabel.innerText = '要約対象の文章：'
+    requestContentLabel.innerText = '要約対象の文章'
     requestContent.placeholder = 'ここに要約対象の文章を記述';
   } else {
     digestFields.style.display = 'none';
-    requestContentLabel.innerText = '依頼内容：'
+    requestContentLabel.innerText = '依頼内容'
     requestContent.placeholder = 'ChatGPTに依頼したい具体的な内容を入力してください';
   }
 }

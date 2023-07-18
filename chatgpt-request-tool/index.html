@@ -8,13 +8,13 @@
 <body>
 <div class="container">
 <h1>ChatGPT リクエストツール</h1>
-<p>ChatGPTリクエストツールは、より精度の高い回答を得るための依頼文章作成ツールです。<br>以下の必要事項を入力し、「依頼テキストを生成」ボタンをクリックしてください。</p>
+<p>ChatGPTに精度の高い回答を得るための依頼文章作成ツールです。<br>依頼したいジャンルに応じて必要項目を入力し、「依頼テキストを生成」ボタンをクリックしてください。</p>
 
 <div class="input-layout-wrap">
 <div class="input-layout">
-<label class="input-layout__label required-label" for="genre">ジャンル：</label>
+<label class="input-layout__label required-label" for="genre">ジャンル</label>
 <select id="genre" class="input-layout__select" required>
-<option value="">ジャンルを選択してください</option>
+<option value="">依頼したいジャンルを選択してください</option>
 <option value="プログラミング">プログラミング</option>
 <option value="資料作成">資料作成</option>
 <option value="文章の要約">文章の要約</option>
@@ -22,12 +22,12 @@
 </select>
 </div>
 <div class="input-layout">
-<label id="requestContentLabel" class="input-layout__label required-label" for="requestContent">依頼内容：</label>
+<label id="requestContentLabel" class="input-layout__label required-label" for="requestContent">依頼内容</label>
 <textarea class="input-layout__input input-main" id="requestContent" placeholder="ChatGPTに依頼したい具体的な内容を入力してください" required rows="5"></textarea>
 </div>
 <div id="input-programming" class="hidden">
 <div class="input-layout">
-<label class="input-layout__label">プログラミング言語：</label>
+<label class="input-layout__label">プログラミング言語</label>
 <div class="input-layout__checkboxes">
 <label>
 <input type="checkbox" name="programmingLanguage" value="HTML"><span>HTML</span></label>
@@ -42,67 +42,67 @@
 </div>
 </div>
 <div class="input-layout">
-<label class="input-layout__label" for="codeSnippet">コードサンプル：</label>
+<label class="input-layout__label" for="codeSnippet">コードサンプル</label>
 <textarea class="input-layout__input" id="codeSnippet" placeholder="関連するコードのサンプルがあれば記述"></textarea>
 </div>
 <div class="input-layout">
-<label class="input-layout__label" for="errorMessage">エラーメッセージ：</label>
+<label class="input-layout__label" for="errorMessage">エラーメッセージ</label>
 <textarea class="input-layout__input" id="errorMessage" placeholder="エラーメッセージがある場合は記述"></textarea>
 </div>
 <div class="input-layout">
-<label class="input-layout__label" for="triedSolution">試したこと：</label>
+<label class="input-layout__label" for="triedSolution">試したこと</label>
 <textarea class="input-layout__input" id="triedSolution" placeholder="すでに試した解決策や取り組んだことについて記述"></textarea>
 </div>
 <div class="input-layout">
-<label class="input-layout__label" for="expectedResult">期待する結果：</label>
+<label class="input-layout__label" for="expectedResult">期待する結果</label>
 <textarea class="input-layout__input" id="expectedResult" placeholder="期待する結果や解決策について記述"></textarea>
 </div>
 </div><!-- /#input-programming -->
 <div id="input-material" class="hidden">
 <div class="input-layout">
-<label class="input-layout__label" for="materialTarget">ターゲット読者：</label>
+<label class="input-layout__label" for="materialTarget">ターゲット読者</label>
 <textarea class="input-layout__input" id="materialTarget" placeholder="ここに資料の対象読者やターゲットを記述"></textarea>
 </div>
 <div class="input-layout">
-<label class="input-layout__label" for="materialFormat">資料の形式：</label>
+<label class="input-layout__label" for="materialFormat">資料の形式</label>
 <textarea class="input-layout__input" id="materialFormat" placeholder="ここに欲しい資料の形式やフォーマットの要件を記述"></textarea>
 </div>
 <div class="input-layout">
-<label class="input-layout__label" for="materialRequired">必要な情報：</label>
+<label class="input-layout__label" for="materialRequired">必要な情報</label>
 <textarea class="input-layout__input" id="materialRequired" placeholder="ここに必要な情報やデータのリストを記述"></textarea>
 </div>
 <div class="input-layout">
-<label class="input-layout__label" for="materialReference">参考資料：</label>
+<label class="input-layout__label" for="materialReference">参考資料</label>
 <textarea class="input-layout__input" id="materialReference" placeholder="ここに関連する参考資料や参考リンクを記述"></textarea>
 </div>
 </div><!-- /.input-material -->
 <div id="input-digest" class="hidden">
 <div class="input-layout">
-<label class="input-layout__label" for="digestPurpose">要約の目的：</label>
+<label class="input-layout__label" for="digestPurpose">要約の目的</label>
 <textarea class="input-layout__input" id="digestPurpose" placeholder="ここに要約を依頼する目的や使用目的を明確に記述"></textarea>
 </div>
 <div class="input-layout">
-<label class="input-layout__label" for="digestLength">要約の長さ：</label>
+<label class="input-layout__label" for="digestLength">要約の長さ</label>
 <textarea class="input-layout__input" id="digestLength" placeholder="ここに要約の希望の長さや文字数制限がある場合に指定"></textarea>
 </div>
 <div class="input-layout">
-<label class="input-layout__label" for="digestPoint">要約の重要ポイント：</label>
+<label class="input-layout__label" for="digestPoint">要約の重要ポイント</label>
 <textarea class="input-layout__input" id="digestPoint" placeholder="ここに要約の際に特に重要となるポイントや情報を記述"></textarea>
 </div>
 </div>
 <!-- /#input-digest -->
 
 <!-- <div class="input-layout">
-<label class="input-layout__label" for="background">背景情報：</label>
+<label class="input-layout__label" for="background">背景情報</label>
 <textarea class="input-layout__input" id="background" placeholder="関連する背景情報や文脈があれば記述"></textarea>
 </div> -->
 <div class="input-layout">
-<label class="input-layout__label" for="constraints">制約や条件：</label>
+<label class="input-layout__label" for="constraints">制約や条件</label>
 <textarea class="input-layout__input" id="constraints" placeholder="特定の制約や条件があれば記述"></textarea>
 </div>
 </div>
 <button id="generateBtn" class="btn" type="button">依頼テキストを生成</button>
-<div id="errorDiv" class="hidden">未入力の必須項目があります。</div>
+<div id="errorDiv" class="hidden">必須項目が未入力です。</div>
 
 <div id="output" class="hidden">
 <h2>依頼テキストの出力結果</h2><div id="output-text"></div>
