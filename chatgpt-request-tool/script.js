@@ -35,6 +35,8 @@ function generateAnswer() {
     const errorDiv = document.getElementById('errorDiv');
     errorDiv.style.display = 'block';
     outputText.innerText = '';
+    outputText.style.display = 'none';
+    errorDiv.scrollIntoView({ behavior: 'smooth' });
     return;
   }
 
@@ -153,13 +155,14 @@ function generateAnswer() {
   }
 
   if (genreValue === "プログラミング") {
-    requestText += '\n以上です。上記について、英語圏の情報で検討したあとに日本語で回答をお願いします。';
+    requestText += '\n以上です。上記について、英語圏の情報で検討したあとに全文日本語で回答をお願いします。';
   }
 
   // テンプレートにその他の要素を追加
   // requestText += '[ここにその他のテンプレートを追加]\n[追加の要望や指示を記述]\n';
 
   // 生成したテキストを出力エリアに表示
+  outputText.style.display = 'block';
   outputText.innerText = requestText;
 
   // コピーボタンを表示
@@ -172,6 +175,8 @@ function generateAnswer() {
   copyBtn.style.display = 'flex';
   outputDiv.scrollIntoView({ behavior: 'smooth' });
 }
+
+document.getElementById('copyBtn').addEventListener('mousedown', highlight);
 
 // コピーボタンクリック時のイベントハンドラ
 document.getElementById('copyBtn').addEventListener('click', copyText);
@@ -214,6 +219,7 @@ function toggleAdditionalFields() {
   outputText.innerText = '';
   copyBtn.style.display = 'none';
   outputDiv.style.display = 'none';
+  errorDiv.style.display = 'none';
 
   // 「プログラミング」が選択された場合のみ追加の入力欄を表示
   if (genreValue === "プログラミング") {
@@ -239,4 +245,11 @@ function toggleAdditionalFields() {
     requestContentLabel.innerText = '依頼内容'
     requestContent.placeholder = 'ChatGPTに依頼したい具体的な内容を入力してください';
   }
+}
+
+// 文字をハイライト
+function highlight() {
+  const text = outputText.innerHTML;
+  const markedText = '<mark>' + text + '</mark>';
+  outputText.innerHTML = markedText;
 }
