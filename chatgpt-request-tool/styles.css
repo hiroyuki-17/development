@@ -123,21 +123,3 @@ input[type="checkbox"]:checked ~ span,
   padding: 5px;
   border: 1px solid #444;
 }
-/* 
-.highlight {
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  background: linear-gradient(transparent 0%, #ffff66 60%);
-} */
-
-/*Firefox用のベンダープレフィックス*/
-.highlight::-moz-selection {
-  background-color: #f9ebb4;
-}
-
-/*selectionを指定*/
-.highlight::selection {
-  background-color: #f9ebb4;
-}

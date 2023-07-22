@@ -3,21 +3,15 @@ const generateBtn = document.getElementById('generateBtn');
 const programmingFields = document.getElementById('input-programming');
 const materialFields = document.getElementById('input-material');
 const digestFields = document.getElementById('input-digest');
-const outputDiv = document.getElementById('output');
+const outputDiv = document.getElementById('outputDiv');
 const outputText = document.getElementById('output-text');
 const copyBtn = document.getElementById('copyBtn');
 const errorDiv = document.getElementById('errorDiv');
 const requestContentLabel = document.getElementById('requestContentLabel');
 const requestContent = document.getElementById('requestContent');
 let requestText = '';
-let genreValue = document.getElementById('genre').value;
-let requestValue = document.getElementById('requestContent').value;
-let codeSnippet = document.getElementById('codeSnippet').value;
-let errorMessage = document.getElementById('errorMessage').value;
-let triedSolution = document.getElementById('triedSolution').value;
-let expectedResult = document.getElementById('expectedResult').value;
-// let background = document.getElementById('background').value;
-let constraints = document.getElementById('constraints').value;
+
+let genreValue, requestValue, codeSnippetValue, errorMessageValue, triedSolutionValue, expectedResultValue, constraintsValue, materialTargetValue, materialRequiredValue, materialFormatValue, materialReferenceValue, digestPurposeValue, digestLengthValue, digestPointValue;
 
 // 生成ボタンクリック時のイベントハンドラ
 generateBtn.addEventListener('click', generateAnswer);
@@ -28,14 +22,14 @@ genre.addEventListener('change', toggleAdditionalFields);
 // 回答の生成関数
 function generateAnswer() {
   // const requiredInputs = document.querySelectorAll('[required]');
-  genreValue = document.getElementById('genre').value;
-  requestValue = document.getElementById('requestContent').value;
+  genreValue = genre.value;
+  requestValue = requestContent.value;
 
   if (genreValue === ""|| requestValue === "") {
     const errorDiv = document.getElementById('errorDiv');
     errorDiv.style.display = 'block';
     outputText.innerText = '';
-    outputText.style.display = 'none';
+    outputDiv.style.display = 'none';
     errorDiv.scrollIntoView({ behavior: 'smooth' });
     return;
   }
@@ -44,30 +38,31 @@ function generateAnswer() {
   resetAnswer();
 
   const checkboxes = document.getElementsByName("programmingLanguage");
-  const selectedLanguages = [];
+  // const selectedLanguages = [];
 
-  checkboxes.forEach((checkbox) => {
-    if (checkbox.checked) {
-      selectedLanguages.push(checkbox.value);
-    }
-  });
+  const selectedLanguages = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
 
-  console.log(selectedLanguages);
-  codeSnippet = document.getElementById('codeSnippet').value;
-  errorMessage = document.getElementById('errorMessage').value;
-  triedSolution = document.getElementById('triedSolution').value;
-  expectedResult = document.getElementById('expectedResult').value;
+  // checkboxes.forEach((checkbox) => {
+  //   if (checkbox.checked) {
+  //     selectedLanguages.push(checkbox.value);
+  //   }
+  // });
+
+  codeSnippetValue = document.getElementById('codeSnippet').value;
+  errorMessageValue = document.getElementById('errorMessage').value;
+  triedSolutionValue = document.getElementById('triedSolution').value;
+  expectedResultValue = document.getElementById('expectedResult').value;
   // background = document.getElementById('background').value;
-  constraints = document.getElementById('constraints').value;
+  constraintsValue = document.getElementById('constraints').value;
   // 資料作成の回答結果
-  materialTarget = document.getElementById('materialTarget').value;
-  materialRequired = document.getElementById('materialRequired').value;
-  materialFormat = document.getElementById('materialFormat').value;
-  materialReference = document.getElementById('materialReference').value;
+  materialTargetValue = document.getElementById('materialTarget').value;
+  materialRequiredValue = document.getElementById('materialRequired').value;
+  materialFormatValue = document.getElementById('materialFormat').value;
+  materialReferenceValue = document.getElementById('materialReference').value;
   // 文章の要約の回答結果
-  digestPurpose = document.getElementById('digestPurpose').value;
-  digestLength = document.getElementById('digestLength').value;
-  digestPoint = document.getElementById('digestPoint').value;
+  digestPurposeValue = document.getElementById('digestPurpose').value;
+  digestLengthValue = document.getElementById('digestLength').value;
+  digestPointValue = document.getElementById('digestPoint').value;
 
   requestText += `あなたは${genreValue}の専門家です。\n以下の依頼内容・詳細情報をもとに、最善の回答をお願いします。\n`;
   
@@ -76,7 +71,7 @@ function generateAnswer() {
   }
 
   if (genreValue === "プログラミング") {
-    if (selectedLanguages.length > 0 || codeSnippet || errorMessage || triedSolution || expectedResult || constraints) {
+    if (selectedLanguages.length > 0 || codeSnippetValue || errorMessageValue || triedSolutionValue || expectedResultValue || constraintsValue) {
       requestText += `\n#詳細情報：`;
     }
 
@@ -85,42 +80,42 @@ function generateAnswer() {
       requestText += `\n・プログラミング言語： ${selectedLanguages}`;
     }
   
-    if (codeSnippet) {
-      requestText += `\n・コードサンプル：\n\`\`\`\n${codeSnippet}\n\`\`\``;
+    if (codeSnippetValue) {
+      requestText += `\n・コードサンプル：\n\`\`\`\n${codeSnippetValue}\n\`\`\``;
     }
   
-    if (errorMessage) {
-      requestText += `\n・エラーメッセージ：\n${errorMessage}`;
+    if (errorMessageValue) {
+      requestText += `\n・エラーメッセージ：\n${errorMessageValue}`;
     }
   
-    if (triedSolution) {
-      requestText += `\n・試したこと：\n${triedSolution}`;
+    if (triedSolutionValue) {
+      requestText += `\n・試したこと：\n${triedSolutionValue}`;
     }
   
-    if (expectedResult) {
-      requestText += `\n・期待する結果：\n${expectedResult}`;
+    if (expectedResultValue) {
+      requestText += `\n・期待する結果：\n${expectedResultValue}`;
     }
   }
 
   if (genreValue === "資料作成") {
-    if (materialTarget || materialRequired || materialFormat || materialReference) {
+    if (materialTargetValue || materialRequiredValue || materialFormatValue || materialReferenceValue) {
       requestText += `\n#詳細情報：`;
     }
 
-    if (materialTarget) {
-      requestText += `\n・ターゲット読者： ${materialTarget}`;
+    if (materialTargetValue) {
+      requestText += `\n・ターゲット読者： ${materialTargetValue}`;
     }
 
-    if (materialFormat) {
-      requestText += `\n・資料の形式： ${materialFormat}`;
+    if (materialFormatValue) {
+      requestText += `\n・資料の形式： ${materialFormatValue}`;
     }
 
-    if (materialRequired) {
-      requestText += `\n・必要な情報：\n${materialRequired}`;
+    if (materialRequiredValue) {
+      requestText += `\n・必要な情報：\n${materialRequiredValue}`;
     }
 
-    if (materialReference) {
-      requestText += `\n・参考資料：\n${materialReference}`;
+    if (materialReferenceValue) {
+      requestText += `\n・参考資料：\n${materialReferenceValue}`;
     }
   }
 
@@ -129,20 +124,20 @@ function generateAnswer() {
       requestText += `\n#要約対象の文章：\n${requestValue}`;
     }
 
-    if (digestPurpose || digestLength || digestPoint) {
+    if (digestPurposeValue || digestLengthValue || digestPointValue) {
       requestText += `\n#詳細情報：`;
     }
 
-    if (digestPurpose) {
-      requestText += `\n・要約の目的：\n${digestPurpose}`;
+    if (digestPurposeValue) {
+      requestText += `\n・要約の目的：\n${digestPurposeValue}`;
     }
 
-    if (digestLength) {
-      requestText += `\n・要約の長さ：\n${digestLength}`;
+    if (digestLengthValue) {
+      requestText += `\n・要約の長さ：\n${digestLengthValue}`;
     }
 
-    if (digestPoint) {
-      requestText += `\n・要約の重要ポイント：\n${digestPoint}`;
+    if (digestPointValue) {
+      requestText += `\n・要約の重要ポイント：\n${digestPointValue}`;
     }
   }
 
@@ -150,8 +145,8 @@ function generateAnswer() {
   //   requestText += `\n背景情報: ${background}`;
   // }
 
-  if (constraints) {
-    requestText += `\n・制約や条件:\n${constraints}`;
+  if (constraintsValue) {
+    requestText += `\n・制約や条件:\n${constraintsValue}`;
   }
 
   if (genreValue === "プログラミング") {
@@ -199,17 +194,17 @@ function copyText() {
 // 回答内容のリセット
 function resetAnswer() {
   programmingLanguage = '';
-  codeSnippet = '';
-  errorMessage = '';
-  triedSolution = '';
-  expectedResult = '';
+  codeSnippetValue = '';
+  errorMessageValue = '';
+  triedSolutionValue = '';
+  expectedResultValue = '';
   // background = '';
-  constraints = '';
+  constraintsValue = '';
   requestText = '';
-  materialTarget = '';
-  materialRequired = '';
-  materialFormat = '';
-  materialReference = '';
+  materialTargetValue = '';
+  materialRequiredValue = '';
+  materialFormatValue = '';
+  materialReferenceValue = '';
   outputText.innerText = '';
 }
 
