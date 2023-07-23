@@ -37,7 +37,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: '/development'
-          local-dir: 'C:/Users/user/works/development'
+          local-dir: 'C:/Users/user/works/development/'
           args: '--delete'
         env:
           FTP_FILES: ${{ steps.get_changes.outputs.files }}
