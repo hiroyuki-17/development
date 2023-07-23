@@ -1,4 +1,4 @@
-name: Upload Changed Files to Server
+name: Upload to Server
 on:
   push:
     branches:
@@ -12,25 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Get previous commit ID
-        id: get_previous_commit
-        run: |
-          PREVIOUS_COMMIT=$(git log -1 --format=%H)
-          echo "::set-output name=prev_commit::$PREVIOUS_COMMIT"
-
-      - name: Get changed files
-        id: get_changes
-        run: |
-          CHANGED_FILES=$(git diff --name-only ${{ steps.get_previous_commit.outputs.prev_commit }})
-          if [ -n "$CHANGED_FILES" ]; then
-            echo "$CHANGED_FILES" > changed_files.txt
-          else
-            echo "No changes found."
-            exit 0
-          fi
-
-      - name: Upload changed files via FTP
-        if: success()
+      - name: Upload files via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -39,5 +21,3 @@ jobs:
           server-dir: '/development/'
           local-dir: 'C:/Users/user/works/development/'
           args: '--delete'
-        env:
-          FTP_FILES: ${{ steps.get_changes.outputs.files }}
