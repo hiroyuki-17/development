@@ -10,7 +10,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
 
       - name: Get changed files
         id: get_changes
@@ -25,7 +30,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: '/development'
-          local-dir: 'C:\Users\user\works\development'
+          local-dir: 'C:/Users/user/works/development'
           args: '--delete'
         env:
           FTP_FILES: ${{ steps.get_changes.outputs.files }}
