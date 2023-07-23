@@ -1,0 +1,31 @@
+name: Upload Changed Files to Server
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get changed files
+        id: get_changes
+        run: |
+          git diff --name-only HEAD HEAD^ > changed_files.txt
+          echo "::set-output name=files::$(cat changed_files.txt)"
+
+      - name: Upload changed files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: '/development'
+          local-dir: 'C:\Users\user\works\development'
+          args: '--delete'
+        env:
+          FTP_FILES: ${{ steps.get_changes.outputs.files }}
