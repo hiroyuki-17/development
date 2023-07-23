@@ -1,0 +1,58 @@
+body {
+  font-family: 'Meiryo','Hiragino Kaku Gothic Pro';
+  padding: 0 16px;
+}
+
+pre {
+  text-wrap: wrap;
+}
+
+.output {
+  padding: 5px;
+  border: 1px solid #444;
+}
+
+.container {
+  max-width: 890px;
+  margin: 20px auto;
+}
+
+#htmlSource {
+  width: 100%;
+}
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+  padding: 0.5em 2em;
+  color: #444444;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid #dddddd;
+  border-radius: 10px;
+  transition: background-color .4s;
+}
+
+.btn::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  margin-left: 5px;
+  border-top: 3px solid currentColor;
+  border-right: 3px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.btn:hover {
+  color: #333333;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #dddddd;
+}
+
+.btn:hover::after {
+  border-top: 3px solid #333333;
+  border-right: 3px solid #333333;
+}

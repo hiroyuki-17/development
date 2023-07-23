@@ -1,49 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <title>HTML整形ツール</title>
+<meta charset="UTF-8">
+<title>HTML整形ツール</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>HTML整形ツール</h1>
-  <form id="htmlForm">
-    <label for="htmlSource">整形前のHTMLソース:</label><br>
-    <textarea id="htmlSource" rows="15" cols="80" placeholder="ここに整形前のHTMLソースを入力してください"></textarea><br>
-    <button type="button" onclick="formatHTML()">整形する</button>
-  </form>
-  
-  <h2>整形されたHTML:</h2>
-  <pre id="formatted-html"></pre>
-  
-  <h2>整形されたCSS:</h2>
-  <pre id="formatted-css"></pre>
-  
-  <script>
-    function formatHTML() {
-      const compressedHTML = document.getElementById("htmlSource").value;
-      
-      // 開始タグと閉じタグの両方で改行を追加する関数
-      function addNewlines(html) {
-        const regex = /(<(\/)?div[^>]*>)/g;
-        return html.replace(regex, "\n$1");
-      }
+<div class="container">
+<h1>HTML整形ツール</h1>
+<p>圧縮されたHTMLソースに改行を加えて、id属性がもつstyle属性のCSSを分離します。</p>
+<form id="htmlForm">
+<h2><label for="htmlSource">整形前のHTMLソース:</label></h2>
+<textarea id="htmlSource" rows="15" cols="80" placeholder="ここに整形前のHTMLソースを入力してください"></textarea><br>
+<button type="button" onclick="formatHTML()" class="btn">整形する</button>
+</form>
 
-      // インラインスタイルを分離する関数
-      function separateInlineStyles(html) {
-        const regex = /<(div)[^>]*(id)=["']([^"']+)["'][^>]*style=["']([^"']+)["']/g;
-        let css = "";
-        const separatedHTML = html.replace(regex, function(match, element, attribute, name, style) {
-          const separated = match.replace(/(style=["'][^"']+["'])/, "");
-          css += `#${name} {\n${style}\n}\n`;
-          return separated;
-        });
-        return { separatedHTML, css };
-      }
+<h2>整形されたHTML:</h2>
+<pre id="formatted-html"></pre>
 
-      let { separatedHTML, css } = separateInlineStyles(compressedHTML);
+<h2>整形されたCSS:</h2>
+<pre id="formatted-css"></pre>
+</div>
 
-      document.getElementById("formatted-html").textContent = addNewlines(separatedHTML);
-      document.getElementById("formatted-css").textContent = css;
+<script>
+  const formattedHtml = document.getElementById("formatted-html");
+  const formattedCss = document.getElementById("formatted-css");
+  function formatHTML() {
+    const compressedHTML = document.getElementById("htmlSource").value;
+    
+    // 開始タグと閉じタグの両方で改行を追加する関数
+    function addNewlines(html) {
+      const regex = /(<(\/)?div[^>]*>)/g;
+      return html.replace(regex, "\n$1");
     }
-  </script>
+
+    // id属性のインラインスタイルを分離する関数
+    function separateInlineStyles(html) {
+      const regex = /<(div)\s+[^>]*(id)=["']([^"']+)["'](?:\s+[^>]*style=["']([^"']+)["'])?/g;
+      let css = "";
+      const separatedHTML = html.replace(regex, function(match, element, attribute, name, style) {
+        const separated = match.replace(/(style=["'][^"']+["'])/, "").replace(/\s+$/, ""); // Remove trailing spaces
+        if (style) {
+          css += `#${name} {\n${style}\n}\n\n`;
+        }
+        return separated;
+      });
+      return { separatedHTML, css };
+    }
+
+    let { separatedHTML, css } = separateInlineStyles(compressedHTML);
+    if(separatedHTML) {
+      formattedHtml.textContent = addNewlines(separatedHTML);
+      formattedHtml.classList.add("output");
+    }
+
+    if(css) {
+      formattedCss.textContent = css;
+      formattedCss.classList.add("output");
+    }
+  }
+</script>
 </body>
 </html>
