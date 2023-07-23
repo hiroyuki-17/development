@@ -14,6 +14,9 @@
   <h2>整形されたHTML:</h2>
   <pre id="formatted-html"></pre>
   
+  <h2>整形されたCSS:</h2>
+  <pre id="formatted-css"></pre>
+  
   <script>
     function formatHTML() {
       const compressedHTML = document.getElementById("htmlSource").value;
@@ -24,9 +27,22 @@
         return html.replace(regex, "\n$1");
       }
 
-      const formattedHTML = addNewlines(compressedHTML);
+      // インラインスタイルを分離する関数
+      function separateInlineStyles(html) {
+        const regex = /<(div)[^>]*(id)=["']([^"']+)["'][^>]*style=["']([^"']+)["']/g;
+        let css = "";
+        const separatedHTML = html.replace(regex, function(match, element, attribute, name, style) {
+          const separated = match.replace(/(style=["'][^"']+["'])/, "");
+          css += `#${name} {\n${style}\n}\n`;
+          return separated;
+        });
+        return { separatedHTML, css };
+      }
 
-      document.getElementById("formatted-html").textContent = formattedHTML;
+      let { separatedHTML, css } = separateInlineStyles(compressedHTML);
+
+      document.getElementById("formatted-html").textContent = addNewlines(separatedHTML);
+      document.getElementById("formatted-css").textContent = css;
     }
   </script>
 </body>
