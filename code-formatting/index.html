@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML整形ツール</title>
+</head>
+<body>
+  <h1>HTML整形ツール</h1>
+  <form id="htmlForm">
+    <label for="htmlSource">整形前のHTMLソース:</label><br>
+    <textarea id="htmlSource" rows="15" cols="80" placeholder="ここに整形前のHTMLソースを入力してください"></textarea><br>
+    <button type="button" onclick="formatHTML()">整形する</button>
+  </form>
+  
+  <h2>整形されたHTML:</h2>
+  <pre id="formatted-html"></pre>
+  
+  <script>
+    function formatHTML() {
+      const compressedHTML = document.getElementById("htmlSource").value;
+      
+      // 開始タグと閉じタグの両方で改行を追加する関数
+      function addNewlines(html) {
+        const regex = /(<(\/)?div[^>]*>)/g;
+        return html.replace(regex, "\n$1");
+      }
+
+      const formattedHTML = addNewlines(compressedHTML);
+
+      document.getElementById("formatted-html").textContent = formattedHTML;
+    }
+  </script>
+</body>
+</html>
