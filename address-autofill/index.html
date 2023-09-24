@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>よくあるお問い合わせフォーム</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+<h1>よくあるお問い合わせフォーム</h1>
+<p>郵便番号データ配信サービス（<a href="https://zipcloud.ibsnet.co.jp/" target="_blank">zipcloud</a>）を使った住所自動入力フォームです。<br>ユーザビリティを考慮し、<code>autocomplete</code>属性を使った入力補完にも対応しています。</p>
+<form>
+<div class="form-layout">
+<label for="name" class="required-label">お名前：</label>
+<input type="text" name="name" id="name" placeholder="例: 南光太郎" autocomplete="name" required>
+</div><!-- /.form-layout -->
+
+<div class="form-layout">
+<label for="tell">電話番号：</label>
+<input type="tel" name="tell" id="tell" placeholder="例: 000-0000-0000" autocomplete="tel">
+</div><!-- /.form-layout -->
+
+<div class="form-layout">
+<label for="email">メールアドレス：</label>
+<input type="email" name="email" id="email" placeholder="例: xxx@gmail.com" autocomplete="email">
+</div><!-- /.form-layout -->
+
+<div class="form-layout">
+<label for="zipcode" class="required-label">郵便番号：</label>
+<input type="text" name="postal_code" id="zipcode" placeholder="例: 123-4567" minlength="7" maxlength="8" pattern="\d*" autocomplete="postal-code" required>
+<button type="button" id="searchButton">郵便番号から住所を検索</button>
+</div><!-- /.form-layout -->
+
+<div class="form-layout">
+<label for="prefecture">都道府県：</label>
+<input type="text" id="prefecture">
+</div><!-- /.form-layout -->
+
+<div class="form-layout">
+<label for="address">住所（市区町村・町名以下）：</label>
+<input type="text" name="address" id="address" placeholder="例: 新宿区新宿3丁目1-2" autocomplete="address-level2">
+</div><!-- /.form-layout -->
+
+<!-- <div class="form-layout">
+<label for="address">町名・番地：</label>
+<input type="text" id="address" placeholder="例: 新宿3丁目1-2" autocomplete="address-level3">
+</div>/.form-layout -->
+
+<div class="form-layout">
+<label for="address2">建物名・号室：</label>
+<input type="text" id="address2" placeholder="例: トキワ壮101" autocomplete="address-level4">  
+</div><!-- /.form-layout -->
+
+<button type="submit" class="btn">送信</button>
+</form>
+</div><!-- /.form-layout -->
+
+<script src="script.js"></script>
+</body>
+</html>

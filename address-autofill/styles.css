@@ -1,0 +1,105 @@
+body {
+  font-family: 'Meiryo','Hiragino Kaku Gothic Pro';
+  padding: 0 16px;
+}
+
+h1 {
+  text-align: center;
+}
+
+code {
+  background-color: #f0f0f0;
+  padding: 2px 5px;
+  
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+label, input, textarea {
+  display: block;
+  line-height: 1.5;
+}
+
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-layout label {
+  font-weight: bold;
+}
+
+.form-layout input {
+  width: 100%;
+}
+
+.form-layout + .form-layout {
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 769px) {
+  .form-layout {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .form-layout label,
+  .form-layout button {
+    flex-shrink: 0;
+  }
+
+  .form-layout label {
+    min-width: 128px;
+  }
+}
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+  padding: 0.5em 2em;
+  color: #444444;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid #dddddd;
+  border-radius: 10px;
+  transition: background-color .4s;
+}
+
+.btn::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  margin-left: 5px;
+  border-top: 3px solid currentColor;
+  border-right: 3px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.btn:hover {
+  color: #333333;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #dddddd;
+}
+
+.btn:hover::after {
+  border-top: 3px solid #333333;
+  border-right: 3px solid #333333;
+}
+
+.required-label::after {
+  content: "必須";
+  font-size: 12px;
+  color: #ffffff;
+  margin-left: 15px;
+  padding: 2px 5px;
+  background-color: red;
+  border-radius: 5px;
+  vertical-align: middle;
+}
