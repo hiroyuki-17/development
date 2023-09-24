@@ -4,6 +4,7 @@ body {
 }
 
 h1 {
+  font-size: 20px;
   text-align: center;
 }
 
@@ -13,7 +14,7 @@ p {
 
 @media screen and (min-width: 769px) {
   h1 {
-    font-size: 18px;
+    font-size: 26px;
   }
 
   p {
@@ -28,7 +29,7 @@ code {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 620px;
   margin: 20px auto;
 }
 
@@ -122,4 +123,12 @@ label, input, textarea {
   background-color: red;
   border-radius: 5px;
   vertical-align: middle;
+}
+
+#searchButton {
+  display: inline-block;
+  min-height: 28px;
+  font-size: 14px;
+  padding: 2px 8px;
+  color: #444444;
 }
