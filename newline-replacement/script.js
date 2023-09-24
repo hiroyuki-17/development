@@ -1,7 +1,6 @@
 const inputArea = document.getElementById('inputArea');
 const outputArea = document.getElementById('outputArea');
 const copyButton = document.getElementById('copyButton');
-const clipboardText = "clipboard";
 
 inputArea.addEventListener('input', () => {
   const text = inputArea.value;
@@ -12,5 +11,5 @@ inputArea.addEventListener('input', () => {
 
 copyButton.addEventListener('click', () => {
   outputArea.select();
-  navigator.clipboard.writeText(clipboardText);
+  navigator.clipboard.writeText(outputArea.value);
 });
