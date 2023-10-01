@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function generateURLs() {
       const filePathsInput = document.querySelector('#file-paths').value;
-      const domain1Name = document.querySelector('#domain1-name').value || 'デモ';
+      const domain1Name = document.querySelector('#domain1-name').value || 'デモURL';
       const domain1URL = formatDomainURL(document.querySelector('#domain1-url').value);
-      const domain2Name = document.querySelector('#domain2-name').value || '本番';
+      const domain2Name = document.querySelector('#domain2-name').value || '本番URL';
       const domain2URL = formatDomainURL(document.querySelector('#domain2-url').value);
 
       const urlList = document.querySelector('#url-list');

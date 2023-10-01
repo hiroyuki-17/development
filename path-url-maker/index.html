@@ -9,7 +9,7 @@
 <body>
 <div class="container">
 <h1>ファイルパスからリンク付きURL生成</h1>
-<p>ファイルパスからHTMLファイルのみを抽出しリンク付きのURLを一覧で生成します。<br>ドメイン別に見出しをリネーム可能です。（デフォルトでデモ・本番の見出しがそれぞれ入ります）</p>
+<p>ファイルパスからHTMLファイルのみを抽出しリンク付きのURLを一覧で生成します。<br>ドメイン別に見出しを指定可能です。<br>（ドメイン名の見出し指定がない場合、デフォルトでデモURL・本番URLの見出しがそれぞれ入ります）</p>
 
 <div class="input-container">
 <label for="file-paths" class="required-label">ファイルパスを入力（改行区切り）:</label>
@@ -20,22 +20,22 @@
 <div class="domain-input">
 <div class="domain-input-name">
 <label for="domain1-name">ドメイン1 title:</label>
-<input type="text" id="domain1-name" placeholder="デモ">
+<input type="text" id="domain1-name" placeholder="デモURL">
 </div><!-- /.domain-input-name -->
 <div class="domain-input-url">
 <label for="domain1-url" class="required-label">ドメイン1 URL:</label>
-<input type="text" id="domain1-url" required>
+<input type="url" id="domain1-url" required>
 </div>
 </div>
 <div class="domain-input">
 <div class="domain-input-name">
 <label for="domain2-name">ドメイン2 title:</label>
-<input type="text" id="domain2-name" placeholder="本番">
+<input type="text" id="domain2-name" placeholder="本番URL">
 </div><!-- /.domain-input-name -->
 
 <div class="domain-input-url">
 <label for="domain2-url">ドメイン2 URL:</label>
-<input type="text" id="domain2-url">
+<input type="url" id="domain2-url">
 </div>
 </div>
 </div>
