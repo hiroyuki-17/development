@@ -8,7 +8,7 @@
 - [ファイルパスからリンク付きURL生成](https://square.staba.jp/development/path-url-maker/)
     - ファイルパスからHTMLファイルのみを抽出しリンク付きのURLを一覧で生成します。
 - [検品依頼内容のベーステキストを生成](https://square.staba.jp/development/kenpin-text-maker/)
-    - ファイルパスとドメインを元に、URL部分が埋まった検品依頼内容のベーステキストを生成します。。
+    - ファイルパスとドメインを元に、URL部分が埋まった検品依頼内容のベーステキストを生成します。
 - [改行置換ツール](https://square.staba.jp/development/newline-replacement/)
     - 改行が2回連続するテキストを改行1回に置換します。
 - [HTML整形ツール](https://square.staba.jp/development/code-formatting/)
