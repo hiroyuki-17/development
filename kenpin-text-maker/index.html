@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>検品依頼内容のベーステキストを生成</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+<h1>検品依頼内容のベーステキストを生成</h1>
+<p>ファイルパスとドメインを元に、URL部分が埋まった検品依頼内容のベーステキストを生成します。</p>
+<ul>
+<li>html以外のパスが入った状態でも問題ありません（htmlのパスのみを対象に出力します）</li>
+<li>本番ドメインの入力がなかった場合、本番URLに「なし」が入ります</li>
+</ul>
+
+<div class="input-container">
+<label for="file-paths" class="required-label">ファイルパスを入力（改行区切り）:</label>
+<textarea id="file-paths" rows="10" cols="50" placeholder="\\sample\\index.html
+\\sample\\sample2\\index.html" required></textarea>
+</div>
+<div class="domain-settings">
+<div class="domain-input">
+<div class="domain-input-url">
+<label for="domain1-url" class="required-label">デモドメイン:</label>
+<input type="url" id="domain1-url" placeholder="https://sample.demo.jp/"required>
+</div>
+</div>
+<div class="domain-input">
+<div class="domain-input-url">
+<label for="domain2-url">本番ドメイン:</label>
+<input type="url" id="domain2-url">
+</div>
+</div>
+</div>
+<button id="generate-button" class="btn" type="button">検品依頼の生成</button>
+<button id="copyButton" class="btn">以下の内容を全文コピー</button>
+
+<div id="kenpin-content">
+<h2>検品依頼内容</h2>
+<p id="kenpin-output"></p>
+</div>
+</div>
+<template id="template">
+<p>---------------------------<br>
+対象URL：<br><span id="url1-output"></span><br><br>
+本番URL：<br><span id="url2-output"></span><br><br>
+デザイン：<br><br>
+原稿：<br><br>
+備考：</p>
+</template>
+<script src="script.js"></script>
+</body>
+</html>
