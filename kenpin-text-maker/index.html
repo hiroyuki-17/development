@@ -13,6 +13,7 @@
 <ul>
 <li>html以外のパスが入った状態でも問題ありません（htmlのパスのみを対象に出力します）</li>
 <li>本番ドメインの入力がなかった場合、本番URLに「なし」が入ります</li>
+<li>デザイン、原稿の入力欄はすべてに同じものが入ります（共通で入れたい場合のみ入力します）</li>
 </ul>
 
 <div class="input-container">
@@ -24,13 +25,28 @@
 <div class="domain-input">
 <div class="domain-input-url">
 <label for="domain1-url" class="required-label">デモドメイン:</label>
-<input type="url" id="domain1-url" placeholder="https://sample.demo.jp/"required>
+<input type="url" id="domain1-url" placeholder="https://sample.demo.jp/" required>
 </div>
 </div>
 <div class="domain-input">
 <div class="domain-input-url">
 <label for="domain2-url">本番ドメイン:</label>
 <input type="url" id="domain2-url">
+</div>
+</div>
+<div class="domain-input">
+<div class="domain-input-url">
+<label for="domain3-url">デザイン:</label>
+<textarea type="text" id="domain3-url" rows="3" placeholder="\\mikan\anken\サンプル\共通素材\design
+└design.xd
+共通パーツ-TOP_20231016"></textarea>
+</div>
+</div>
+<div class="domain-input">
+<div class="domain-input-url">
+<label for="domain4-url">原稿:</label>
+<textarea type="text" id="domain4-url" rows="3" placeholder="\\mikan\anken\サンプル\原稿
+└原稿_231016.pptx"></textarea>
 </div>
 </div>
 </div>
@@ -46,8 +62,8 @@
 <p>---------------------------<br>
 対象URL：<br><span id="url1-output"></span><br><br>
 本番URL：<br><span id="url2-output"></span><br><br>
-デザイン：<br><br>
-原稿：<br><br>
+デザイン：<br><span id="url3-output"></span><br><br>
+原稿：<br><span id="url4-output"></span><br><br>
 備考：</p>
 </template>
 <script src="script.js"></script>
