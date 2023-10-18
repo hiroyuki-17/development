@@ -115,6 +115,9 @@ document.addEventListener('DOMContentLoaded', function () {
             kenpinOutput.appendChild(templateCopy);
             kenpinOutput.value = templateCopy;
         }
+
+        copyButton.style.display = 'none';
+        smoothScroll('#kenpin-content', 300);
     }
 
     function copyKenpinText() {
@@ -134,5 +137,28 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             alert('コピーするテキストがありません');
         }
+    }
+
+    // スムーススクロールの関数
+    function smoothScroll(target, duration) {
+        const targetElement = document.querySelector(target);
+        if (!targetElement) return;
+
+        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+        const startPosition = window.scrollY;
+        const distance = targetPosition - startPosition;
+        const startTime = performance.now();
+
+        function animate(currentTime) {
+            const timeElapsed = currentTime - startTime;
+            const progress = Math.min(timeElapsed / duration, 1);
+            window.scrollTo(0, startPosition + distance * progress);
+
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            }
+        }
+
+        requestAnimationFrame(animate);
     }
   });
