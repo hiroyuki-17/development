@@ -77,26 +77,11 @@ li {
   transition: background-color .4s;
 }
 
-.btn::after {
-  content: '';
-  width: 5px;
-  height: 5px;
-  margin-left: 5px;
-  border-top: 3px solid currentColor;
-  border-right: 3px solid currentColor;
-  transform: rotate(45deg);
-}
-
 .btn:hover {
   color: #333333;
   cursor: pointer;
   text-decoration: none;
   background-color: #dddddd;
-}
-
-.btn:hover::after {
-  border-top: 3px solid #333333;
-  border-right: 3px solid #333333;
 }
 
 .required-label::after {
@@ -126,4 +111,8 @@ li {
 #kenpin-content h3 {
   font-size: 18px;
   margin: 15px auto 5px;
+}
+
+#copyButton {
+  display: none;
 }
