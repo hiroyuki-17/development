@@ -57,7 +57,8 @@ li {
   min-width: 164px;
 }
 
-.domain-input-url input {
+.domain-input-url input,
+.domain-input-url textarea {
   width: 100%;
 }
 
