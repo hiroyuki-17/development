@@ -3,16 +3,21 @@ body {
   margin: 20px;
 }
 
+h1 {
+  font-size: 30px;
+  text-align: center;
+}
+
 ul {
   margin: 10px auto 20px;
 }
 
 li {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 20px auto;
 }
 
@@ -113,6 +118,10 @@ li {
   margin: 15px auto 5px;
 }
 
-#copyButton {
+#kenpin-content {
   display: none;
+}
+
+::placeholder {
+  color: #dddddd;
 }

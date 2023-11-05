@@ -3,26 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>検品依頼内容のベーステキストを生成</title>
+<title>検品依頼ジェネレーター</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="container">
-<h1>検品依頼内容のベーステキストを生成</h1>
-<p>ファイルパスとドメインを元に、URL部分が埋まった検品依頼内容のベーステキストを生成します。</p>
+<h1>検品依頼ジェネレーター</h1>
+<p>ファイルパスとドメインを元に、URL部分が埋まった検品依頼内容のベーステキストを生成します。<br>※検品概要や対象ページごとの原稿・備考などは別途コピペして追記を想定しています</p>
 <ul>
-<li>html以外のパスが入った状態でもOKです（htmlのパスのみを処理します）</li>
+<li>ファイルパスに'.html','.ejs'が含まれたもの、ファイル名がないパス（/,\終わり）のみを処理します（URLやhtml以外の拡張子が含まれたパスでもOK）</li>
 <li>パスに'/docs/' や '/public/' が含まれている場合、その部分以降のパスのみを抽出します。</li>
 <li>スラッシュ（/）・バックスラッシュ（\）はどちらでもOK。先頭のスラッシュ有無も問いません。</li>
-<li>デザイン、原稿の入力欄はすべてに同じものが入ります（共通で入れたい場合のみ入力します）</li>
+<li>「原稿」「デザイン」の入力欄はすべてに同じものが入ります（共通で入れたい場合のみ入力ください）</li>
 <li>「本番ドメイン」の入力がなかった場合、本番URLに「なし」が入ります。</li>
 <li>「デザイン」の入力がなかった場合、デザイン欄は省略されます。</li>
+<li>テキスト出力に成功すると設定したドメインを保存し、次回アクセス以降は自動設定されます。</li>
+<li>重複するURLがあった場合は削除されます。</li>
 </ul>
 
 <div class="input-container">
-<label for="file-paths" class="required-label">ファイルパスを入力（改行区切り）:</label>
-<textarea id="file-paths" rows="10" cols="50" placeholder="\\sample\\index.html
-\\sample\\sample2\\index.html" required></textarea>
+<label for="file-paths" class="required-label">ファイルパス・URL（改行区切り）:</label>
+<textarea id="file-paths" rows="10" cols="50" placeholder="C:\works\sample-site\public\corporate\ir\index.html
+C:\works\sample-site\docs\corporate\ir\index.html
+\\sample\\index.html
+/sample/index.html
+sample/index.html
+sample/
+https://sample.demo.mitsue.com/sample/index.html" required></textarea>
 </div>
 <div class="domain-settings">
 <div class="domain-input">
@@ -39,17 +46,17 @@
 </div>
 <div class="domain-input">
 <div class="domain-input-url">
-<label for="domain3-url">デザイン:</label>
-<textarea type="text" id="domain3-url" rows="3" placeholder="\\mikan\anken\サンプル\共通素材\design
-└design.xd
-共通パーツ-TOP_20231016"></textarea>
+<label for="domain3-url">原稿:</label>
+<textarea id="domain3-url" rows="3" placeholder="\\mikan\anken\サンプル\原稿
+└"></textarea>
 </div>
 </div>
 <div class="domain-input">
 <div class="domain-input-url">
-<label for="domain4-url">原稿:</label>
-<textarea type="text" id="domain4-url" rows="3" placeholder="\\mikan\anken\サンプル\原稿
-└原稿_231016.pptx"></textarea>
+<label for="domain4-url">デザイン:</label>
+<textarea id="domain4-url" rows="3" placeholder="\\mikan\anken\サンプル\共通素材\design
+└design.xd
+共通パーツ-TOP_20231016"></textarea>
 </div>
 </div>
 </div>
@@ -58,17 +65,44 @@
 <div id="kenpin-content">
 <button id="copyButton" class="btn">依頼内容を全文コピー</button>
 <h2>検品依頼内容</h2>
-<p id="page-output"></p>
-<p id="kenpin-output"></p>
+<div id="kenpin-output-all">
+<p id="kenpin-output-1">
+==================================================<br>
+●検品URL一覧<br>
+==================================================<br>
+<span id="page-output"></span><br>
+<span id="output-demo-url"></span><br>
+==================================================<br>
+●検品概要<br>
+==================================================<br>
+＜------------下記は記載例のため、必要に応じて削除をお願いします------------＞<br>
+新規で3p実装、更新1pに導線を追加しました。 （指示書、原稿、WF、デザイン）どおりにできているか検品してください。<br>
+<br>
+以下がありましたら記載してください<br>
+- 対象ページ共通で検品不要箇所がある<br>
+- その他共有しておくべきことがある<br>
+--------------------------------------------------<br>
+検品／アクセシビリティチェック不要箇所：<br>
+- ヘッダ・フッタ・サイドナビは検品不要です。<br>
+- 代替テキストはチェック不要です。<br>
+--------------------------------------------------<br>
+備考：<br>
+同時検品になりますので、検品中に修正が入ったら作業する前に連絡します。<br>
+＜------------上記は記載例のため、必要に応じて削除をお願いします------------＞</p>
+<p>==================================================<br>
+●検品詳細<br>
+==================================================</p>
+<p id="kenpin-output-2"></p>
 </div>
 </div>
+</div>
+
 <template id="template">
-<p>---------------------------<br>
-対象URL：<br><span id="url1-output"></span><br><br>
+<p>対象URL：<br><span id="url1-output"></span><br><br>
 本番URL：<br><span id="url2-output"></span><br><br>
-<span id="url3-output"></span>
-原稿：<br><span id="url4-output"></span><br><br>
-備考：<br><br></p>
+原稿：<br><span id="url3-output"></span><br><br>
+<span id="url4-output"></span>
+備考：<br><br>――――――――――――――――――</p>
 </template>
 <script src="script.js"></script>
 </body>

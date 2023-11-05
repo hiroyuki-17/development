@@ -3,47 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ファイルパスからリンク付きURL生成</title>
+<title>リンク付きURLジェネレーター</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="container">
-<h1>ファイルパスからリンク付きURL生成</h1>
-<p>ファイルパスからHTMLファイルのみを抽出しリンク付きのURLを一覧で生成します。<br>ドメイン別に見出しを指定可能です。<br>（ドメイン名の見出し指定がない場合、デフォルトでデモURL・本番URLの見出しがそれぞれ入ります）</p>
+<h1>リンク付きURLジェネレーター</h1>
+<p>ファイルパスとドメインを元に、リンク付きのURLを一覧で生成します。</p>
+<ul>
+<li>ファイルパスに'.html','.ejs'が含まれたもの、ファイル名がないパス（/,\終わり）のみを処理します（URLやhtml以外の拡張子が含まれたパスでもOK）</li>
+<li>パスに'/docs/' や '/public/' が含まれている場合、その部分以降のパスのみを抽出します。</li>
+<li>スラッシュ（/）・バックスラッシュ（\）はどちらでもOK。先頭のスラッシュ有無も問いません。</li>
+<li>ドメインごとに見出しを設定可能です。ドメイン名の見出し指定がない場合、デフォルトでデモURL・本番URLの見出しが順に入ります。</li>
+<li>テキスト出力に成功すると設定したドメインを保存し、次回アクセス以降は自動設定されます。</li>
+<li>重複するURLがあった場合は削除されます。</li>
+</ul>
 
 <div class="input-container">
-<label for="file-paths" class="required-label">ファイルパスを入力（改行区切り）:</label>
-<textarea id="file-paths" rows="10" cols="50" placeholder="\\sample\\index.html
-\\sample\\sample2\\index.html" required></textarea>
+<label for="file-paths" class="required-label">ファイルパス・URL（改行区切り）:</label>
+<textarea id="file-paths" rows="10" cols="50" placeholder="C:\works\sample-site\public\corporate\ir\index.html
+C:\works\sample-site\docs\corporate\ir\index.html
+\\sample\\index.html
+/sample/index.html
+sample/index.html
+sample/
+https://sample.demo.mitsue.com/sample/index.html" required></textarea>
 </div>
 <div class="domain-settings">
 <div class="domain-input">
 <div class="domain-input-name">
-<label for="domain1-name">ドメイン1 title:</label>
+<label for="domain1-name">見出し1 :</label>
 <input type="text" id="domain1-name" placeholder="デモURL">
 </div><!-- /.domain-input-name -->
 <div class="domain-input-url">
-<label for="domain1-url" class="required-label">ドメイン1 URL:</label>
+<label for="domain1-url" class="required-label">ドメイン1: </label>
 <input type="url" id="domain1-url" required>
 </div>
 </div>
 <div class="domain-input">
 <div class="domain-input-name">
-<label for="domain2-name">ドメイン2 title:</label>
+<label for="domain2-name">見出し2 :</label>
 <input type="text" id="domain2-name" placeholder="本番URL">
 </div><!-- /.domain-input-name -->
 
 <div class="domain-input-url">
-<label for="domain2-url">ドメイン2 URL:</label>
+<label for="domain2-url">ドメイン2 :</label>
 <input type="url" id="domain2-url">
 </div>
 </div>
 </div>
 <button id="generate-button" class="btn" type="button">URL生成</button>
 
-<div class="url-list">
+<div id="link-content">
+<button id="copyButton" class="btn">リンク全体をコピー</button>
 <h2>生成されたURL一覧</h2>
-<ul id="url-list"></ul>
+<p id="page-output"></p>
+<div id="link-output-all">
+<div id="link-output-1"></div>
+<div id="link-output-2"></div>
+</div>
 </div>
 </div>
 <script src="script.js"></script>

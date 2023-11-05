@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ユーザースクリプト一覧</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="../common/js/run.js" defer></script>
+</head>
+<body>
+
+<main class="str-main">
+
+<div class="str-section">
+<div class="str-section__inner">
+
+<h1 class="m-hdg-lv1">ユーザースクリプト一覧</h1>
+<p>個人的に開発したユーザースクリプトをまとめています。ツールに応じて適宜必要な設定を行いご利用ください。</p>
+<ul class="m-list-note">
+<li class="m-list-note__item">
+<div class="m-list-note__mark">※</div>
+<div class="m-list-note__text">ユーザースクリプトの説明についてはここでは割愛します。詳しくは、<a href="https://shukapin.com/blog/how-to-use-userscript" target="_blank">UserScript（ユーザースクリプト）の概要と使い方</a>などをご参照ください。</div>
+</li>
+</ul>
+<div class="js-link-list"></div>
+
+<ul class="m-list-userscript">
+<li class="m-list-userscript__item">
+<div class="m-list-userscript__content">
+<h2 id="anc-01" class="m-hdg-lv2">新規タブ&amp;ドメイン切り替えツール</h2>
+<div class="m-box-description">
+<p>特定のドメインを含むWebページに訪れた際に、異なるドメインに差し替えて新規タブで開くボタンメニューを表示するツールです。<br>利用シーン：現在表示中のページを異なるドメインで参照・比較したいときなどの使用を想定しています。</p>
+<hr>
+<ul>
+<li>ドメイン切替対象ページの場合、画面左下にドメインを切り替えられるボタンメニューを表示します。</li>
+<li>ボタンは<code>domainButtons</code>のドメイングループごとに設定したドメイン数だけ自動的に表示されます。</li>
+<li>表示中のドメインと同一のドメインボタンは非活性になります。</li>
+<li>切り替えられるドメインはグループごとに設定し、1つのドメイングループにつき複数のドメインを設定可能です。</li>
+<li>本ツール単体で複数の切替えドメイングループを設定可能です。</li>
+</ul>
+</div>
+<div class="m-lyt-image-example">
+<img src="img/img-example-01.gif" alt="">
+</div>
+</div><!-- /.m-list-userscript__content -->
+<textarea class="m-textarea-code">
+// ==UserScript==
+// @name 新規タブ&ドメイン切り替えツール
+// @namespace https://gitlab.mitsue.com/mos/users/inagaki-hiroyuki/-/blob/main/development/
+// @version 1.0
+// @description 特定のドメインを含むWebページに訪れた際に、異なるドメインに差し替えて新規タブで開くボタンメニューを表示するツールです。
+// @match https://www.e-qix.jp/*
+// @match https://eqix.demo.mitsue.com/*
+// @match https://eqix-confirm.demo.mitsue.com/*
+// @match https://eqix02.demo.mitsue.com/*
+// @match https://pre.e-qix.jp/*
+// @match http://172.26.168.11/*
+// @match https://www.jaccs.co.jp/*
+// @match https://jaccs-corporate.demo.mitsue.com/*
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // ドメイン切り替えボタンをグループごとに管理
+    const domainButtons = {
+        eQix: {
+            "https://www.e-qix.jp": "本番",
+            "https://eqix.demo.mitsue.com": "デモ",
+            "https://eqix-confirm.demo.mitsue.com": "confirm",
+            "https://eqix02.demo.mitsue.com": "デモ02",
+            "https://pre.e-qix.jp": "QA環境",
+            "http://172.26.168.11": "業務検証環境"
+        },
+        ジャックス: {
+            "https://www.jaccs.co.jp": "本番",
+            "https://jaccs-corporate.demo.mitsue.com": "デモ"
+        },
+        // 新しいグループを追加できます
+        // ※上部の@matchにもドメインの追記が必要です
+        // サンプル: {
+            // "https://example.com": "サンプル1", // （切り替えたいドメイン名：ボタン名）
+            // "https://another-example.com": "サンプル2"
+        // }
+    };
+
+    // 現在のページのドメインを取得
+    const currentDomain = window.location.origin;
+
+    // ドメイン切り替えメニューのHTMLを生成
+    const createDomainSwitcherMenu = () => {
+        const domainSwitcherMenu = document.createElement('div');
+        domainSwitcherMenu.style.position = 'fixed';
+        domainSwitcherMenu.style.display = 'flex';
+        domainSwitcherMenu.style.flexDirection = 'column';
+        domainSwitcherMenu.style.textAlign = 'center';
+        domainSwitcherMenu.style.bottom = '0';
+        domainSwitcherMenu.style.left = '0';
+        domainSwitcherMenu.style.backgroundColor = 'rgba(255, 255, 255, 70%)';
+        domainSwitcherMenu.style.padding = '10px';
+        domainSwitcherMenu.style.zIndex = '9999';
+
+        for (const group in domainButtons) {
+            const groupButtons = domainButtons[group];
+            if (Object.keys(groupButtons).some(domain => currentDomain.startsWith(domain))) {
+                domainSwitcherMenu.innerHTML += `<p>${group}:</p>`;
+                for (const domain in groupButtons) {
+                    const domainLink = document.createElement('a');
+                    domainLink.style.display = 'inline-block';
+                    domainLink.textContent = groupButtons[domain];
+                    domainLink.style.fontSize = '14px';
+                    domainLink.style.margin = '5px';
+                    domainLink.style.padding = '4px 10px';
+                    domainLink.style.border = '1px solid #444';
+                    domainLink.style.borderRadius = '5px';
+                    domainLink.style.color = currentDomain === domain ? '#666666' : '#397c46';
+                    domainLink.style.backgroundColor = currentDomain === domain ? '#f2f2f2' : '#fff';
+                    domainLink.style.cursor = currentDomain === domain ? 'default' : 'pointer';
+                    if (currentDomain === domain) {
+                        domainLink.style.pointerEvents = 'none'; // クリックを無効にする
+                    }
+                    domainLink.href = domain + window.location.pathname + window.location.search + window.location.hash;
+                    domainLink.target = '_blank';
+                    if (currentDomain !== domain) {
+                        domainLink.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const newPath = window.location.pathname + window.location.search + window.location.hash;
+                            const newURL = domain + newPath;
+                            window.open(newURL, '_blank');
+                        });
+                    }
+                    domainSwitcherMenu.appendChild(domainLink);
+                }
+            }
+        }
+
+        document.body.appendChild(domainSwitcherMenu);
+    };
+
+    createDomainSwitcherMenu();
+})();
+</textarea>
+<button type="button" class="m-btn-copy">Copy</button>
+</li>
+<li class="m-list-userscript__item">
+<div class="m-list-userscript__content">
+<h2 id="anc-02" class="m-hdg-lv2">ドメイン切り替えツール</h2>
+<div class="m-box-description">
+<p>特定のドメインを含むWebページに訪れた際に、数字キーをクリックすると異なるドメインに切り替えるツールです。<br>利用シーン：ドメイン切替ツールをメニュー非表示の状態で使用したい場合を想定しています。</p>
+<hr>
+<ul>
+<li>新規タブではなく同一タブで切り替わります。</li>
+<li>切り替えられるドメインはグループごとに設定し、1つのドメイングループにつき最大9個のドメインを数字キー（1~9）に割り当てることが可能です。</li>
+<li>本ツール単体で複数の切替えドメイングループを設定可能です。</li>
+</ul>
+<ul class="m-list-note">
+<li class="m-list-note__item">
+<div class="m-list-note__mark">※</div>
+<div class="m-list-note__text">切替の際に数字キーを使用するため、他にページ内で同ボタンへの入力やショートカットを割り当てている場合は注意してください。</div>
+</li>
+</ul>
+</div>
+<div class="m-lyt-image-example">
+<img src="img/img-example-02.gif" alt="">
+</div>
+</div><!-- /.m-list-userscript__content -->
+<textarea class="m-textarea-code">
+// ==UserScript==
+// @name         ドメイン切り替えツール（メニュー表示なし）
+// @namespace    https://gitlab.mitsue.com/mos/users/inagaki-hiroyuki/-/blob/main/development/
+// @version      1.0
+// @description  特定のURLに訪れた際に数字キーでドメインを切り替えるツール
+// @match        https://www.e-qix.jp/*
+// @match        https://eqix.demo.mitsue.com/*
+// @match        https://eqix-confirm.demo.mitsue.com/*
+// @match        https://www.jaccs.co.jp/*
+// @match        https://jaccs-corporate.demo.mitsue.com/*
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // ドメイングループをオブジェクトとして管理
+    const domainGroups = {
+        group1: [
+            "1. https://www.e-qix.jp",
+            "2. https://eqix.demo.mitsue.com",
+            "3. https://eqix-confirm.demo.mitsue.com",
+        ],
+        group2: [
+            "1. https://www.jaccs.co.jp",
+            "2. https://jaccs-corporate.demo.mitsue.com",
+        ],
+        // 新しいグループを追加できます
+        // ※上部の@matchにもドメインの追記が必要です
+        // group3: {
+            // "1. https://example.com", // 連番. 切り替えたいドメイン名
+            // "2. https://another-example.com",
+        // }
+    };
+
+    // 現在のページのドメインを取得
+    const currentDomain = window.location.origin;
+
+    // 現在のページのドメインがどのグループに属するかを検索
+    let currentGroup = null;
+    for (const groupName in domainGroups) {
+        if (domainGroups[groupName].some(domain => currentDomain.startsWith(domain.split('. ')[1]))) {
+            currentGroup = groupName;
+            break;
+        }
+    }
+
+    // ドメイン切り替えの処理
+    document.addEventListener("keydown", function(e) {
+        if (e.key >= "1" && e.key <= "9" && currentGroup) {
+            const key = e.key;
+            const domainIndex = parseInt(key) - 1; // 数字キーの数字を取得
+            const domains = domainGroups[currentGroup];
+            window.location.href = domains[domainIndex].split('. ')[1] + window.location.pathname;
+        }
+    });
+})();
+</textarea>
+<button type="button" class="m-btn-copy">Copy</button>
+</li>
+</ul>
+
+</div><!-- /.str-section__inner -->
+</div><!-- /.str-section -->
+
+</main><!-- /.str-main -->
+
+</body>
+</html>

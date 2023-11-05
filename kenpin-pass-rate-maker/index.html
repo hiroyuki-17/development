@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>検品合格率集計テキストジェネレーター</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+<h1>検品合格率集計テキストジェネレーター</h1>
+<p>週次の検品データ（Excel）の内容を元に、合格率・不備率・コメント欄を入力して検品合格率の集計テキストを生成します。</p>
+<ul>
+<li>合格率・不備率には週次の検品データから必要な範囲をそのまま直接コピペすることを想定しています。</li>
+<li>週次の検品データにある合格率は「対象外」の列がある場合とない場合がありますがどちらにも対応しています。（そのままコピペでOK）</li>
+<li>コメント入力内容は改行が連続する場合改行を減らしたうえで出力されます。</li>
+<li>本ツールは週次の検品データの形式に依存するため、形式に変更があった場合正しく動かなくなる可能性があります。その際は処理の調整が必要になりますのでMOS稲垣までご連絡ください。</li>
+</ul>
+<div class="input-box">
+<label for="passRate" class="required-label">検品合格率:</label>
+<textarea id="passRate" rows="8" placeholder="MLC 三笘薫	1	2		3		66.7
+第三事業部第四部（MOS）デジタルコンテンツグループ第二チーム	1			1		0.0
+MLC 南野拓実	1			1		0.0
+第三事業部第四部（MOS）三井ダイレクト損保チーム	1	5		6		83.3
+MLC 久保建英	1			1		0.0
+MLC 冨安健洋		5		5		100.0"></textarea>
+</div>
+<div class="input-box">
+<label for="failRate" class="required-label">依頼不備率:</label>
+<textarea id="failRate" rows="8" placeholder="MLC 南野拓実	3	2	66.7
+MLC 伊東純也	1		0.0
+第三事業部第四部（MOS）デジタルコンテンツグループ第二チーム	1	1	100.0
+MLC 久保建英	1	1	100.0 "></textarea>
+</div>
+<div class="input-box">
+<label for="comment" class="required-label">小稗さんコメント:</label>
+<textarea id="comment" rows="10"></textarea>
+</div>
+<button type="button" onclick="generateMarkdown()" class="btn">テキスト生成</button>
+<div id="content">
+<button type="button" onclick="copyToClipboard()" class="btn">全文をコピー</button>
+<div id="output"></div>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
