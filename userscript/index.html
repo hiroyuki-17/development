@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ユーザースクリプト一覧</title>
-<link rel="preload" href="img/img-example-01.gif" as="image" />
+<link rel="preload" href="img/img-example-01.gif" as="image">
 <link rel="stylesheet" href="css/style.css">
 <script src="../common/js/run.js" defer></script>
 </head>
@@ -29,36 +29,173 @@
 <ul class="m-list-userscript">
 <li class="m-list-userscript__item">
 <div class="m-list-userscript__content">
-<h2 id="anc-01" class="m-hdg-lv2">新規タブ&amp;ドメイン切り替えツール</h2>
+<h2 id="anc-01" class="m-hdg-lv2">ドメイン切り替えツール</h2>
 <div class="m-box-description">
-<p>特定のドメインを含むWebページに訪れた際に、異なるドメインに差し替えて新規タブで開くボタンメニューを表示するツールです。<br>利用シーン：現在表示中のページを異なるドメインで参照・比較したいときなどの使用を想定しています。</p>
+<p>表示ページのドメインを本番↔デモに相互に切り替えるためのボタントグルを表示するツールです。</p>
 <hr>
 <ul>
-<li>ドメイン切替対象ページの場合、画面左下にドメインを切り替えられるボタンメニューを表示します。</li>
-<li>ボタンは<code>domainButtons</code>のドメイングループごとに設定したドメイン数だけ自動的に表示されます。</li>
-<li>表示中のドメインと同一のドメインボタンは非活性になります。</li>
-<li>切り替えられるドメインはグループごとに設定し、1つのドメイングループにつき複数のドメインを設定可能です。</li>
-<li>本ツール単体で複数の切替えドメイングループを設定可能です。</li>
+<li>表示ページがドメイン切り替え対象ページの場合、画面左下にドメインを切り替えられるボタントグルを常時表示します。</li>
+<li>切り替えドメインは<code>domainGroups</code>にグループごとに設定し、1つのグループにつき2つのドメイン（本番・デモ）を必ず設定してください。</li>
+<li>複数の切り替えドメイングループを設定可能です。（サンプルとして、eQixとジャックスのドメインを設定しています）</li>
 </ul>
 </div>
 <div class="m-lyt-image-example">
-<img src="img/img-example-01.gif" width="799" height="404" alt="" decoding="async">
+<img src="img/img-example-01.gif" alt="" width="799" height="412" decoding="async">
 </div>
 </div><!-- /.m-list-userscript__content -->
 <textarea class="m-textarea-code">
 // ==UserScript==
-// @name 新規タブ&ドメイン切り替えツール
-// @namespace https://gitlab.mitsue.com/mos/users/inagaki-hiroyuki/-/blob/main/development/
+// @name         ドメイン切り替えツール
+// @namespace https://square.staba.jp/development/userscript/
 // @version 1.0
-// @description 特定のドメインを含むWebページに訪れた際に、異なるドメインに差し替えて新規タブで開くボタンメニューを表示するツールです。
-// @match https://www.e-qix.jp/*
-// @match https://eqix.demo.mitsue.com/*
-// @match https://eqix-confirm.demo.mitsue.com/*
-// @match https://eqix02.demo.mitsue.com/*
-// @match https://pre.e-qix.jp/*
-// @match http://172.26.168.11/*
-// @match https://www.jaccs.co.jp/*
-// @match https://jaccs-corporate.demo.mitsue.com/*
+// @description  表示ページのドメインを本番↔デモに相互に切り替えるためのボタントグルを表示するツールです。
+// @match        *://*/*
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // グループごとにドメインを管理
+    const domainGroups = {
+        group1: [
+            "https://www.e-qix.jp",
+            "https://eqix.demo.mitsue.com"
+        ],
+        group2: [
+            "https://www.jaccs.co.jp",
+            "https://jaccs-corporate.demo.mitsue.com"
+        ],
+        // ここに新しいグループを追加できます
+        // group3: [
+        //     "https://example.com",
+        //     "https://another-example.com"
+        // ],
+    };
+
+    // ページのURLを取得
+    const currentPageURL = window.location.href;
+
+    // ドメイングループのボタンメニューを作成
+    for (const groupKey in domainGroups) {
+        const groupDomains = domainGroups[groupKey];
+
+        // どれかのドメインがページのURLと一致する場合
+        if (groupDomains.some(domain => currentPageURL.includes(domain))) {
+            const toggleContainer = document.createElement('div');
+            const toggleInput = document.createElement('input');
+            const toggleLabel = document.createElement('label');
+            const span1 = document.createElement('span');
+            const span2 = document.createElement('span');
+            const toggleAfter = document.createElement('div');
+
+            toggleInput.type = 'checkbox';
+            toggleInput.name = 'check';
+            toggleInput.dataset.groupKey = groupKey;
+
+            // ボタンエリアのスタイルを追加
+            toggleContainer.classList.add('toggle');
+            toggleContainer.style.visibility = 'hidden';
+            toggleContainer.style.position = 'fixed';
+            toggleContainer.style.bottom = '10px';
+            toggleContainer.style.left = '10px';
+            toggleContainer.style.zIndex = '10000';
+            toggleLabel.style.display = 'flex';
+            toggleLabel.style.width = '89px';
+            toggleLabel.style.height = '48px';
+            toggleLabel.style.padding = '12px';
+            toggleLabel.style.alignItems = 'center';
+            toggleLabel.style.border = '1px solid #cccccc';
+            toggleLabel.style.boxSizing = 'border-box';
+            toggleLabel.style.justifyContent = 'space-between';
+            toggleLabel.style.fontSize = '14px';
+            toggleLabel.style.fontWeight = 'bold';
+            toggleLabel.style.color = '#ffffff';
+            toggleLabel.style.backgroundColor = '#668ad8';
+            toggleLabel.style.borderRadius = '50px';
+            toggleLabel.style.cursor = 'pointer';
+            span1.textContent = 'デモ';
+            span2.textContent = '本番';
+
+            // ボタンスタイルを追加
+            toggleInput.style.width = '1px';
+            toggleInput.style.visibility = 'hidden';
+            toggleInput.style.position = 'absolute';
+            toggleAfter.style.position = 'absolute';
+            toggleAfter.style.top = '3px';
+            toggleAfter.style.width = '42px';
+            toggleAfter.style.height = '42px';
+            toggleAfter.style.borderRadius = '50px';
+            toggleAfter.style.backgroundColor = '#fff';
+            toggleAfter.style.transition = '0.2s ease-out';
+            toggleAfter.style.boxSizing = 'border-box';
+
+            // demoを含む場合、ボタン位置を移動
+            if (currentPageURL.includes('demo')) {
+                toggleAfter.style.left = '45px';
+                toggleInput.checked = true;
+                toggleContainer.style.visibility = 'visible';
+            } else {
+                toggleAfter.style.left = '3px';
+                toggleContainer.style.visibility = 'visible';
+            }
+
+            toggleContainer.appendChild(toggleLabel)
+            toggleLabel.appendChild(span1);
+            toggleLabel.appendChild(span2);
+            toggleLabel.appendChild(toggleInput);
+            toggleContainer.appendChild(toggleAfter);
+            document.body.appendChild(toggleContainer);
+
+            // ボタンが変更された時の処理
+            toggleInput.addEventListener('change', function() {
+                const selectedGroupKey = this.dataset.groupKey;
+                const selectedGroupDomains = domainGroups[selectedGroupKey];
+
+                if (this.checked) {
+                    toggleAfter.style.left = '45px';
+                } else {
+                    toggleAfter.style.left = '3px';
+                }
+
+                const currentPath = window.location.pathname + window.location.search + window.location.hash;
+                setTimeout(function() {
+                    const newDomain = selectedGroupDomains.find(domain => !currentPageURL.includes(domain));
+                    if (newDomain) {
+                        toggleContainer.style.display = 'none';
+                        window.location.href = newDomain + currentPath;
+                    }
+                }, 300);
+            });
+        }
+    }
+})();
+</textarea>
+<button type="button" class="m-btn-copy">Copy</button>
+</li>
+<li class="m-list-userscript__item">
+<div class="m-list-userscript__content">
+<h2 id="anc-02" class="m-hdg-lv2">ドメイン切り替えツール（複数ドメイン+新規タブ表示）</h2>
+<div class="m-box-description">
+<p>表示ページのドメインを異なるドメインに差し替えて新規タブで開くためのボタンメニューを表示するツールです。<br>利用シーン：現在表示中のページをデモ↔本番、デモ↔先方検証環境など様々なドメインで新規タブで開いて参照・比較したいときなどの使用を想定しています。</p>
+<hr>
+<ul>
+<li>表示ページがドメイン切り替え対象ページの場合、画面左下にドメインを切り替えられるボタンメニューを常時表示します。</li>
+<li>切り替えドメインは<code>domainButtons</code>にグループごとに設定し、1つのドメイングループにつき複数のドメインを設定可能です。（ボタンは設定したドメイン数だけ表示されます）</li>
+<li>表示中のドメインと同一のドメインボタンは非活性になります。</li>
+<li>複数の切り替えドメイングループを設定可能です。（サンプルとして、eQixとジャックスのドメインを設定しています）</li>
+</ul>
+</div>
+<div class="m-lyt-image-example">
+<img src="img/img-example-02.gif" alt="" width="799" height="414" loading="lazy" decoding="async">
+</div>
+</div><!-- /.m-list-userscript__content -->
+<textarea class="m-textarea-code">
+// ==UserScript==
+// @name ドメイン切り替えツール（複数ドメイン+新規タブ表示）
+// @namespace https://square.staba.jp/development/userscript/
+// @version 1.0
+// @description 表示ページのドメインを異なるドメインに差し替えて新規タブで開くためのボタンメニューを表示するツールです。
+// @match        *://*/*
 // ==/UserScript==
 
 (function() {
@@ -78,10 +215,9 @@
             "https://www.jaccs.co.jp": "本番",
             "https://jaccs-corporate.demo.mitsue.com": "デモ"
         },
-        // 新しいグループを追加できます
-        // ※上部の@matchにもドメインの追記が必要です
-        // サンプル: {
-            // "https://example.com": "サンプル1", // （切り替えたいドメイン名：ボタン名）
+        // ここに新しいグループを追加できます
+        // サイト名など: {
+            // "https://example.com": "サンプル1", // （"切り替えたいドメイン名": "ボタン名"）
             // "https://another-example.com": "サンプル2"
         // }
     };
@@ -99,24 +235,26 @@
         domainSwitcherMenu.style.bottom = '0';
         domainSwitcherMenu.style.left = '0';
         domainSwitcherMenu.style.backgroundColor = 'rgba(255, 255, 255, 70%)';
-        domainSwitcherMenu.style.padding = '10px';
+        domainSwitcherMenu.style.padding = '5px';
         domainSwitcherMenu.style.zIndex = '9999';
 
         for (const group in domainButtons) {
             const groupButtons = domainButtons[group];
             if (Object.keys(groupButtons).some(domain => currentDomain.startsWith(domain))) {
-                domainSwitcherMenu.innerHTML += `<p>${group}:</p>`;
+                // domainSwitcherMenu.innerHTML += `<p>${group}:</p>`;
                 for (const domain in groupButtons) {
                     const domainLink = document.createElement('a');
                     domainLink.style.display = 'inline-block';
                     domainLink.textContent = groupButtons[domain];
+                    domainLink.style.minWidth = '86px';
                     domainLink.style.fontSize = '14px';
+                    domainLink.style.fontWeight = 'bold';
                     domainLink.style.margin = '5px';
                     domainLink.style.padding = '4px 10px';
-                    domainLink.style.border = '1px solid #444';
+                    domainLink.style.border = '1px solid #cccccc';
                     domainLink.style.borderRadius = '5px';
-                    domainLink.style.color = currentDomain === domain ? '#666666' : '#397c46';
-                    domainLink.style.backgroundColor = currentDomain === domain ? '#f2f2f2' : '#fff';
+                    domainLink.style.color = currentDomain === domain ? '#666666' : '#ffffff';
+                    domainLink.style.backgroundColor = currentDomain === domain ? '#f2f2f2' : '#668ad8';
                     domainLink.style.cursor = currentDomain === domain ? 'default' : 'pointer';
                     if (currentDomain === domain) {
                         domainLink.style.pointerEvents = 'none'; // クリックを無効にする
@@ -146,37 +284,33 @@
 </li>
 <li class="m-list-userscript__item">
 <div class="m-list-userscript__content">
-<h2 id="anc-02" class="m-hdg-lv2">ドメイン切り替えツール</h2>
+<h2 id="anc-03" class="m-hdg-lv2">ドメイン切り替えツール（キーボード操作）</h2>
 <div class="m-box-description">
-<p>特定のドメインを含むWebページに訪れた際に、数字キーをクリックすると異なるドメインに切り替えるツールです。<br>利用シーン：ドメイン切替ツールをメニュー非表示の状態で使用したい場合を想定しています。</p>
+<p>特定のドメインを含むWebページに訪れた際に、数字キーをクリックすると表示中のページを異なるドメインに切り替えるツールです。<br>利用シーン：ドメイン切り替えツールをメニュー非表示の状態で使用したい場合を想定しています。</p>
 <hr>
 <ul>
 <li>新規タブではなく同一タブで切り替わります。</li>
 <li>切り替えられるドメインはグループごとに設定し、1つのドメイングループにつき最大9個のドメインを数字キー（1~9）に割り当てることが可能です。</li>
-<li>本ツール単体で複数の切替えドメイングループを設定可能です。</li>
+<li>複数の切り替えドメイングループを設定可能です。（サンプルとして、eQixとジャックスのドメインを設定しています）</li>
 </ul>
 <ul class="m-list-note">
 <li class="m-list-note__item">
 <div class="m-list-note__mark">※</div>
-<div class="m-list-note__text">切替の際に数字キーを使用するため、他にページ内で同ボタンへの入力やショートカットを割り当てている場合は注意してください。</div>
+<div class="m-list-note__text">切り替えの際に数字キーを使用するため、他にページ内で同ボタンへの入力やショートカットを割り当てている場合は注意してください。</div>
 </li>
 </ul>
 </div>
 <div class="m-lyt-image-example">
-<img src="img/img-example-02.gif" width="799" height="404" alt="" loading="lazy" decoding="async">
+<img src="img/img-example-03.gif" alt="" width="799" height="404" loading="lazy" decoding="async">
 </div>
 </div><!-- /.m-list-userscript__content -->
 <textarea class="m-textarea-code">
 // ==UserScript==
-// @name         ドメイン切り替えツール（メニュー表示なし）
-// @namespace    https://gitlab.mitsue.com/mos/users/inagaki-hiroyuki/-/blob/main/development/
+// @name         ドメイン切り替えツール（キーボード操作）
+// @namespace    https://square.staba.jp/development/userscript/
 // @version      1.0
-// @description  特定のURLに訪れた際に数字キーでドメインを切り替えるツール
-// @match        https://www.e-qix.jp/*
-// @match        https://eqix.demo.mitsue.com/*
-// @match        https://eqix-confirm.demo.mitsue.com/*
-// @match        https://www.jaccs.co.jp/*
-// @match        https://jaccs-corporate.demo.mitsue.com/*
+// @description  特定のドメインを含むWebページに訪れた際に、数字キーをクリックすると表示中のページを異なるドメインに切り替えるツールです。
+// @match        *://*/*
 // ==/UserScript==
 
 (function() {
@@ -188,15 +322,17 @@
             "1. https://www.e-qix.jp",
             "2. https://eqix.demo.mitsue.com",
             "3. https://eqix-confirm.demo.mitsue.com",
+            "4. https://eqix02.demo.mitsue.com",
+            "5. https://pre.e-qix.jp",
+            "6. http://172.26.168.11",
         ],
         group2: [
             "1. https://www.jaccs.co.jp",
             "2. https://jaccs-corporate.demo.mitsue.com",
         ],
         // 新しいグループを追加できます
-        // ※上部の@matchにもドメインの追記が必要です
         // group3: {
-            // "1. https://example.com", // 連番. 切り替えたいドメイン名
+            // "1. https://example.com", // "連番. 切り替えたいドメイン名"
             // "2. https://another-example.com",
         // }
     };

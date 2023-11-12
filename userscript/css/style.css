@@ -148,7 +148,7 @@ code {
 .m-textarea-code {
   display: block;
   width: 100%;
-  min-height: 350px;
+  min-height: 320px;
   margin-top: 10px;
   padding: 16px 0 16px 10px;
   font-family: Consolas, "Andale Mono", Monaco, monospace;
