@@ -1,0 +1,12 @@
+<script src="/common/js/init.js"></script>
+<script type="module" src="/common/js/common.js" crossorigin></script>
+<%_
+// Frontmatter側で固有JS読み込み指定があれば読み込む
+const uniqueJsFlg = typeof addJs !== 'undefined';
+
+if (uniqueJsFlg) {
+for (var i = 0; i < addJs.length; i++) {
+_%>
+<script type="module" src="<%= addJs[i] %>" crossorigin></script>
+<%_ } _%>
+<%_ } _%>

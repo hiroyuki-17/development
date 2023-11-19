@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="/common/css/common.css">
+<%_
+// Frontmatter側で固有CSS読み込み指定があれば読み込む
+const uniqueCssFlg = typeof addCss !== 'undefined';
+
+if (uniqueCssFlg) {
+for (var i = 0; i < addCss.length; i++) {
+_%>
+<link rel="stylesheet" href="<%= addCss[i] %>">
+<%_ } _%>
+<%_ } _%>

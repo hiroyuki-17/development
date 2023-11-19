@@ -1,0 +1,80 @@
+{
+  "name": "development_assets",
+  "version": "4.7.5",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=development DEBUG_ENV=true run-p watch:* server",
+    "server": "node browser-sync.cjs",
+    "deploy": "node deploy.js",
+    "clean": "node ./tasks/clean.js",
+    "build": "cross-env NODE_ENV=production run-s clean build:*",
+    "build:ejs": "node ./tasks/build-ejs.js",
+    "build:scss": "node ./tasks/build-scss.js",
+    "build:css": "node ./tasks/build-postCss.js",
+    "build:ts": "tsc",
+    "build:imagemin": "node ./tasks/build-imagemin.js",
+    "build:static": "node ./tasks/build-static.js",
+    "watch:ejs": "npm run build:ejs",
+    "watch:scss": "npm run build:scss",
+    "watch:ts": "tsc --watch --sourceMap --inlineSources",
+    "watch:imagemin": "npm run build:imagemin",
+    "lint": "run-s lint:* vlint:*",
+    "lint:scss": "stylelint src/scss/**/*.scss",
+    "lint:ts": "eslint src/scripts/**/*.ts --ext .ts",
+    "vlint:html": "vlint",
+    "vlint:css": "vlint --css",
+    "vlint:ignore:html": "vlint --rebaseline",
+    "vlint:ignore:css": "vlint --css --rebaseline",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.mitsue.com/mos/assets.git"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@mitsue/eslint-config": "^4.1.0",
+    "@mitsue/vlint": "^0.9.1",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "autoprefixer": "^10.4.15",
+    "browser-sync": "^2.29.3",
+    "chokidar": "^3.5.3",
+    "connect-ssi": "^1.1.1",
+    "cross-env": "^7.0.3",
+    "css-declaration-sorter": "^7.0.3",
+    "cssnano": "^6.0.1",
+    "eslint": "^8.48.0",
+    "fs-extra": "^11.1.1",
+    "gh-pages": "^6.0.0",
+    "glob": "^10.3.4",
+    "husky": "^8.0.3",
+    "imagemin": "^8.0.1",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-svgo": "^10.0.1",
+    "lint-staged": "^14.0.1",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.29",
+    "postcss-cli": "^10.1.0",
+    "postcss-header": "^3.0.3",
+    "postcss-sort-media-queries": "^5.2.0",
+    "sass": "^1.66.1",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard-scss": "^11.0.0",
+    "stylelint-scss": "^5.1.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
+  "lint-staged": {
+    "src/scripts/**/*.ts": "eslint --ext .ts",
+    "src/scss/**/*.scss": "stylelint"
+  }
+}

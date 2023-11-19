@@ -1,0 +1,32 @@
+{
+  "extends": "@mitsue",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    // ↓ 案件の改行コードがCRLFの場合は下のルールコメントを解除
+    // "linebreak-style": [2, "windows"],
+    "lines-between-class-members": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "extends": [
+        "@mitsue",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        // ↓ 案件の改行コードがCRLFの場合は下のルールコメントを解除
+        // "linebreak-style": [2, "windows"],
+        "lines-between-class-members": "off"
+      }
+    }
+  ]
+}

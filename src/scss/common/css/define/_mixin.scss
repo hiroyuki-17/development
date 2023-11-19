@@ -1,0 +1,239 @@
+@use "./variable" as var;
+
+// ホバー時のスタイルを指定する際に使用
+// -------------------------------------
+@mixin hover() {
+  &:hover,
+  &:focus-visible,
+  &:active {
+    @content;
+  }
+}
+
+// 疑似要素
+// -------------------------------------
+@mixin pseudo() {
+  position: absolute;
+  content: "";
+  display: block;
+}
+
+// 文字間調整
+// -------------------------------------
+@mixin calc-letter-spacing($phTracking) {
+  letter-spacing: ($phTracking / 1000) + em;
+}
+
+// a11y上必要だが、表示上消したい要素がある場合に使用
+// -------------------------------------
+@mixin visually-hidden() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// 擬似要素のくの字をつくるmixin ※ positionの調整はここでは行わない
+// -------------------------------------
+@mixin create-arrow($arrowBoxWidth, $arrowBoxHeight, $borderColor, $arrowDirection, $arrowBorderSize) {
+  width: $arrowBoxWidth;
+  height: $arrowBoxHeight;
+
+  // 上向き
+  @if $arrowDirection == top {
+    border-top: $arrowBorderSize solid $borderColor;
+    border-left: $arrowBorderSize solid $borderColor;
+  }
+
+  // 右向き
+  @else if $arrowDirection == right {
+    border-top: $arrowBorderSize solid $borderColor;
+    border-right: $arrowBorderSize solid $borderColor;
+  }
+
+  // 下向き
+  @else if $arrowDirection == bottom {
+    border-right: $arrowBorderSize solid $borderColor;
+    border-bottom: $arrowBorderSize solid $borderColor;
+  }
+
+  // 左向き
+  @else if $arrowDirection == left {
+    border-bottom: $arrowBorderSize solid $borderColor;
+    border-left: $arrowBorderSize solid $borderColor;
+  }
+
+  transform: rotate(45deg);
+}
+
+// ボックス内の最初（上マージン）・最後の要素（下マージン）に対するマージンを削除
+// -------------------------------------
+@mixin reset-inner-gutter() {
+  & > :first-child {
+    margin-top: 0;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin reset-last-gutter() {
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+// line-height $fs:文字サイズ $fh:フォトショップの行送りの数値
+// -------------------------------------
+@mixin line-height($fs, $fh) {
+  line-height: $fh / $fs;
+}
+
+// JS有効時のスタイルを指定する用
+// -------------------------------------
+@mixin on-js() {
+  html[data-script-enabled="true"] & {
+    @content;
+  }
+}
+
+// JS無効時のスタイルを指定する用
+// -------------------------------------
+@mixin off-js() {
+  html:not([data-script-enabled="true"]) & {
+    @content;
+  }
+}
+
+// media query
+// -------------------------------------
+@mixin media-min($min-width: var.$breakpoint-pc) {
+  @media screen and (min-width: $min-width) {
+    @content;
+  }
+}
+
+@mixin media-max($max-width: var.$breakpoint-sp) {
+  @media screen and (max-width: $max-width) {
+    @content;
+  }
+}
+
+/// マルチカラムレイアウト生成(CSS Flex Boxベースでスタイリングします)
+/// マルチカラムの指定は親要素の以下のdata属性値から切り替える想定
+///      data-col : SP時のカラム
+/// data-col-wide : PC時のカラム
+/// @param {number} $colElementName カラム要素に該当するクラス名を指定します
+/// @param {number} $maxColumnWide 最大カラム数[デフォルト: 4]
+/// @param {number} $maxColumn 最大カラム数[デフォルト: 4]
+/// @param {number} $gapColumn 左右内側の間隔を指定 ※
+/// @param {number} $gapRow 上下内側の間隔を指定 ※
+/// @param {number} $gapColumnSp 左右内側の間隔を指定（SP） ※
+/// @param {number} $gapRowSp 上下内側の間隔を指定（SP） ※
+/// ※ 間隔の指定数値は最終的にpx表記の値になります
+@mixin create-multi-column-flex(
+  $colElementName,
+  $maxColumnWide: 4,
+  $maxColumn: 0,
+  $gapColumn: 0,
+  $gapRow: 0,
+  $gapColumnSp: 0,
+  $gapRowSp: 0
+) {
+  display: flex;
+  flex-wrap: wrap;
+
+  $gap-column: $gapColumn;
+  $gap-column-sp: $gapColumnSp;
+
+  // PC
+  @for $column from 1 through $maxColumnWide {
+    &[data-col-wide="#{$column}"] {
+      @include media-min {
+        @if $gapColumn == $gapRow {
+          gap: #{$gapRow}px;
+        } @else {
+          gap: #{$gapRow}px #{$gapColumn}px;
+        }
+
+        .#{$colElementName} {
+          @if $column == 1 {
+            width: 100%;
+          } @else {
+            $adjust: ($gapColumn * ($column - 1));
+
+            width: calc((100% - #{$adjust}px) / #{$column});
+          }
+        }
+      }
+    }
+  }
+
+  // SP
+  @if $maxColumn != 0 {
+    @for $column from 1 through $maxColumn {
+      &[data-col="#{$column}"] {
+        @include media-max {
+          @if $gapRowSp == $gapColumnSp {
+            gap: #{$gapRowSp}px;
+          } @else {
+            gap: #{$gapRowSp}px #{$gapColumnSp}px;
+          }
+
+          .#{$colElementName} {
+            @if $column == 1 {
+              width: 100%;
+            } @else {
+              $adjust: ($gapColumnSp * ($column - 1));
+
+              width: calc((100% - #{$adjust}px) / #{$column});
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/// マルチカラムレイアウト生成(CSS Grid Layoutベースでスタイリングします)
+/// マルチカラムの指定は親要素の以下のdata属性値から切り替える想定
+///      data-col : SP時のカラム
+/// data-col-wide : PC時のカラム
+/// @param {number} $maxColumnWide 最大カラム数[デフォルト: 4]
+/// @param {number} $maxColumn 最大カラム数[デフォルト: 4]
+/// @param {string} $gap 最大カラム数 gapプロパティに指定する値
+@mixin create-multi-column-grid($maxColumnWide: 4, $maxColumn: 0, $gap) {
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: $gap;
+
+  // PC
+  @for $column from 1 through $maxColumnWide {
+    &[data-col-wide="#{$column}"] {
+      @include media-min {
+        @if $column == 1 {
+          grid-template-columns: 100%;
+        } @else {
+          grid-template-columns: repeat($column, 1fr);
+        }
+      }
+    }
+  }
+
+  // SP
+  @if $maxColumn != 0 {
+    @for $column from 1 through $maxColumn {
+      &[data-col="#{$column}"] {
+        @include media-max {
+          @if $column == 1 {
+            grid-template-columns: 100%;
+          } @else {
+            grid-template-columns: repeat($column, 1fr);
+          }
+        }
+      }
+    }
+  }
+}

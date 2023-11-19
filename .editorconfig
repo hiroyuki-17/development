@@ -1,0 +1,32 @@
+root = true
+
+# -------------------------
+# プロジェクト全体の設定
+# -------------------------
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+trim_trailing_whitespace = true
+
+# -------------------------
+# 開発リソースの改行コード
+# -------------------------
+[src/**/*]
+end_of_line = lf
+
+# -------------------------
+# ファイルごとの設定
+# -------------------------
+[*.{html,ejs,json}]
+insert_final_newline = false
+
+[*.scss]
+indent_size = 2
+
+[*.{js,ts}]
+indent_size = 4
+
+[*.md]
+trim_trailing_whitespace = false

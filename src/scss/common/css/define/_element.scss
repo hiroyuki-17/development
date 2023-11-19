@@ -1,0 +1,118 @@
+@use "./variable" as var;
+@use "./mixin";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+
+  // enable smooth scrolling
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var.$font-family;
+  font-size: var.$font-size-base;
+  line-height: var.$base-line-height;
+  overflow-wrap: break-word;
+}
+
+:is(h1, h2, h3, h4, h5, h6, p, pre, blockquote, dl, dd, ul, ol, td, th, figure, fieldset, button) {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+:is(b, em, strong) {
+  font-style: normal;
+  font-weight: bold;
+}
+
+small {
+  font-size: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  color: var.$color-text;
+
+  &:where([class]) {
+    border: 0;
+    background-color: transparent;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+:is(input, textarea, code, pre) {
+  font-family: inherit;
+}
+
+:is(input, textarea) {
+  // stylelint-disable-next-line
+  border: 1px solid currentColor;
+  border-radius: 0;
+  font-size: 1.6rem; // For prevent zoom on iOS Safari
+}
+
+input[type="range"] {
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+textarea {
+  resize: vertical;
+}
+
+button:not(:disabled),
+:where([type="button"]:not(:disabled)),
+:where([type="reset"]:not(:disabled)),
+:where([type="submit"]:not(:disabled)),
+:where([role="button"][tabindex]),
+summary,
+label {
+  cursor: pointer;
+}
+
+iframe {
+  width: 100%;
+  border: 0;
+}
+
+dialog {
+  // display dialog element when script disabled
+  @include mixin.off-js {
+    display: block;
+  }
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:focus:not(:focus-visible) {
+  outline: 0;
+}

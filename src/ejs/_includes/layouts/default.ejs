@@ -1,0 +1,32 @@
+<%#
+通常のレイアウト（通常のガワが含まれたテンプレート）
+
+▼ このレイアウトを利用するにあたってFrontmatterで必要な記述
+
+---
+layout: layouts/default
+pageTitle: タイトルテキスト
+pageDescription:
+addCss: [
+    '固有CSSがあればパスを指定1',
+]
+addJs: [
+    '固有JSがあればパスを指定1',
+]
+---
+
+-%>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%- include('/common/meta') -%>
+<%- include('/common/link') -%>
+<%- include('/common/scripts') -%>
+</head>
+<body>
+<%- content -%>
+</body>
+</html>

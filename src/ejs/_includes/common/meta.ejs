@@ -1,0 +1,17 @@
+<%#
+共通メタ情報・カノニカル
+-%>
+<%
+// ビルドされるEJSファイルの相対パス
+var metaRelatedPath = page.outputPath.replace(/^public\//g, '').replace('index.html', '');
+-%>
+<title><%= pageTitle -%></title>
+<meta name="description" content="<%= pageDescription -%>">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="">
+<meta property="og:url" content="<%= metaRelatedPath -%>">
+<meta property="og:image" content="">
+<meta property="og:title" content="<%= pageTitle -%>">
+<meta property="og:description" content="<%= pageDescription -%>">
+<link rel="shortcut icon" href="favicon.icon">
+<link rel="canonical" href="<%= metaRelatedPath -%>">

@@ -1,0 +1,11 @@
+# Setting Browser
+# edgeは「last 2 edge versions」の場合はChromium版Edgeしか検証されない。 レガシーを含める場合は「edge >= 18」を指定。
+# クエリ指定が正しいかどうかは[npx browserslist 'クエリ文字列']をコマンドラインから実行して、バージョンが返ってくるかどうかで確認。
+# Note : クエリの指定方法はこちらを参照 (https://github.com/browserslist/browserslist#full-list)
+
+last 1 Chrome version
+last 2 edge version
+last 1 Firefox version
+Safari >= 15
+last 1 ChromeAndroid version
+iOS >= 15

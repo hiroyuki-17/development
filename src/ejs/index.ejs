@@ -1,0 +1,68 @@
+---
+layout: layouts/default
+pageTitle: 開発者向けページ
+pageDescription: 開発者向けページです
+---
+
+<h1>開発者向けページ</h1>
+
+<!--
+案件ごとにこのページはカスタマイズする領域です。
+マークアップや構成などは適宜自由に調整してください。
+-->
+
+<p>基本情報を掲載するページです。</p>
+
+<ul>
+<li><a href="/index.html">サイトトップページ</a></li>
+<li><a href="__dummy__">GitLabページ</a></li>
+</ul>
+
+<h2>モジュール一覧</h2>
+
+<ul>
+<li><a href="__dummy__">モジュール一覧</a></li>
+</ul>
+
+<!-- <h2>設計・実装ルール</h2>
+
+<ul>
+<li><a href="__dummy__">設計実装ルール</a></li>
+</ul>
+
+<h2>その他</h2>
+
+<ul>
+<li><a href="/base-style-element.html">要素のベースルールセットスタイルを確認するだけのページ</a></li>
+</ul> -->
+
+<h3>EJSファイルについて</h3>
+
+<p>本プロジェクトではEJSのビルドとしてEleventyが採用されています。</p>
+<p>詳しくはEleventyのページを参照</p>
+
+<ul>
+<li><a href="https://www.11ty.dev/docs/">Eleventyのドキュメント</a></li>
+<li><a href="https://www.11ty.dev/docs/data-frontmatter/">EleventyではFrontmatterがサポートされています</a></li>
+<li><a href="https://www.11ty.dev/docs/layouts/">Eleventyではレイアウトを呼び出すこともできます</a></li>
+</ul>
+
+<h4>注意事項</h4>
+
+<p>EJSのリソース格納領域配下の以下のディレクトリはEleventyの処理上参照される特別な領域</p>
+
+<!-- 下のディレクトリ設定が変わっている場合は適宜調整 -->
+
+<ul>
+<li><strong>_data</strong>ディレクトリ ※</li>
+<li><strong>_includes</strong>ディレクトリ : EJSでインクルードファイルやレイアウトファイルを管理する領域 ※
+<ul>
+<li><strong>layouts</strong>ディレクトリ : Frontmatterで参照するレイアウトを格納 ※</li>
+</ul>
+</li>
+</ul>
+
+<ul>
+<li>※ ディレクトリ名はEleventy側で指定されている名前なので編集不可</li>
+</ul>
+

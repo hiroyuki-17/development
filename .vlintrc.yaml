@@ -1,0 +1,14 @@
+html:
+    vnu: https://av.mitsue.com/
+    # XHTML 1.0、HTML4の場合は以下も指定する
+    # validator: https://av.mitsue.com/w3c-validator/check
+    ignore:
+        - '**/node_modules/**'
+        - '_dev/**'
+        - '**/inc/**'
+css:
+    vnu: https://av.mitsue.com/
+    ignore:
+        - '**/node_modules/**'
+        - '_dev/**'
+
