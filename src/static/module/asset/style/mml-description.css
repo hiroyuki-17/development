@@ -1,0 +1,202 @@
+:host {
+  visibility: visible !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 1.5em 0 16px;
+  font-weight: bold;
+}
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  padding-bottom: 7px;
+  font-size: 2em;
+  border-bottom: 1px solid #ccc;
+}
+
+h2 {
+  padding-bottom: 5px;
+  font-size: 1.7em;
+  border-bottom: 1px solid #ccc;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
+h5,
+h6 {
+  font-size: 1em;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+pre {
+  margin: 0 0 16px;
+}
+
+p {
+  white-space: pre-line;
+}
+
+hr {
+  height: 2px;
+  margin: 20px 0;
+  background: #ccc;
+  border: 0;
+}
+
+ul,
+ol {
+  padding-left: 2em;
+}
+
+ul > li {
+  list-style-type: disc;
+}
+
+ol > li {
+  list-style-type: decimal;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+li > p {
+  margin-top: 10px;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-style: normal;
+  font-weight: bold;
+}
+
+dl dd {
+  padding: 0 0 0 16px;
+}
+
+blockquote {
+  padding: 10px 15px;
+  color: #666;
+  background: #eee;
+  border-left: 4px solid #ccc;
+}
+
+blockquote > :first-child {
+  margin-top: 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+table {
+  width: 100%;
+  word-break: keep-all;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table th {
+  font-weight: bold;
+}
+
+table th,
+table td {
+  padding: 7px 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+table tr:nth-child(odd) {
+  background-color: #fafafa;
+}
+
+img {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+code {
+  padding: 2px 4px;
+  margin: 0 2px;
+  font-family: monospace;
+  font-size: 90%;
+  letter-spacing: 0.3px;
+  background: #eaeaea;
+  border-radius: 3px;
+}
+
+code br {
+  display: none;
+}
+
+del code {
+  text-decoration: inherit;
+}
+
+pre {
+  word-wrap: normal;
+}
+
+pre code {
+  display: block;
+  max-width: initial;
+  padding: 10px 5px;
+  overflow: auto;
+  font-size: 100%;
+  line-height: inherit;
+  word-break: normal;
+  word-wrap: normal;
+  white-space: pre;
+  background: #eee;
+  border: 0;
+}
+
+a {
+  color: #33d;
+  text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+  color: #6665ea;
+}
+
+link + * {
+  margin-top: 0;
+}
+link ~ *:last-child {
+  margin-bottom: 0;
+}

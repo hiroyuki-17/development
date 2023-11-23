@@ -1,0 +1,483 @@
+mml-placeholder {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid tomato;
+}
+
+mml-title,
+mml-title > h2,
+mml-title > h2 + span,
+mml-toc,
+mml-toc-heading,
+mml-toc-list,
+mml-toc-list-item,
+mml-copy-url-button,
+mml-error,
+mml-module,
+mml-description,
+mml-snippet,
+mml-markup,
+mml-markup > textarea,
+mml-copy-source-button,
+mml-controller {
+  all: unset;
+  display: revert;
+}
+
+mml-title,
+mml-title > h2,
+mml-title > h2 + span,
+mml-toc,
+mml-toc-heading,
+mml-toc-list,
+mml-toc-list-item,
+mml-copy-url-button,
+mml-error,
+mml-module,
+mml-description,
+mml-snippet,
+mml-markup,
+mml-markup > textarea,
+mml-copy-source-button,
+mml-controller,
+mml-controller * {
+  box-sizing: border-box;
+}
+
+mml-toc,
+mml-toc-heading,
+mml-toc-list,
+mml-toc-list-item,
+mml-copy-url-button,
+mml-error,
+mml-module,
+mml-title,
+mml-description,
+mml-snippet,
+mml-markup,
+mml-copy-source-button,
+mml-controller,
+mml-controller-inner,
+mml-controller-heading,
+mml-controller-toggle,
+mml-controller-body,
+mml-controller-custom-btn,
+mml-controller-btn,
+mml-controller-fix-btn,
+mml-controller-fix-btn-inner {
+  display: block;
+}
+
+mml-title,
+mml-toc,
+mml-description,
+mml-markup,
+mml-copy-source-button {
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+mml-toc {
+  display: block;
+  float: left;
+  min-width: 245px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 10px;
+  line-height: 2;
+}
+
+mml-toc-heading {
+  box-sizing: border-box;
+  padding: 5px 10px;
+  margin: 0 0 0 auto;
+  font-size: 14px;
+  font-weight: normal;
+  background: #f6f6f6;
+  border: 1px solid #ccc;
+  border-width: 1px 1px 0;
+  border-radius: 4px 4px 0 0;
+}
+
+mml-toc-list {
+  box-sizing: border-box;
+  max-height: 50vh;
+  padding: 0;
+  margin: 0 0 0 auto;
+  overflow: auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  -webkit-overflow-scrolling: touch;
+}
+
+mml-toc-list-item:not(:first-child) {
+  border: solid #ccc;
+  border-width: 1px 0 0;
+}
+mml-toc-list-item a {
+  display: block;
+  padding: 12px 10px 8px;
+  color: #1e609c;
+  text-decoration: none;
+}
+mml-toc-list-item a:hover, mml-toc-list-item a:focus {
+  text-decoration: underline;
+  background: #efefef;
+}
+
+mml-module {
+  margin: 40px 0;
+  clear: left;
+}
+
+mml-module + mml-module {
+  padding-top: 80px;
+  margin-top: 80px;
+  border-top: 1px dashed #bbb;
+}
+
+mml-title {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 44px;
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #333;
+  background: #f6f6f6;
+  border: 1px solid #ccc;
+  border-radius: 4px 4px 0 0;
+}
+
+mml-title > h2 {
+  padding: 7px 10px;
+  padding-left: 45px;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+mml-label-obsolete {
+  display: inline-block;
+  padding: 2px 5px 0;
+  margin: 0 0 1px;
+  font-size: 17px;
+  color: #fff;
+  background: #d73336;
+  border-radius: 4px;
+}
+
+mml-title > span:last-child {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 7px 10px;
+  font-family: monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+}
+
+mml-title > span:last-child::before {
+  position: absolute;
+  top: 0;
+  left: -2px;
+  height: 100%;
+  content: "";
+  border-left: 1px dashed #ddd;
+}
+
+mml-copy-url-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  display: none;
+}
+
+mml-error {
+  margin: 0 0 20px;
+}
+html:not([data-mml-hide~=title]) mml-error {
+  margin-top: -20px;
+}
+mml-error + mml-description {
+  margin-top: -20px;
+}
+
+mml-description {
+  padding: 13px 10px;
+  margin: 0 0 20px;
+  font-size: 12px;
+  // visibility: hidden;
+  border: 1px solid #eee;
+}
+html:not([data-mml-hide~=title]) mml-description {
+  margin-top: -20px;
+}
+
+mml-snippet {
+  margin: 0;
+}
+html[data-mml-setup=true]:not([data-mml-hide~=copy]) mml-markup ~ mml-snippet:not(:first-of-type) {
+  margin-top: -60px;
+}
+[data-mml-hide~=copy] mml-snippet:not(:first-of-type) {
+  margin-top: -100px;
+}
+[data-mml-hide~=copy][data-mml-hide~=code] mml-snippet:not(:first-of-type) {
+  margin-top: 0;
+}
+
+mml-markup {
+  position: relative;
+  margin: 20px 0 120px;
+}
+mml-markup > label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  min-width: 80px;
+  padding: 2px 4px;
+  font-size: 10px;
+  pointer-events: none;
+  background: #ccc;
+  opacity: 0;
+  transition: 0.2s opacity ease;
+}
+mml-markup > textarea {
+  display: block;
+  width: 100%;
+  min-height: 100px;
+  max-height: 300px;
+  padding: 16px 0 16px 10px;
+  font-family: Consolas, "Andale Mono", Monaco, monospace;
+  font-size: 12px;
+  line-height: 1.3333333333;
+  color: #ccc;
+  white-space: pre-wrap;
+  resize: vertical;
+  background: #1d1e22;
+  background-size: 40px 32px;
+  border: 0;
+}
+mml-markup > textarea:hover + label, mml-markup > textarea:focus + label {
+  opacity: 1;
+}
+
+mml-copy-source-button {
+  padding: 10px;
+  margin: -120px 0 80px;
+  font-size: 13px;
+  color: #fff;
+  text-align: center;
+  background: #216aae;
+}
+[data-mml-hide~=code] mml-copy-source-button {
+  margin-top: 20px;
+}
+
+mml-controller {
+  z-index: 2147483647;
+  width: 200px;
+  margin: 0 0 0 auto;
+  text-align: left;
+  background: #efefef;
+  border: 1px solid #ccc;
+  opacity: 0.9;
+  transition: 0.2s opacity ease-out;
+  backface-visibility: hidden;
+  contain: layout;
+}
+mml-controller:active {
+  opacity: 0.5;
+}
+
+[data-mml-controller-mode=static] mml-controller {
+  transform: none !important;
+}
+
+[data-mml-controller-mode=fixed] mml-controller {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 20000;
+  cursor: move;
+}
+
+mml-controller-toggle {
+  width: 100%;
+  padding: 15px 10px 10px 22px;
+  font-family: sans-serif;
+  font-size: 11px;
+  line-height: 1.6;
+  cursor: default;
+  user-select: none;
+  background: #e0e0e0;
+}
+mml-controller-toggle::before {
+  position: absolute;
+  top: 21px;
+  left: 8px;
+  display: block;
+  width: 0;
+  height: 0;
+  content: "";
+  border: 4px solid transparent;
+  border-top-color: #333;
+}
+mml-controller-toggle[aria-expanded=true]::before {
+  top: 17px;
+  transform: rotate(180deg);
+}
+
+mml-controller-inner {
+  position: relative;
+}
+
+mml-controller-body {
+  position: relative;
+  left: -1px;
+  width: calc(100% + 2px);
+  max-height: calc(100vh - 62px);
+  padding: 14px 14px 0;
+  overflow: auto;
+  background: #efefef;
+  border: 1px solid #ccc;
+}
+
+[data-mml-controller-mode=fixed] mml-controller-body {
+  position: absolute;
+  top: 100%;
+  padding-top: 21px;
+}
+[data-mml-controller-mode=fixed] mml-controller-body::before {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  left: 0;
+  z-index: 0;
+  display: block;
+  width: 37px;
+  height: 5px;
+  margin: 0 auto;
+  content: "";
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAFCAYAAADCMiU1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAClJREFUeNpiqKio+A8EDCBMLPv9+/cMIEwum5D5TAyDEIw6akg7CiDAAIXcZOxKtzZOAAAAAElFTkSuQmCC");
+}
+
+mml-controller[expanded=true] mml-controller-body {
+  display: none;
+}
+
+mml-controller-btn,
+mml-controller-custom-btn {
+  width: 100%;
+  padding: 10px;
+  margin: 0 0 5px;
+  font-size: 11px;
+  color: #333;
+  text-align: center;
+  cursor: default;
+  cursor: default;
+  background: linear-gradient(-180deg, #fefefe 0%, #eee 90%);
+  border: 1px solid #ccc;
+  border-color: #aaa;
+  border-radius: 4px;
+}
+
+mml-controller-btn.mml--all {
+  color: #fff;
+  background: #216aae;
+}
+
+mml-controller-btn[aria-pressed=true],
+mml-controller-custom-btn[aria-pressed=true] {
+  font-weight: bold;
+}
+
+mml-controller-btn:last-child,
+mml-controller-custom-btn:last-child {
+  margin-bottom: 14px;
+}
+
+mml-controller-fix-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 42px;
+  height: 42px;
+  overflow: hidden;
+  cursor: default;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+mml-controller-fix-btn::before {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  z-index: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: "";
+  background: #e0e0e0 url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA1klEQVQ4jdXTvUqCURwG8N+rThItNnUR4dTgLQTR0pY4BEFjN9Lo1g2oW0tDRBB0AU5uIQQ2JYIQgnVajnB8eQNfdOkPZ3k4z9f5yEIItpnKVuxdCIgVbvGFj9ya4yRHuUEX9RCCWgQPMUQHe7mEY2QIuI5m8ITBSqCKT4wKQh5H4nt0hisM0gp9PPzRshndf/CNy7R+mUPM8Iy7FKwVbl2fGe6jewUtvJYReMNpDmtjgV5aocyTvMB5mmCJAxxZv8aimaOBaSowwRkeN0ywjxfI/v9n+gVS0DjrLd96HQAAAABJRU5ErkJggg==") center center no-repeat;
+  background-size: 16px 16px;
+  opacity: 0.25;
+}
+
+mml-controller-fix-btn-inner {
+  position: absolute;
+  top: 100%;
+  color: #000;
+  background: #fff;
+}
+
+dialog#MLC_MODULE_DIALOG {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  pointer-events: none;
+  background: transparent;
+  border: 0;
+  opacity: 0;
+  transition: 0.2s opacity ease-out;
+}
+dialog#MLC_MODULE_DIALOG #MLC_MODULE_DIALOG_MESSAGE {
+  padding: 10px;
+  color: #fff;
+  background: #333;
+  border: 1px solid #000;
+  box-shadow: 0 0 3px 0 #000;
+}
+dialog#MLC_MODULE_DIALOG[open] {
+  opacity: 1;
+}
+
+[data-mml-hide~=toc] mml-toc,
+[data-mml-hide~=title] mml-title,
+[data-mml-hide~=description] mml-description,
+[data-mml-hide~=code] mml-markup,
+[data-mml-hide~=copy] mml-copy-source-button {
+  display: none;
+}
+
+[data-mml-hide~=toc][data-mml-hide~=title][data-mml-hide~=description][data-mml-hide~=code][data-mml-hide~=copy] mml-module {
+  padding-top: 0;
+  margin: 0;
+  border-top: 0;
+}
+[data-mml-hide~=toc][data-mml-hide~=title][data-mml-hide~=description][data-mml-hide~=code][data-mml-hide~=copy] mml-snippet {
+  margin: 0;
+}

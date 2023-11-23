@@ -1,0 +1,42 @@
+:host {
+  display: block !important;
+}
+
+button {
+  display: block;
+  width: 44px;
+  height: 44px;
+  padding: 7px 10px;
+  background: transparent;
+  border: 0;
+}
+button::before, button::after {
+  position: absolute;
+  box-sizing: content-box;
+  width: 6px;
+  height: 18px;
+  overflow: hidden;
+  content: "";
+  border: 2px solid #333;
+  border-radius: 60px;
+  transform: rotate(45deg);
+}
+button::before {
+  top: 15px;
+  left: 16px;
+}
+button::after {
+  top: 7px;
+  left: 18px;
+}
+
+span {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  color: #000;
+  background: #fff;
+}

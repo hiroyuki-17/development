@@ -1,0 +1,28 @@
+ul {
+  padding: 12px 17px;
+  margin: 0;
+  font-size: 14px;
+  color: #c10000;
+  background: #ffe1e1;
+  border: 3px solid #c10000;
+}
+
+li {
+  position: relative;
+  padding: 0 0 0 14px;
+  list-style: none;
+}
+li::before {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  display: block;
+  width: 4px;
+  height: 4px;
+  content: "";
+  background: #c10000;
+  border-radius: 50%;
+}
+li:not(:first-child) {
+  margin: 4px 0 0;
+}
