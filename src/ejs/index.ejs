@@ -1,68 +1,96 @@
 ---
 layout: layouts/default
-pageTitle: 開発者向けページ
-pageDescription: 開発者向けページです
+pageTitle: イントロダクション
+pageDescription: イントロダクションページです
 ---
 
-<h1>開発者向けページ</h1>
+<div class="m-hdg-lv1">
+<h1 class="m-hdg-lv1__title">イントロダクション</h1>
+</div><!-- /.m-hdg-lv1 -->
 
-<!--
-案件ごとにこのページはカスタマイズする領域です。
-マークアップや構成などは適宜自由に調整してください。
--->
+<p class="m-text">基本情報を掲載するページです。</p>
 
-<p>基本情報を掲載するページです。</p>
+<ul class="m-list">
+<!-- <li class="m-list__item"><a href="/index.html">サイトトップページ</a></li> -->
+<li class="m-list__item"><a href="https://github.com/hiroyuki-17/development" target="_blank">Githubページ</a></li>
+</ul><!-- /.m-list -->
 
-<ul>
-<!-- <li><a href="/index.html">サイトトップページ</a></li> -->
-<li><a href="https://github.com/hiroyuki-17/development" target="_blank">Githubページ</a></li>
-</ul>
+<div class="m-hdg-lv2">
+<h2 class="m-hdg-lv2__title">作成ツール</h2>
+</div><!-- /.m-hdg-lv2 -->
 
-<h2>モジュール一覧</h2>
+<ul class="m-list">
+<li class="m-list__item"><a href="/development/chatgpt-request-tool/" rel="nofollow">ChatGPT リクエストツール</a>
+<ul class="m-list">
+<li class="m-list__item">ChatGPTに精度の高い回答を得るための依頼文章作成ツール</li>
+</ul><!-- /.m-list -->
+</li>
+<li class="m-list__item"><a href="/development/path-url-maker/" rel="nofollow">リンク付きURLジェネレーター</a>
+<ul class="m-list">
+<li class="m-list__item">ファイルパスからHTMLファイルのみを抽出しリンク付きのURLを一覧で生成します。</li>
+</ul><!-- /.m-list -->
+</li>
+<li class="m-list__item"><a href="/development/kenpin-text-maker/" rel="nofollow">検品依頼ジェネレーター</a>
+<ul class="m-list">
+<li class="m-list__item">ファイルパスとドメインを元に、URL部分が埋まった検品依頼内容のベーステキストを生成します。</li>
+</ul><!-- /.m-list -->
+</li>
+<li class="m-list__item"><a href="/development/kenpin-pass-rate-maker/" rel="nofollow">検品合格率の集計テキストジェネレーター</a>
+<ul class="m-list">
+<li class="m-list__item">週次の検品データの内容を元に、合格率・不備率・コメント欄を入力して検品合格率の集計テキストを生成します。</li>
+</ul><!-- /.m-list -->
+</li>
+<li class="m-list__item"><a href="/development/newline-replacement/" rel="nofollow">改行置換ツール</a>
+<ul class="m-list">
+<li class="m-list__item">改行が2回連続するテキストを改行1回に置換します。</li>
+</ul><!-- /.m-list -->
+</li>
+<li class="m-list__item"><a href="/development/code-formatting/" rel="nofollow">HTML整形ツール</a>
+<ul class="m-list">
+<li class="m-list__item">圧縮されたHTMLソースに改行を加えて、id属性がもつstyle属性のCSSを分離します。（作業途中）</li>
+</ul><!-- /.m-list -->
+</li>
+</ul><!-- /.m-list -->
 
-<ul>
-<li><a href="/_dev/module/">モジュール一覧</a></li>
-</ul>
+<div class="m-hdg-lv2">
+<h2 class="m-hdg-lv2__title">モジュール一覧</h2>
+</div><!-- /.m-hdg-lv2 -->
 
-<!-- <h2>設計・実装ルール</h2>
+<ul class="m-list">
+<li class="m-list__item"><a href="/_dev/module/">モジュール一覧</a></li>
+</ul><!-- /.m-list -->
 
-<ul>
-<li><a href="__dummy__">設計実装ルール</a></li>
-</ul>
+<div class="m-hdg-lv2">
+<h2 class="m-hdg-lv2__title">EJSファイルについて</h2>
+</div><!-- /.m-hdg-lv2 -->
 
-<h2>その他</h2>
+<p class="m-text">本プロジェクトではEJSのビルドとしてEleventyが採用されています。</p>
+<p class="m-text">詳しくはEleventyのページを参照</p>
 
-<ul>
-<li><a href="/base-style-element.html">要素のベースルールセットスタイルを確認するだけのページ</a></li>
-</ul> -->
+<ul class="m-list">
+<li class="m-list__item"><a href="https://www.11ty.dev/docs/">Eleventyのドキュメント</a></li>
+<li class="m-list__item"><a href="https://www.11ty.dev/docs/data-frontmatter/">EleventyではFrontmatterがサポートされています</a></li>
+<li class="m-list__item"><a href="https://www.11ty.dev/docs/layouts/">Eleventyではレイアウトを呼び出すこともできます</a></li>
+</ul><!-- /.m-list -->
 
-<h3>EJSファイルについて</h3>
+<div class="m-hdg-lv3">
+<h3 class="m-hdg-lv3__title">注意事項</h3>
+</div><!-- /.m-hdg-lv3 -->
 
-<p>本プロジェクトではEJSのビルドとしてEleventyが採用されています。</p>
-<p>詳しくはEleventyのページを参照</p>
-
-<ul>
-<li><a href="https://www.11ty.dev/docs/">Eleventyのドキュメント</a></li>
-<li><a href="https://www.11ty.dev/docs/data-frontmatter/">EleventyではFrontmatterがサポートされています</a></li>
-<li><a href="https://www.11ty.dev/docs/layouts/">Eleventyではレイアウトを呼び出すこともできます</a></li>
-</ul>
-
-<h4>注意事項</h4>
-
-<p>EJSのリソース格納領域配下の以下のディレクトリはEleventyの処理上参照される特別な領域</p>
+<p class="m-text">EJSのリソース格納領域配下の以下のディレクトリはEleventyの処理上参照される特別な領域</p>
 
 <!-- 下のディレクトリ設定が変わっている場合は適宜調整 -->
 
-<ul>
-<li><strong>_data</strong>ディレクトリ ※</li>
-<li><strong>_includes</strong>ディレクトリ : EJSでインクルードファイルやレイアウトファイルを管理する領域 ※
-<ul>
-<li><strong>layouts</strong>ディレクトリ : Frontmatterで参照するレイアウトを格納 ※</li>
-</ul>
+<ul class="m-list">
+<li class="m-list__item"><strong>_data</strong>ディレクトリ ※</li>
+<li class="m-list__item"><strong>_includes</strong>ディレクトリ : EJSでインクルードファイルやレイアウトファイルを管理する領域 ※
+<ul class="m-list">
+<li class="m-list__item"><strong>layouts</strong>ディレクトリ : Frontmatterで参照するレイアウトを格納 ※</li>
+</ul><!-- /.m-list -->
 </li>
-</ul>
+</ul><!-- /.m-list -->
 
-<ul>
-<li>※ ディレクトリ名はEleventy側で指定されている名前なので編集不可</li>
-</ul>
+<ul class="m-list">
+<li class="m-list__item">※ ディレクトリ名はEleventy側で指定されている名前なので編集不可</li>
+</ul><!-- /.m-list -->
 

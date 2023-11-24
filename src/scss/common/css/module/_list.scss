@@ -7,7 +7,7 @@
 .m-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
 
   @include component-rule-gutter("S要素");
 
@@ -32,13 +32,16 @@
 
     > ul,
     > ol {
-      @include media-min {
-        margin-top: 16px;
-      }
+      margin-top: 0;
 
       .m-list {
         &__item {
           padding-left: 11px;
+          font-size: 1.2rem;
+
+          @include media-min {
+            font-size: 1.4rem;
+          }
 
           &::before {
             width: 4px;
@@ -49,12 +52,6 @@
             }
           }
         }
-      }
-    }
-
-    > * {
-      @include media-max {
-        margin-top: 16px !important;
       }
     }
   }

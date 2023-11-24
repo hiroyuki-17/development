@@ -291,10 +291,10 @@
   }
 
   @if $ruleType == "h2" {
-    margin-top: 40px;
+    margin-top: 30px;
 
     @include media-min {
-      margin-top: 80px;
+      margin-top: 60px;
     }
 
     & + * {
