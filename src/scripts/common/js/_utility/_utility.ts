@@ -79,22 +79,13 @@ export const setTimeoutAnimationFrame = (callBack : () => void, delayTime : numb
     return requestId;
 };
 
-export interface focusControlCallBack {
-    [key: string]: (e: KeyboardEvent) => void;
-}
-
 /**
  * メニュー展開時のフォーカス制御（ダイアログなどを展開している際に使用）
  * 第1引数で指定された要素内だけでフォーカスを巡回させるように制御し、背景エリア等にはフォーカスが移動しないようにする。
  * @param argElement: フォーカスを巡回させる対象の要素
  * @param isRestricted: true / 対象エリア内だけでフォーカスを巡回させる, false / フォーカス制御を解除
- * @param nameUniqueKey: 登録する際に固有の識別子文字列を指定。イベントを解除するために必要。
  */
-export const restrictFocus = (argElement : HTMLElement, isRestricted : boolean, nameUniqueKey: string) => {
-    if (!nameUniqueKey) {
-        throw new Error('任意の識別子文字列を指定してください。登録・削除時に参照します');
-    }
-
+export const restrictFocus = (argElement : HTMLElement, isRestricted : boolean) => {
     const elemFocusAble = argElement.querySelectorAll<HTMLElement>(FOCUS_SELECTOR);
     const [elemFocusAbleFirst] = elemFocusAble;
     const elemFocusAbleLast = elemFocusAble[elemFocusAble.length - 1];
@@ -132,20 +123,12 @@ export const restrictFocus = (argElement : HTMLElement, isRestricted : boolean, 
         elemFocusAbleFirst.addEventListener('keydown', controlFocus);
         elemFocusAbleLast.addEventListener('keydown', controlFocus);
 
-        if (!window.focusControlCallBackList) {
-            window.focusControlCallBackList = {};
-        }
-
-        window.focusControlCallBackList[nameUniqueKey] = controlFocus;
-
         return;
     }
 
     // フォーカス制御を解除
-    if (window.focusControlCallBackList && window.focusControlCallBackList[nameUniqueKey]) {
-        elemFocusAbleFirst.removeEventListener('keydown', window.focusControlCallBackList[nameUniqueKey]);
-        elemFocusAbleLast.removeEventListener('keydown', window.focusControlCallBackList[nameUniqueKey]);
-    }
+    elemFocusAbleFirst.removeEventListener('keydown', controlFocus);
+    elemFocusAbleLast.removeEventListener('keydown', controlFocus);
 };
 
 /**
@@ -154,7 +137,7 @@ export const restrictFocus = (argElement : HTMLElement, isRestricted : boolean, 
  */
 export const disableBodyScroll = (isDisabled: boolean) => {
     const {body} = document;
-    const adjustFixedPosition = window.scrollY;
+    const adjustFixedPosition = window.pageYOffset;
 
     if (isDisabled) {
         body.style.position = 'fixed';
@@ -202,3 +185,9 @@ export const getRandomId = () => {
 
     return randomId;
 };
+
+/**
+ * 高さ揃えの再実行を行います
+ */
+
+// export const updateMatchHeight = () => window.matchHeightElements.update();

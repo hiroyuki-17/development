@@ -1,5 +1,5 @@
 # development
-様々なJS機能開発を行うリポジトリです。
+様々な機能開発を行うリポジトリです。
 ## 作成したツール
 - [ChatGPT リクエストツール](https://square.staba.jp/development/chatgpt-request-tool/)
     - ChatGPTに精度の高い回答を得るための依頼文章作成ツール
@@ -21,3 +21,15 @@
 ## テストページ
 - [よくあるお問い合わせフォーム](https://square.staba.jp/development/address-autofill/)
     - 郵便番号データ配信サービス（zipcloud）を使った住所自動入力付きのフォーム。
+
+## 開発者向け情報
+
+- [FOR_DEVELOPERS.md](FOR_DEVELOPERS.md)
+
+## 作業ルール
+
+- [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## Wiki
+
+- [モジュール一覧](/module/)

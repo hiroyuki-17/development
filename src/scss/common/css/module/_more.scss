@@ -1,0 +1,11 @@
+@charset "UTF-8";
+@use "../define/variable" as var;
+@use "../define/mixin" as *;
+@use "sass:map";
+
+// もっと見る機能のJS制御用スタイル
+.js-show-more-target {
+  @include on-js {
+    display: none;
+  }
+}

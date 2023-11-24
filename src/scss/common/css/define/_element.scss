@@ -1,5 +1,7 @@
+@charset "UTF-8";
 @use "./variable" as var;
 @use "./mixin";
+@use "sass:math";
 
 *,
 *::before,
@@ -7,36 +9,77 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
+// ベースとしたい基準のフォントサイズ / デフォルトフォントサイズ（16px想定）
+$font-size-base: math.div(10, 16) * 100%; // 通常
+$font-size-large: math.div(12, 16) * 100%; // 拡大
 
-  // enable smooth scrolling
+html {
   scroll-behavior: smooth;
+  font-size: $font-size-base; // 62.5%
+
+  &.font-large {
+    font-size: $font-size-large;
+  }
+
+  &[lang="ja"] {
+    font-family: var.$font-family;
+  }
+
+  &[lang="en"] {
+    font-family: var.$font-family-en;
+  }
 }
 
 body {
-  font-family: var.$font-family;
-  font-size: var.$font-size-base;
+  font-size: var.$font-size-base-sp;
   line-height: var.$base-line-height;
+  color: var.$color-text;
   overflow-wrap: break-word;
+
+  @include mixin.media-min {
+    font-size: var.$font-size-base;
+
+    // 以下フッターとローカルナビを下寄せにするための指定
+    display: flex;
+    min-height: max(100vh, 788px);
+    flex-direction: column;
+  }
 }
 
-:is(h1, h2, h3, h4, h5, h6, p, pre, blockquote, dl, dd, ul, ol, td, th, figure, fieldset, button) {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+blockquote,
+dl,
+dd,
+ul,
+ol,
+td,
+th,
+figure,
+fieldset,
+button {
   padding: 0;
   margin: 0;
 }
 
 li {
-  list-style-type: none;
+  list-style: none;
 }
 
 table {
-  width: 100%;
   border-spacing: 0;
   border-collapse: collapse;
 }
 
-:is(b, em, strong) {
+b,
+em,
+strong {
   font-style: normal;
   font-weight: bold;
 }
@@ -47,14 +90,14 @@ small {
 
 a {
   text-decoration: none;
-}
 
-button {
-  color: var.$color-text;
+  &:not([class]) {
+    color: var.$color-text-green;
+    text-decoration: underline;
 
-  &:where([class]) {
-    border: 0;
-    background-color: transparent;
+    @include mixin.hover {
+      text-decoration: none;
+    }
   }
 }
 
@@ -64,22 +107,23 @@ img {
   vertical-align: top;
 }
 
-:is(input, textarea, code, pre) {
-  font-family: inherit;
-}
-
-:is(input, textarea) {
-  // stylelint-disable-next-line
-  border: 1px solid currentColor;
+input,
+textarea {
   border-radius: 0;
+  font-family: inherit;
   font-size: 1.6rem; // For prevent zoom on iOS Safari
 }
 
-input[type="range"] {
-  cursor: grab;
+input[class] {
+  appearance: none;
+}
 
-  &:active {
-    cursor: grabbing;
+button {
+  border: 0;
+  touch-action: manipulation;
+
+  &:not(:disabled) {
+    cursor: pointer;
   }
 }
 
@@ -87,26 +131,13 @@ textarea {
   resize: vertical;
 }
 
-button:not(:disabled),
-:where([type="button"]:not(:disabled)),
-:where([type="reset"]:not(:disabled)),
-:where([type="submit"]:not(:disabled)),
-:where([role="button"][tabindex]),
-summary,
+[type="submit"],
 label {
   cursor: pointer;
 }
 
 iframe {
-  width: 100%;
   border: 0;
-}
-
-dialog {
-  // display dialog element when script disabled
-  @include mixin.off-js {
-    display: block;
-  }
 }
 
 [hidden] {
@@ -115,4 +146,8 @@ dialog {
 
 :focus:not(:focus-visible) {
   outline: 0;
+}
+
+mark {
+  background-color: var.$color-green-04;
 }

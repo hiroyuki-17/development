@@ -1,0 +1,336 @@
+@charset "UTF-8";
+@use "../define/variable" as var;
+@use "../define/mixin" as *;
+
+// リンクリスト基本スタイル
+%link-primary {
+  display: inline-block;
+  position: relative;
+  color: var.$color-text;
+  padding: 0 0 0 24px;
+}
+
+// 右矢印の基本スタイル
+%link-primary-arrow {
+  @include pseudo;
+
+  top: 2px;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  background-image: url("/common/img/icon_arrow01.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: left var.$animation-duration var.$animation-function;
+
+  @include media-min {
+    top: 4px;
+  }
+}
+
+// 通常リンクリスト
+.m-link-list {
+  @include component-rule-gutter("S要素");
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px 0;
+
+  &--center {
+    align-items: center;
+  }
+
+  &--right {
+    align-items: flex-end;
+  }
+
+  &__item {
+    .m-link-list {
+      margin-top: 14px;
+      margin-left: 24px;
+    }
+  }
+
+  &__link {
+    @extend %link-primary;
+
+    &::before {
+      @extend %link-primary-arrow;
+    }
+
+    &--anchor {
+      &::before {
+        transform: rotate(90deg);
+        transition: top var.$animation-duration var.$animation-function;
+      }
+
+      @include hover {
+        &::before {
+          top: 8px;
+          left: 0 !important;
+        }
+      }
+    }
+
+    &--back {
+      &::before {
+        transform: rotate(-180deg);
+      }
+    }
+
+    @include hover {
+      color: var.$color-text-green;
+
+      &::before {
+        left: 4px;
+      }
+    }
+  }
+
+  &__text {
+    @include line-animation(var.$color-green, 1px, ("color"));
+  }
+
+  @at-root {
+    // 順序リスト（年表）モジュール内で使われた際の調整
+    .m-list-order-history {
+      &__box {
+        > .m-link-list {
+          margin-top: 16px;
+          border-top: 1px solid var.$color-line;
+          padding-top: 16px;
+        }
+      }
+
+      .m-link-list {
+        gap: 16px 32px;
+
+        @include media-min {
+          flex-flow: row wrap;
+        }
+      }
+    }
+  }
+
+  & + .m-text {
+    margin-top: 50px;
+  }
+}
+
+// リンクリスト（並列）
+.m-link-list-parallel {
+  @include component-rule-gutter("S要素");
+  @include create-multi-column-grid(4, 2, null);
+
+  &[data-col-wide] {
+    @include media-min {
+      gap: 40px;
+    }
+  }
+
+  &[data-col] {
+    @include media-max {
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var.$color-line;
+  }
+
+  &__link {
+    @extend %link-primary;
+
+    &::before {
+      @extend %link-primary-arrow;
+    }
+
+    @include hover {
+      color: var.$color-text-green;
+
+      &::before {
+        left: 4px;
+      }
+    }
+  }
+}
+
+// ページ内リンクリスト（並列）
+.m-link-list-flow {
+  @include component-rule-gutter("S要素");
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px 0;
+
+  @include media-min {
+    flex-flow: row wrap;
+    gap: 12px 32px;
+
+    &__item {
+      position: relative;
+
+      &:not(:last-child)::after {
+        @include pseudo;
+
+        top: 0;
+        bottom: 0;
+        right: -16px;
+        width: 1px;
+        height: 20px;
+        margin: auto;
+        background-color: var.$color-line;
+      }
+    }
+  }
+
+  &__link {
+    @extend %link-primary;
+
+    &::before {
+      @extend %link-primary-arrow;
+
+      transform: rotate(90deg);
+      transition: top var.$animation-duration var.$animation-function;
+    }
+
+    @include hover {
+      color: var.$color-text-green;
+
+      &::before {
+        top: 8px;
+        left: 0;
+      }
+    }
+  }
+}
+
+// 汎用リンクパネル
+.m-link-list-panel {
+  @include component-rule-gutter("S要素");
+  @include create-multi-column-grid(3, 2, null);
+
+  &__item {
+    position: relative;
+
+    @include media-min {
+      &::before {
+        @include pseudo;
+
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 1px;
+        height: calc(100% - 18px);
+        margin: auto 0;
+        background-image: linear-gradient(to bottom, #88b891, #88b891 3px, transparent 3px, transparent 6px);
+        background-size: 1px 6px;
+        background-repeat: repeat-y;
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    height: 100%;
+    position: relative;
+    color: var.$color-text;
+    border-radius: 4px;
+
+    &::before {
+      @include pseudo;
+
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: calc(100% - 20px);
+      height: 1px;
+      margin: 0 auto;
+
+      @include media-max {
+        background-image: linear-gradient(to right, #88b891, #88b891 3px, transparent 3px, transparent 6px);
+        background-size: 6px 1px;
+        background-repeat: repeat-x;
+      }
+
+      @include media-min {
+        background-color: var.$color-line;
+      }
+    }
+
+    @include hover {
+      background-color: var.$color-bg;
+      background-size: 0 1px;
+
+      .m-link-list-panel {
+        &__title > span {
+          background: linear-gradient(var.$color-green, var.$color-green) 0 100%/ 0 1px no-repeat;
+          background-size: 0 1px;
+        }
+      }
+    }
+  }
+
+  &__content {
+    padding: 16px;
+
+    @include media-min {
+      padding: 40px 36px 40px 44px;
+    }
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: 1.4;
+    color: var.$color-text-green;
+
+    @include media-min {
+      font-size: 2rem;
+    }
+
+    & > span {
+      background: linear-gradient(var.$color-green, var.$color-green) 0 100%/ 0 1px no-repeat;
+      transition-duration: var.$animation-duration;
+      transition-property: background, color;
+      transition-timing-function: var.$animation-function;
+      background-size: 100% 1px;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+
+    @include media-min {
+      margin-top: 24px;
+    }
+  }
+
+  &__text-note {
+    font-size: 1.2rem;
+  }
+
+  &[data-col-wide="3"] {
+    .m-link-list-panel {
+      &__item:nth-child(3n) {
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &[data-col-wide="2"] {
+    .m-link-list-panel {
+      &__item:nth-child(2n) {
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+}

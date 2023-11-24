@@ -1,0 +1,789 @@
+@charset "UTF-8";
+@use "../define/variable" as var;
+@use "../define/mixin" as *;
+@use "sass:map";
+
+.uniq-text {
+  a {
+    color: var.$color-green;
+    text-decoration: underline;
+
+    @include hover {
+      text-decoration: none;
+    }
+  }
+
+  em,
+  b,
+  strong {
+    font-weight: bold;
+  }
+}
+
+.uniq-text-12 {
+  font-size: 1.2rem;
+}
+
+.uniq-text-14 {
+  font-size: 1.2rem;
+
+  @include media-min {
+    font-size: 1.4rem;
+  }
+}
+
+.uniq-hdg-lv4 {
+  position: relative;
+  padding: 3px 0 3px 17px;
+  line-height: 1.4;
+  margin-top: 16px;
+
+  @include media-min {
+    font-size: 1.6rem;
+    padding-left: 20px;
+    margin-top: 32px;
+  }
+
+  &::before,
+  &::after {
+    @include pseudo;
+
+    left: 0;
+    width: 3px;
+    height: calc(50% - 1.5px);
+
+    @include media-min {
+      width: 4px;
+    }
+  }
+
+  &::before {
+    top: 0;
+    background-color: var.$color-green;
+  }
+
+  &::after {
+    bottom: 0;
+    background-color: var.$color-blue;
+  }
+
+  &__title {
+    font-size: 1.4rem;
+
+    @include media-min {
+      font-size: 1.6rem;
+    }
+
+    > a {
+      color: var.$color-green;
+      transition: background var.$animation-duration var.$animation-function;
+      background: linear-gradient(var.$color-green, var.$color-green) 0 100% / 0 1px no-repeat;
+      background-size: 100% 1px;
+
+      @include hover {
+        color: var.$color-green;
+        background-size: 0 1px;
+      }
+    }
+  }
+}
+
+.uniq-hdg-lv5 {
+  position: relative;
+  padding-left: 18px;
+  line-height: 1.4;
+
+  @include media-min {
+    padding-left: 24px;
+  }
+
+  & + * {
+    margin-top: 8px !important;
+  }
+
+  &::before {
+    @include pseudo;
+
+    top: calc(.5em - 4px);
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background-color: var.$color-green;
+
+    @include media-min {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  &__title {
+    font-size: 1.2rem;
+
+    @include media-min {
+      font-size: 1.4rem;
+    }
+
+    > a {
+      color: var.$color-green;
+      transition: background var.$animation-duration var.$animation-function;
+      background: linear-gradient(var.$color-green, var.$color-green) 0 100% / 0 1px no-repeat;
+      background-size: 100% 1px;
+
+      @include hover {
+        color: var.$color-green;
+        background-size: 0 1px;
+      }
+    }
+  }
+}
+
+// 見出しグレー背景の定義リスト
+.uniq-description {
+  @include create-multi-column-flex(
+    $colElementName: "uniq-description__col",
+    $maxColumnWide: 4,
+    $maxColumn: 1,
+    $gapColumn: 40,
+    $gapRow: 40,
+    $gapColumnSp: 16,
+    $gapRowSp: 16,
+  );
+
+  margin-top: 16px;
+
+  &[data-col-wide] {
+    @include media-min {
+      gap: 2px 40px;
+    }
+  }
+
+  &[data-col] {
+    @include media-max {
+      gap: 2px 0;
+    }
+  }
+
+  &[data-col-wide="1"] {
+    .uniq-description {
+      &__col {
+        @include media-max {
+          flex-direction: column;
+        }
+      }
+
+      &__text {
+        width: 100%;
+
+        @include media-min {
+          width: calc(100% - 176px);
+        }
+
+        .uniq-lyt-grid-border[data-col] {
+          @include media-max {
+            gap: 0 10px;
+          }
+        }
+      }
+
+      &__title {
+        width: 100%;
+
+        @include media-min {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  &[data-column="row"] {
+    .uniq-description {
+      &__col {
+        flex-direction: row !important;
+      }
+    }
+  }
+
+  &__col {
+    @include reset-inner-gutter;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 29px;
+
+    &[data-column="row"] {
+      flex-direction: row !important;
+    }
+  }
+
+  &__title {
+    padding: 6px;
+    background-color: var.$color-bg-02;
+    border-radius: 2px;
+    font-weight: normal;
+    font-size: 1.2rem;
+    text-align: left;
+    width: 50%;
+    align-items: center;
+    display: flex;
+
+    @include media-max {
+      min-width: 50%;
+    }
+
+    @include media-min {
+      font-size: 1.4rem;
+      border-radius: 4px;
+      max-width: 277px;
+      height: 100%;
+      flex-shrink: 0;
+    }
+  }
+
+  &__text {
+    @include reset-inner-gutter;
+
+    font-size: 1.2rem;
+    padding: 6px;
+
+    @include media-min {
+      font-size: 1.4rem;
+      min-width: 50%;
+    }
+  }
+
+  & + & {
+    margin-top: 2px;
+  }
+}
+
+// 検索結果表示用トグル
+.uniq-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+
+  @include media-min {
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  &__inner,
+  &__btn {
+    padding: 0 16px;
+
+    @include media-min {
+      padding: 0 32px;
+    }
+  }
+
+  &__title {
+    font-size: 1.6rem;
+
+    @include media-min {
+      font-size: 2.4rem;
+    }
+  }
+
+  &__btn {
+    display: block;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: var.$color-text;
+    font-weight: bold;
+    text-align: left;
+    line-height: 1.4;
+    background-color: transparent;
+    background-color: var.$color-green-05;
+    transition: color var.$animation-duration var.$animation-function;
+
+    @include on-js {
+      background-color: #ffffff;
+    }
+
+    @include media-min {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    &[aria-expanded] {
+      .uniq-toggle-view {
+        display: inline-flex;
+        align-items: flex-end;
+        justify-content: center;
+        border-top: 1px solid #d3d3d3;
+        opacity: 1;
+        width: 100%;
+        height: 36px;
+        margin: 16px auto 0;
+        font-size: 1.4rem;
+        position: relative;
+        transition:
+          height var.$animation-duration var.$animation-function,
+          opacity var.$animation-duration var.$animation-function;
+
+        &::after {
+          @include pseudo;
+
+          bottom: 2px;
+          left: 0;
+          right: -100px;
+          margin: auto;
+          width: 16px;
+          height: 16px;
+          border-radius: 2px;
+          background-color: var.$color-green;
+
+          @include media-min {
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      .uniq-toggle-view > span {
+        position: relative;
+
+        &::before,
+        &::after {
+          @include pseudo;
+
+          inset: 0;
+          margin: auto;
+          width: 10px;
+          height: 2px;
+          background-color: #ffffff;
+          z-index: map.get(var.$z-index-map, "layer1");
+
+          @include media-min {
+            right: -100px;
+            width: 12px;
+          }
+        }
+      }
+    }
+
+    &[aria-expanded="true"] {
+      @include on-js {
+        background-color: var.$color-green-05;
+      }
+
+      .uniq-brand-system {
+        padding-bottom: 0;
+        border-bottom: none;
+
+        &-hdg > span {
+          background-color: var.$color-green;
+          color: #ffffff;
+        }
+      }
+
+      .uniq-toggle-view {
+        opacity: 0;
+        height: 0;
+        visibility: hidden;
+        display: none;
+
+        > span {
+          display: none;
+
+          &::after {
+            display: none;
+          }
+        }
+
+        &::after {
+          display: none;
+        }
+      }
+    }
+
+    &[aria-expanded="false"] {
+      .uniq-toggle-view > span {
+        &::before {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+  }
+
+  &__close {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 0 16px;
+    color: var.$color-text;
+    background-color: transparent;
+
+    &::before {
+      @include pseudo;
+
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: calc(100% - 32px);
+      height: 1px;
+      background-color: var.$color-line;
+
+      @include media-min {
+        width: calc(100% - 80px);
+      }
+    }
+
+    > span {
+      position: relative;
+      padding-right: 26px;
+
+      @include media-min {
+        padding-right: 28px;
+      }
+
+      &::after {
+        @include pseudo;
+
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto 0;
+        width: 16px;
+        height: 16px;
+        border-radius: 2px;
+        background-color: var.$color-gray-02;
+
+        @include media-min {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      > span {
+        &::before {
+          @include pseudo;
+
+          top: 0;
+          right: 4px;
+          bottom: 0;
+          margin: auto 0;
+          width: 9px;
+          height: 2px;
+          background-color: #ffffff;
+          z-index: map.get(var.$z-index-map, "layer1");
+
+          @include media-min {
+            right: 4px;
+            width: 12px;
+            height: 2px;
+          }
+        }
+      }
+    }
+  }
+
+  &__inner {
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    @include reset-inner-gutter;
+
+    @include media-min {
+      padding-top: 40px;
+      padding-bottom: 32px;
+    }
+  }
+
+  &__item {
+    overflow: hidden;
+    border: 1px solid var.$color-green;
+    border-radius: 6px;
+
+    @include on-js {
+      position: relative;
+
+      &:not(.is-open) {
+        border: 1px solid var.$color-line;
+        border-left-color: var.$color-green;
+        border-radius: 0 6px 6px 0;
+        background-color: #ffffff;
+      }
+    }
+  }
+}
+
+// 下線なしカラムレイアウト
+.uniq-lyt-grid {
+  @include create-multi-column-grid(5, 2, null);
+
+  margin-top: 24px;
+
+  @include media-min {
+    margin-top: 32px;
+  }
+
+  &[data-col-wide] {
+    @include media-min {
+      gap: 32px 40px;
+    }
+  }
+
+  &[data-col] {
+    @include media-max {
+      gap: 24px 10px;
+    }
+  }
+
+  &.type-auto-fill {
+    &-col2 {
+      @include media-min {
+        grid-template-columns: repeat(auto-fill, minmax(345px, 1fr)) !important;
+      }
+    }
+
+    &-col3 {
+      @include media-min {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+      }
+    }
+  }
+
+  &__col {
+    @include reset-inner-gutter;
+
+    .m-form-select {
+      max-width: 100%;
+    }
+
+    .m-box-hdg-2 {
+      & + * {
+        margin-top: 10px;
+      }
+    }
+
+    .uniq-hdg-lv5 {
+      @include media-max {
+        margin-top: -8px;
+      }
+    }
+
+    &-row {
+      display: flex;
+      flex-direction: row;
+      margin-top: 10px;
+
+      .uniq-inline-unit {
+        margin-top: 0 !important;
+      }
+
+      .uniq-inline-unit-sub {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  &-top-border {
+    position: relative;
+    padding-top: 24px;
+
+    @include media-min {
+      padding-top: 34px;
+    }
+
+    &::after {
+      @include pseudo;
+
+      right: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      margin: 0 auto;
+      background-image: linear-gradient(to right, #d3d3d3, #d3d3d3 3px, transparent 3px, transparent 6px);
+      background-size: 6px 1px;
+      background-repeat: repeat-x;
+    }
+  }
+
+  &-bottom-border {
+    position: relative;
+    padding-bottom: 24px;
+
+    @include media-min {
+      padding-bottom: 34px;
+    }
+
+    &::after {
+      @include pseudo;
+
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      margin: 0 auto;
+      background-image: linear-gradient(to right, #d3d3d3, #d3d3d3 3px, transparent 3px, transparent 6px);
+      background-size: 6px 1px;
+      background-repeat: repeat-x;
+    }
+  }
+
+  .m-form-input,
+  .m-form-input-date {
+    margin-top: 10px;
+  }
+
+  @at-root .uniq-inline-unit {
+    display: inline-flex;
+    width: calc(100% - 92px);
+
+    &-sub {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+      margin-top: 0;
+    }
+  }
+}
+
+// 英語ページ用調整
+html[lang="en"] {
+  .uniq-inline-unit {
+    width: calc(100% - 114px);
+  }
+}
+
+.uniq-box-960 {
+  @include component-rule-gutter("M要素");
+
+  @include media-min {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// 検索結果表示
+.uniq-search-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 40px;
+
+  @include media-min {
+    margin-top: 80px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__col {
+    @include reset-inner-gutter;
+  }
+}
+
+.uniq-table-nowrap {
+  white-space: nowrap;
+}
+
+.uniq-lyt-grid-border {
+  @include create-multi-column-grid(5, 2, null);
+  @include component-rule-gutter("M要素");
+
+  &[data-col-wide] {
+    @include media-min {
+      gap: 2px 40px;
+    }
+  }
+
+  &[data-col] {
+    @include media-max {
+      gap: 32px 10px;
+    }
+  }
+
+  &__col {
+    padding-bottom: 16px;
+    background-size: 6px 1px;
+    background-position: left bottom;
+    background-image:
+      linear-gradient(
+        to right,
+        var.$color-line 0 3px,
+        transparent 3px 6px,
+      );
+    background-repeat: repeat-x;
+
+    @include reset-inner-gutter;
+
+    @include media-min {
+      padding-bottom: 24px;
+    }
+  }
+}
+
+// お問合せ用見出し
+.uniq-hdg-lv2 {
+  position: relative;
+  padding-bottom: 22px;
+
+  @include media-min {
+    padding-bottom: 42px;
+  }
+
+  & + * {
+    margin-top: 24px;
+
+    @include media-min {
+      margin-top: 48px;
+    }
+  }
+
+  &::before,
+  &::after {
+    @include pseudo;
+
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto;
+
+    @include media-min {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  &::before {
+    transform: translateX(calc(-50% - 4px));
+    background-color: var.$color-green;
+
+    @include media-min {
+      transform: translateX(calc(-50% - 7px));
+    }
+  }
+
+  &::after {
+    transform: translateX(calc(50% + 4px));
+    background-color: var.$color-blue;
+
+    @include media-min {
+      transform: translateX(calc(50% + 7px));
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: normal;
+    text-align: center;
+
+    @include media-min {
+      font-size: 3.6rem;
+    }
+  }
+}

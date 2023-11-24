@@ -1,0 +1,114 @@
+@charset "UTF-8";
+@use "../define/variable" as var;
+@use "../define/mixin" as *;
+
+.m-lyt-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include component-rule-gutter("M要素");
+
+  &__caption {
+    display: table-caption;
+    caption-side: bottom;
+    line-height: 1.4;
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  &__caption-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include reset-inner-gutter;
+  }
+
+  &__body {
+    display: table;
+    text-align: center;
+  }
+}
+
+.m-lyt-media-content {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 20px;
+
+  @include component-rule-gutter("M要素");
+
+  @include media-min {
+    flex-wrap: nowrap;
+    gap: 40px;
+  }
+
+  &__caption {
+    margin-top: 10px;
+  }
+
+  &__media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+
+    @include media-min {
+      max-width: 50%;
+    }
+  }
+
+  &__content {
+    flex-grow: 1;
+
+    @include reset-inner-gutter;
+  }
+
+  &--media-right {
+    @include media-min {
+      flex-direction: row;
+    }
+  }
+
+  &--media-left {
+    @include media-min {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+.m-lyt-grid {
+  @include create-multi-column-grid(5, 2, null);
+  @include component-rule-gutter("M要素");
+
+  &[data-col-wide] {
+    @include media-min {
+      gap: 56px 40px;
+    }
+  }
+
+  &[data-col] {
+    @include media-max {
+      gap: 32px 10px;
+    }
+  }
+
+  &__col {
+    padding-bottom: 16px;
+    background-size: 6px 1px;
+    background-position: left bottom;
+    background-image:
+      linear-gradient(
+        to right,
+        var.$color-green-03 0 3px,
+        transparent 3px 6px,
+      );
+    background-repeat: repeat-x;
+
+    @include reset-inner-gutter;
+
+    @include media-min {
+      padding-bottom: 24px;
+    }
+  }
+}

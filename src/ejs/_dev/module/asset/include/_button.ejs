@@ -1,0 +1,464 @@
+<mml-module>
+<mml-title><h2>汎用ボタン</h2><span>.m-btn</span></mml-title>
+<mml-description>
+- ボタンの横方向レイアウトは以下のModifierを指定してください
+    - `.m-btn--center` : ボタン中央配置
+    - `.m-btn--right` : ボタン右配置
+- ボタンには以下のModifierが用意されています
+    - ボタンの種別を指定
+        - `.m-btn__btn--primary` : 汎用的な通常ボタン
+        - `.m-btn__btn--emphasis` : 強調ボタン
+        - `.m-btn__btn--icon` : アイコンボタン
+            - アイコンを設置する場合に使用。他の汎用・強調ボタンと組み合わせて使用します
+    - ボタンの大きさを指定
+        - `.m-btn__btn--size-m` : PC幅において、最大幅334pxの大きさを指定（max-width）
+        - `.m-btn__btn--size-l` : PC幅において、最大幅375pxの大きさを指定（max-width）
+        - ※ボタンサイズを指定しない場合、横幅は成り行きになります
+- 非活性ボタンについては、要素に`disabled`属性値が付与された際にルールセットが適用されます（`a`要素ではマークアップしません）
+- ボタンにアイコンが必要な場合に適宜使用してください。
+- PDF・別タブのリンクのみ`target="_blank"`が必要となります。
+- 強調ボタンのみアイコンの後ろに白円の背景がつきます。
+    - ただし「別タブボタン」のように強調時に白円を必要としない場合、SVGを囲む`.m-btn__icon`をマークアップから削除してください。
+</mml-description>
+
+<mml-snippet>
+
+<div class="m-btn">
+<a href="___dummy___" class="m-btn__btn m-btn__btn--primary m-btn__btn--size-m"><span class="m-btn__inner">汎用ボタン（M）</span></a>
+</div><!-- /.m-btn -->
+
+<div class="m-btn">
+<a href="___dummy___" class="m-btn__btn m-btn__btn--emphasis m-btn__btn--size-m"><span class="m-btn__inner">強調ボタン（M）</span></a>
+</div><!-- /.m-btn -->
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-btn">
+<a href="___dummy___" class="m-btn__btn m-btn__btn--primary m-btn__btn--size-l"><span class="m-btn__inner">汎用ボタン汎用ボタン汎用ボタン（L）</span></a>
+</div><!-- /.m-btn -->
+
+<div class="m-btn ">
+<a href="___dummy___" class="m-btn__btn m-btn__btn--emphasis m-btn__btn--size-l"><span class="m-btn__inner">強調ボタン強調ボタン強調ボタン（L）</span></a>
+</div><!-- /.m-btn -->
+
+</mml-snippet>
+
+<mml-snippet>
+<div class="m-btn">
+<a href="___dummy___" class="m-btn__btn m-btn__btn--primary"><span class="m-btn__inner">テキストが長く255pxに収まらない場合成り行きボタン</span></a>
+</div><!-- /.m-btn -->
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-btn m-btn--center">
+<a href="___dummy___" class="m-btn__btn m-btn__btn--primary m-btn__btn--size-l"><span class="m-btn__inner">中央2点配置</span></a>
+
+<a href="___dummy___" class="m-btn__btn m-btn__btn--primary m-btn__btn--size-l"><span class="m-btn__inner">中央2点配置</span></a>
+</div><!-- /.m-btn -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-btn">
+<button type="button" disabled class="m-btn__btn m-btn__btn--primary"><span class="m-btn__inner">非活性ボタン</span></button>
+</div><!-- /.m-btn -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-btn">
+<a href="___dummy___" class="m-btn__btn m-btn__btn--back"><span class="m-btn__inner">戻るボタン</span></a>
+</div><!-- /.m-btn -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-btn">
+<a href="___dummy___" target="_blank" class="m-btn__btn m-btn__btn--primary m-btn__btn--size-m  m-btn__btn--icon"><span class="m-btn__inner">PDFボタン<span class="m-btn__icon"><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></span></span></a>
+</div><!-- /.m-btn -->
+
+<div class="m-btn">
+<a href="___dummy___" target="_blank" class="m-btn__btn m-btn__btn--emphasis m-btn__btn--size-m m-btn__btn--icon"><span class="m-btn__inner">PDFボタン<span class="m-btn__icon"><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></span></span></a>
+</div><!-- /.m-btn -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-btn">
+<a href="___dummy___" class="m-btn__btn m-btn__btn--primary m-btn__btn--size-m  m-btn__btn--icon"><span class="m-btn__inner">Excelボタン<span class="m-btn__icon"><svg class="m-icon m-icon--excel" role="img" aria-label="Excelを開く"><use href="#icon-excel"></use></svg></span></span></a>
+</div><!-- /.m-btn -->
+
+<div class="m-btn">
+<a href="___dummy___" class="m-btn__btn m-btn__btn--emphasis m-btn__btn--size-m m-btn__btn--icon"><span class="m-btn__inner">Excelボタン<span class="m-btn__icon"><svg class="m-icon m-icon--excel" role="img" aria-label="Excelを開く"><use href="#icon-excel"></use></svg></span></span></a>
+</div><!-- /.m-btn -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-btn">
+<a href="___dummy___" target="_blank" class="m-btn__btn m-btn__btn--primary m-btn__btn--size-m  m-btn__btn--icon"><span class="m-btn__inner">別タブボタン<span class="m-btn__icon"><svg class="m-icon m-icon--blank" role="img" aria-label="別タブを開く"><use href="#icon-blank"></use></svg></span></span></a>
+</div><!-- /.m-btn -->
+
+<div class="m-btn">
+<a href="___dummy___" target="_blank" class="m-btn__btn m-btn__btn--emphasis m-btn__btn--size-m m-btn__btn--icon"><span class="m-btn__inner">別タブボタン<svg class="m-icon m-icon--blank" role="img" aria-label="別タブを開く"><use href="#icon-blank"></use></svg></span></a>
+</div><!-- /.m-btn -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-btn">
+<a href="___dummy___" class="m-btn__btn m-btn__btn--primary m-btn__btn--size-m  m-btn__btn--icon"><span class="m-btn__inner">ZIPボタン<span class="m-btn__icon"><svg class="m-icon m-icon--zip" role="img" aria-label="ZIPを開く"><use href="#icon-zip"></use></svg></span></span></a>
+</div><!-- /.m-btn -->
+
+<div class="m-btn">
+<a href="___dummy___" class="m-btn__btn m-btn__btn--emphasis m-btn__btn--size-m m-btn__btn--icon"><span class="m-btn__inner">ZIPボタン<span class="m-btn__icon"><svg class="m-icon m-icon--zip" role="img" aria-label="ZIPを開く"><use href="#icon-zip"></use></svg></span></span></a>
+</div><!-- /.m-btn -->
+
+</mml-snippet>
+
+</mml-module>
+
+<mml-module>
+<mml-title><h2>並列ボタン</h2><span>.m-btn-parallel</span></mml-title>
+<mml-description>
+- このモジュールはグリッドレイアウトのため、前述の汎用ボタンと組み合わせることはできません
+- 使用用途として以下を想定
+    - ボタンのレベル間を並列・同レベルにしたい場合
+- カラム数の指定用に、以下の`data`属性値が用意されているので適宜変更します
+    - `data-col` : SP幅時のカラム数 （1 ~ 2）
+    - `data-col-wide` : PC幅時のカラム数 （1 ~ 5）
+</mml-description>
+<mml-snippet>
+
+<ul class="m-btn-parallel" data-col="1" data-col-wide="2">
+<li class="m-btn-parallel__item"><a href="___dummy___" class="m-btn-parallel__btn">比率レイアウト</a></li>
+<li class="m-btn-parallel__item"><a href="___dummy___" class="m-btn-parallel__btn">比率レイアウト</a></li>
+</ul><!-- /.m-btn-parallel -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<ul class="m-btn-parallel" data-col="1" data-col-wide="3">
+<li class="m-btn-parallel__item"><a href="___dummy___" class="m-btn-parallel__btn">比率レイアウト</a></li>
+<li class="m-btn-parallel__item"><a href="___dummy___" class="m-btn-parallel__btn">比率レイアウト</a></li>
+<li class="m-btn-parallel__item"><a href="___dummy___" class="m-btn-parallel__btn">比率レイアウト</a></li>
+</ul><!-- /.m-btn-parallel -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<ul class="m-btn-parallel" data-col="2" data-col-wide="4">
+<li class="m-btn-parallel__item"><a href="___dummy___" class="m-btn-parallel__btn">比率レイアウト</a></li>
+<li class="m-btn-parallel__item"><a href="___dummy___" class="m-btn-parallel__btn">比率レイアウト</a></li>
+<li class="m-btn-parallel__item"><a href="___dummy___" class="m-btn-parallel__btn">比率レイアウト</a></li>
+<li class="m-btn-parallel__item"><a href="___dummy___" class="m-btn-parallel__btn">比率レイアウト</a></li>
+</ul><!-- /.m-btn-parallel -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<ul class="m-btn-parallel" data-col="2" data-col-wide="5">
+<li class="m-btn-parallel__item"><a href="___dummy___" class="m-btn-parallel__btn">比率レイアウト</a></li>
+<li class="m-btn-parallel__item"><a href="___dummy___" class="m-btn-parallel__btn">比率レイアウト</a></li>
+<li class="m-btn-parallel__item"><a href="___dummy___" class="m-btn-parallel__btn">比率レイアウト</a></li>
+<li class="m-btn-parallel__item"><a href="___dummy___" class="m-btn-parallel__btn">比率レイアウト</a></li>
+<li class="m-btn-parallel__item"><a href="___dummy___" class="m-btn-parallel__btn">比率レイアウト</a></li>
+</ul><!-- /.m-btn-parallel -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>ページ内リンクボタンボックス</h2><span>.m-btn-anchor</span></mml-title>
+<mml-description>
+- アンカーリンクを指定する際は、href属性の接頭辞は`#anc-XXX`に統一してください
+- カラム数の指定用に、以下の`data`属性値が用意されているので適宜変更します
+    - `data-col` : SP幅時のカラム数 （1 ~ 2）
+    - `data-col-wide` : PC幅時のカラム数 （1 ~ 5）
+</mml-description>
+<mml-snippet>
+
+<div class="m-btn-anchor">
+<ul class="m-btn-anchor__body" data-col="1" data-col-wide="4">
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタンページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+</ul><!-- /.m-btn-anchor__body -->
+</div><!-- /.m-btn-anchor -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-btn-anchor">
+<ul class="m-btn-anchor__body" data-col="1" data-col-wide="5">
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタンページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+</ul><!-- /.m-btn-anchor__body -->
+</div><!-- /.m-btn-anchor -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-btn-anchor">
+<ul class="m-btn-anchor__body" data-col="1" data-col-wide="3">
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタンページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+</ul><!-- /.m-btn-anchor__body -->
+</div><!-- /.m-btn-anchor -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-btn-anchor">
+<ul class="m-btn-anchor__body" data-col="1" data-col-wide="2">
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+<li class="m-btn-anchor__item">
+<a href="___dummy___" class="m-btn-anchor__btn">ページ内リンクボタン</a>
+</li><!-- /.m-btn-anchor__item -->
+</ul><!-- /.m-btn-anchor__body -->
+</div><!-- /.m-btn-anchor -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>ページ内リンクボタンボックス（見出しあり）</h2><span>.m-btn-anchor-panel</span></mml-title>
+<mml-description>
+- アンカーリンクを指定する際は、href属性の接頭辞は`#anc-XXX`に統一してください
+- カラム数の指定用に、以下の`data`属性値が用意されているので適宜変更します
+    - `data-col` : SP幅時のカラム数 （1 ~ 2）
+    - `data-col-wide` : PC幅時のカラム数 （1 ~ 5）
+</mml-description>
+<mml-snippet>
+
+<div class="m-btn-anchor-panel">
+<ul class="m-btn-anchor-panel__body" data-col="1" data-col-wide="3">
+<li class="m-btn-anchor-panel__item">
+<a href="___dummy___" class="m-btn-anchor-panel__btn">
+<dl class="m-btn-anchor-panel__content">
+<dt class="m-btn-anchor-panel__title"><span class="m-btn-anchor-panel__sub-title">ケース1</span>見出しテキスト 16px/1.4</dt>
+<dd class="m-btn-anchor-panel__text"><p>詳細内容 16px/1.6 テキスト</p></dd>
+</dl>
+</a>
+</li><!-- /.m-btn-anchor-panel__item -->
+<li class="m-btn-anchor-panel__item">
+<a href="___dummy___" class="m-btn-anchor-panel__btn">
+<dl class="m-btn-anchor-panel__content">
+<dt class="m-btn-anchor-panel__title"><span class="m-btn-anchor-panel__sub-title">ケース2</span>見出しテキスト 16px/1.4</dt>
+<dd class="m-btn-anchor-panel__text"><p>詳細内容 16px/1.6 テキスト</p></dd>
+</dl>
+</a>
+</li><!-- /.m-btn-anchor-panel__item -->
+<li class="m-btn-anchor-panel__item">
+<a href="___dummy___" class="m-btn-anchor-panel__btn">
+<dl class="m-btn-anchor-panel__content">
+<dt class="m-btn-anchor-panel__title"><span class="m-btn-anchor-panel__sub-title">ケース3</span>見出しテキスト 16px/1.4テキストテキストテキストテキスト</dt>
+<dd class="m-btn-anchor-panel__text"><p></p></dd>
+</dl>
+</a>
+</li><!-- /.m-btn-anchor-panel__item -->
+<li class="m-btn-anchor-panel__item">
+<a href="___dummy___" class="m-btn-anchor-panel__btn">
+<dl class="m-btn-anchor-panel__content">
+<dt class="m-btn-anchor-panel__title"><span class="m-btn-anchor-panel__sub-title">ケース4</span>見出しテキスト 16px/1.4</dt>
+<dd class="m-btn-anchor-panel__text"><p>詳細内容 16px/1.6 テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p></dd>
+</dl>
+</a>
+</li><!-- /.m-btn-anchor-panel__item -->
+<li class="m-btn-anchor-panel__item">
+<a href="___dummy___" class="m-btn-anchor-panel__btn">
+<dl class="m-btn-anchor-panel__content">
+<dt class="m-btn-anchor-panel__title"><span class="m-btn-anchor-panel__sub-title">ケース5</span>見出しテキスト 16px/1.4</dt>
+<dd class="m-btn-anchor-panel__text"><p>詳細内容 16px/1.6 テキスト</p></dd>
+</dl>
+</a>
+</li><!-- /.m-btn-anchor-panel__item -->
+</ul><!-- /.m-btn-anchor-panel__body -->
+</div><!-- /.m-btn-anchor-panel -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-btn-anchor-panel">
+<ul class="m-btn-anchor-panel__body" data-col="1" data-col-wide="4">
+<li class="m-btn-anchor-panel__item">
+<a href="___dummy___" class="m-btn-anchor-panel__btn">
+<dl class="m-btn-anchor-panel__content">
+<dt class="m-btn-anchor-panel__title"><span class="m-btn-anchor-panel__sub-title">ケース1</span>見出しテキスト 16px/1.4</dt>
+<dd class="m-btn-anchor-panel__text"><p>詳細内容 16px/1.6 テキスト</p></dd>
+</dl>
+</a>
+</li><!-- /.m-btn-anchor-panel__item -->
+<li class="m-btn-anchor-panel__item">
+<a href="___dummy___" class="m-btn-anchor-panel__btn">
+<dl class="m-btn-anchor-panel__content">
+<dt class="m-btn-anchor-panel__title"><span class="m-btn-anchor-panel__sub-title">ケース2</span>見出しテキスト 16px/1.4</dt>
+<dd class="m-btn-anchor-panel__text"><p>詳細内容 16px/1.6 テキスト</p></dd>
+</dl>
+</a>
+</li><!-- /.m-btn-anchor-panel__item -->
+<li class="m-btn-anchor-panel__item">
+<a href="___dummy___" class="m-btn-anchor-panel__btn">
+<dl class="m-btn-anchor-panel__content">
+<dt class="m-btn-anchor-panel__title"><span class="m-btn-anchor-panel__sub-title">ケース3</span>見出しテキスト 16px/1.4</dt>
+<dd class="m-btn-anchor-panel__text"><p></p></dd>
+</dl>
+</a>
+</li><!-- /.m-btn-anchor-panel__item -->
+<li class="m-btn-anchor-panel__item">
+<a href="___dummy___" class="m-btn-anchor-panel__btn">
+<dl class="m-btn-anchor-panel__content">
+<dt class="m-btn-anchor-panel__title"><span class="m-btn-anchor-panel__sub-title">ケース4</span>見出しテキスト 16px/1.4</dt>
+<dd class="m-btn-anchor-panel__text"><p>詳細内容 16px/1.6 テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p></dd>
+</dl>
+</a>
+</li><!-- /.m-btn-anchor-panel__item -->
+<li class="m-btn-anchor-panel__item">
+<a href="___dummy___" class="m-btn-anchor-panel__btn">
+<dl class="m-btn-anchor-panel__content">
+<dt class="m-btn-anchor-panel__title"><span class="m-btn-anchor-panel__sub-title">ケース5</span>見出しテキスト 16px/1.4</dt>
+<dd class="m-btn-anchor-panel__text"><p>詳細内容 16px/1.6 テキスト</p></dd>
+</dl>
+</a>
+</li><!-- /.m-btn-anchor-panel__item -->
+</ul><!-- /.m-btn-anchor-panel__body -->
+</div><!-- /.m-btn-anchor-panel -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-btn-anchor-panel">
+<ul class="m-btn-anchor-panel__body" data-col="1" data-col-wide="5">
+<li class="m-btn-anchor-panel__item">
+<a href="___dummy___" class="m-btn-anchor-panel__btn">
+<dl class="m-btn-anchor-panel__content">
+<dt class="m-btn-anchor-panel__title"><span class="m-btn-anchor-panel__sub-title">ケース1</span>見出しテキスト 16px/1.4</dt>
+<dd class="m-btn-anchor-panel__text"><p>詳細内容 16px/1.6 テキスト</p></dd>
+</dl>
+</a>
+</li><!-- /.m-btn-anchor-panel__item -->
+<li class="m-btn-anchor-panel__item">
+<a href="___dummy___" class="m-btn-anchor-panel__btn">
+<dl class="m-btn-anchor-panel__content">
+<dt class="m-btn-anchor-panel__title"><span class="m-btn-anchor-panel__sub-title">ケース2</span>見出しテキスト 16px/1.4</dt>
+<dd class="m-btn-anchor-panel__text"><p>詳細内容 16px/1.6 テキスト</p></dd>
+</dl>
+</a>
+</li><!-- /.m-btn-anchor-panel__item -->
+<li class="m-btn-anchor-panel__item">
+<a href="___dummy___" class="m-btn-anchor-panel__btn">
+<dl class="m-btn-anchor-panel__content">
+<dt class="m-btn-anchor-panel__title"><span class="m-btn-anchor-panel__sub-title">ケース3</span>見出しテキスト 16px/1.4</dt>
+<dd class="m-btn-anchor-panel__text"><p></p></dd>
+</dl>
+</a>
+</li><!-- /.m-btn-anchor-panel__item -->
+<li class="m-btn-anchor-panel__item">
+<a href="___dummy___" class="m-btn-anchor-panel__btn">
+<dl class="m-btn-anchor-panel__content">
+<dt class="m-btn-anchor-panel__title"><span class="m-btn-anchor-panel__sub-title">ケース4</span>見出しテキスト 16px/1.4</dt>
+<dd class="m-btn-anchor-panel__text"><p>詳細内容 16px/1.6 テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p></dd>
+</dl>
+</a>
+</li><!-- /.m-btn-anchor-panel__item -->
+<li class="m-btn-anchor-panel__item">
+<a href="___dummy___" class="m-btn-anchor-panel__btn">
+<dl class="m-btn-anchor-panel__content">
+<dt class="m-btn-anchor-panel__title"><span class="m-btn-anchor-panel__sub-title">ケース5</span>見出しテキスト 16px/1.4</dt>
+<dd class="m-btn-anchor-panel__text"><p>詳細内容 16px/1.6 テキスト</p></dd>
+</dl>
+</a>
+</li><!-- /.m-btn-anchor-panel__item -->
+</ul><!-- /.m-btn-anchor-panel__body -->
+</div><!-- /.m-btn-anchor-panel -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>検索ボタン</h2><span>.m-btn-search</span></mml-title>
+<mml-description>
+- フォーム内の使用を想定しています
+- 横幅は親要素に依存し、成り行きになります
+</mml-description>
+<mml-snippet>
+
+<div class="m-btn-search">
+<button type="submit" value="検索" id="m-btn-submit" class="m-btn-search__btn"><span class="m-btn-search__inner">検索</span></button>
+</div><!-- /.m-btn-search -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>全幅ボタン</h2><span>.m-btn-max</span></mml-title>
+<mml-description>
+- 横幅は親要素に依存し、成り行きになります
+</mml-description>
+<mml-snippet>
+
+<div class="m-btn-max">
+<a href="___dummy___" class="m-btn-max__btn"><span class="m-btn-max__inner">その他情報</span></a>
+</div><!-- /.m-btn-max -->
+
+</mml-snippet>
+</mml-module>

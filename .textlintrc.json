@@ -1,0 +1,17 @@
+{
+    "plugins": {
+        "@textlint/text": {
+            "extensions": [
+                ".html",
+                ".ejs"
+            ]
+        }
+    },
+    "rules": {
+        "prh": {
+            "rulePaths": [
+                "./prh.yml"
+            ]
+        }
+    }
+}

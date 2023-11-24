@@ -1,0 +1,92 @@
+@charset "UTF-8";
+@use "../define/variable" as var;
+@use "../define/mixin" as *;
+@use "sass:map";
+
+.m-dialog {
+  @include reset-inner-gutter;
+
+  @include off-js {
+    position: static;
+    display: block;
+    width: 100%;
+
+    @include component-rule-gutter("M要素");
+  }
+
+  @include on-js {
+    max-width: var.$content-width;
+    width: calc(100% - #{var.$content-padding-side * 2});
+    border: 0;
+    padding: 40px var.$content-padding-side;
+    overflow: hidden;
+
+    @include media-min {
+      padding: 60px;
+    }
+
+    &::backdrop {
+      background-color: rgba(#000000, .15);
+    }
+
+    &.is-overflow {
+      height: 100%;
+
+      .m-dialog {
+        &__body {
+          overflow: auto;
+          max-height: 100%;
+        }
+      }
+    }
+  }
+
+  &__body {
+    @include reset-inner-gutter;
+  }
+
+  &__close {
+    @include on-js {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 0 0 0 6px;
+      background-color: var.$color-gray-02;
+      transition: background-color var.$animation-duration var.$animation-function;
+
+      @include media-min {
+        width: 40px;
+        height: 40px;
+      }
+
+      &::before,
+      &::after {
+        @include pseudo;
+
+        inset: 0;
+        margin: auto;
+        width: 16px;
+        height: 3px;
+        background-color: #ffffff;
+      }
+
+      &::before {
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+      }
+
+      @include hover {
+        background-color: var.$color-green;
+      }
+
+      > span {
+        @include visually-hidden;
+      }
+    }
+  }
+}

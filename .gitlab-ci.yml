@@ -1,0 +1,50 @@
+include:
+  - project: creators/ci-templates
+    ref: main
+    file: /mlc-sync.gitlab-ci.yml
+
+variables:
+  #
+  # **ここから：案件ごとに必ず設定してください**
+  #
+  # デモサイトの種類
+  # demo.mitsue.comの場合はmerlot
+  # site.mitsue.comの場合はaligote
+  MLC_SYNC_HOST: merlot
+  #
+  # **↓↓↓↓↓重要：必ず確認↓↓↓↓↓**
+  # デモサイトの名前（xxx.demo.mitsue.comやxxx.site.mitsue.comのxxx）
+  MLC_SYNC_DOMAIN: jaccs-corporate
+  # **↑↑↑↑↑重要：必ず確認↑↑↑↑↑**
+  #
+  # デモのルートディレクトリに対応するディレクトリ名
+  MLC_SYNC_ROOT: public
+  #
+  # サブディレクトリのみ同期したい場合は次の行のコメントを外して（#とその次の空白を削除して）サブディレクトリ名を記載
+  # MLC_SYNC_SUB_DIRECTORY:
+  #
+  # 同期するブランチ名
+  MLC_SYNC_BRANCH: demo
+  # **ここまで：案件ごとに必ず設定してください**
+  #
+  # 同期ユーザー名
+  MLC_SYNC_USER: $MLC_SYNC_DOMAIN
+  #
+  # 詳細なログを表示したい場合は次の行のコメントを外す（#とその次の空白を削除）
+  # MLC_SYNC_VERBOSE: 1
+
+mlc-sync:
+  script:
+    #
+    # **ここから：案件ごとに設定してください**
+    # Node.jsのバージョン管理ツールであるnを使用して、プロジェクトの適切なNode.jsバージョンを自動的に選択
+    - n auto
+    - npm ci
+    - npm run textlint:report
+    - npm run build
+    # `NODE_TLS_REJECT_UNAUTHORIZED`環境変数を設定して、HTTPS接続時に自己署名証明書を無視。そして、npm run lintコマンドにより"run-s lint:* vlint:*"を実行
+    - NODE_TLS_REJECT_UNAUTHORIZED=0 npm run lint
+    #
+    # **ここまで：案件ごとに設定してください**
+    #
+    - echo "mlc-sync"

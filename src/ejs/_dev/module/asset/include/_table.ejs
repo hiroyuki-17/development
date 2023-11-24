@@ -1,0 +1,176 @@
+<mml-module>
+<mml-title><h2>汎用テーブル</h2><span>.m-table</span></mml-title>
+<mml-description>
+- テーブル各列の幅は`colgroup > col`要素を使用して調整します
+    - 原則として列幅指定は横幅調整クラスを活用して調整してください
+- Modifireとして以下が用意されています
+    - `.m-table--scroll`: PC/SPで横スクロールのテーブルになります
+    - `.m-table--scroll-sp`: SPのみ横スクロールのテーブルになります※
+        - ※ スクロール可能なテキスト要素の反映もセットなので掲載しているモジュールサンプルマークアップをコピペして活用するのを前提としているため注意してください
+</mml-description>
+<mml-snippet>
+
+<div class="m-table">
+<table class="m-table__body">
+<colgroup>
+<col class="w-30">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class="m-table__th">表見出し表見出し表見出し</th>
+<td class="m-table__td">内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト</td>
+</tr>
+<tr>
+<th class="m-table__th">表見出し表見出し表見出し</th>
+<td class="m-table__td">内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト</td>
+</tr>
+<tr>
+<th class="m-table__th"><a href="__dummy__" class="m-table__link">表見出しリンク表見出しリンク</a></th>
+<td class="m-table__td">内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト</td>
+</tr>
+<tr>
+<th class="m-table__th">表見出し表見出し表見出し</th>
+<td class="m-table__td">内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト</td>
+</tr>
+</tbody>
+</table>
+</div><!-- /.m-table -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-table m-table--scroll">
+<p class="m-table__scrollable">この表は横スクロールしてご覧いただけます</p>
+
+<table class="m-table__body">
+<colgroup>
+<col class="w-20 w-sp-20">
+<col class="w-20 w-sp-15">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th rowspan="2" class="m-table__th">表見出し表見出し表見出し</th>
+<td class="m-table__th">SPスクロールテーブルパターン</td>
+<td class="m-table__td">※必ずモジュールをコピペしてテーブルマークアップを調整してください！！</td>
+</tr>
+<tr>
+<td class="m-table__th">SPスクロールテーブルパターン</td>
+<td class="m-table__td">※必ずモジュールをコピペしてテーブルマークアップを調整してください！！</td>
+</tr>
+</tbody>
+</table>
+</div><!-- /.m-table -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-table m-table--scroll-sp">
+<p class="m-table__scrollable">この表は横スクロールしてご覧いただけます</p>
+
+<table class="m-table__body">
+<colgroup>
+<col class="w-20 w-sp-20">
+<col class="w-20 w-sp-15">
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th rowspan="2" class="m-table__th">表見出し表見出し表見出し</th>
+<td class="m-table__th">SPスクロールテーブルパターン</td>
+<td class="m-table__td">※必ずモジュールをコピペしてテーブルマークアップを調整してください！！</td>
+<td class="m-table__td">※ダミーテキスト</td>
+<td class="m-table__td">※ダミーテキスト</td>
+</tr>
+<tr>
+<td class="m-table__th">SPスクロールテーブルパターン</td>
+<td class="m-table__td">※必ずモジュールをコピペしてテーブルマークアップを調整してください！！</td>
+<td class="m-table__td">※ダミーテキスト</td>
+<td class="m-table__td">※ダミーテキスト</td>
+</tr>
+</tbody>
+</table>
+</div><!-- /.m-table -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>データ一覧用テーブル</h2><span>.m-table-data</span></mml-title>
+<mml-description>
+- SP時にタテ積みになる特殊なデータ用テーブルです。
+- テーブル各列の幅は`colgroup > col`要素を使用して調整します
+    - 原則として列幅指定は横幅調整クラスを活用して調整してください
+</mml-description>
+<mml-snippet>
+
+<div class="m-table-data">
+<table class="m-table-data__body">
+<colgroup>
+<col class="w-20">
+<col class="w-50">
+<col class="w-15">
+<col class="w-15">
+</colgroup>
+<thead class="m-table-data__thead">
+<tr>
+<th class="m-table-data__th align-c">書式番号</th>
+<th class="m-table-data__th align-c">タイトル</th>
+<th class="m-table-data__th align-c">ファイル</th>
+<th class="m-table-data__th align-c">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="m-table-data__td m-table-data__td--narrow-gray">CMN-B01</td>
+<td class="m-table-data__td">
+<p class="m-table-data__narrow-title"><em>タイトル</em></p>
+ダミーテキスト
+</td>
+<td class="m-table-data__td">
+<p class="m-table-data__narrow-title"><em>ファイル</em></p>
+<ul class="m-link-list">
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">ダウンロード</span><svg class="m-icon m-icon--excel" role="img" aria-label="Excelを開く"><use href="#icon-excel"></use></svg></a></li>
+</ul><!-- /.m-link-list -->
+</td>
+<td class="m-table-data__td"><p class="m-table-data__narrow-title"><em>用途</em></p>新規・変更</td>
+</tr>
+<tr>
+<td class="m-table-data__td m-table-data__td--narrow-gray">Se0-A01</td>
+<td class="m-table-data__td">
+<p class="m-table-data__narrow-title"><em>タイトル</em></p>
+ダミーテキスト
+</td>
+<td class="m-table-data__td">
+<p class="m-table-data__narrow-title"><em>ファイル</em></p>
+<ul class="m-link-list">
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">ダウンロード</span><svg class="m-icon m-icon--excel" role="img" aria-label="Excelを開く"><use href="#icon-excel"></use></svg></a></li>
+</ul><!-- /.m-link-list -->
+</td>
+<td class="m-table-data__td"><p class="m-table-data__narrow-title"><em>用途</em></p>新規</td>
+</tr>
+<tr>
+<td class="m-table-data__td m-table-data__td--narrow-gray">Se2-B01</td>
+<td class="m-table-data__td">
+<p class="m-table-data__narrow-title"><em>タイトル</em></p>
+ダミーテキストダミーテキスト
+</td>
+<td class="m-table-data__td">
+<p class="m-table-data__narrow-title"><em>ファイル</em></p>
+<ul class="m-link-list">
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">ダウンロード</span><svg class="m-icon m-icon--excel" role="img" aria-label="Excelを開く"><use href="#icon-excel"></use></svg></a></li>
+</ul><!-- /.m-link-list -->
+</td>
+<td class="m-table-data__td"><p class="m-table-data__narrow-title"><em>用途</em></p>新規・変更</td>
+</tr>
+</tbody>
+</table><!-- /.m-table__body -->
+</div><!-- /.m-table-data -->
+
+</mml-snippet>
+</mml-module>

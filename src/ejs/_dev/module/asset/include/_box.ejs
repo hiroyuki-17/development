@@ -1,0 +1,133 @@
+<mml-module>
+<mml-title><h2>汎用ボックス</h2><span>.m-box</span></mml-title>
+<mml-description>
+- `.m-box`には以下のModifierが用意されています
+    - `.m-box--large` : 汎用ボックス（大）
+- 汎用ボックス用の見出しパーツが存在しています。見出しレベルは適切なレベルを適宜変更してください
+    - `.m-box-hdg`
+    - `.m-box-hdg-2`
+</mml-description>
+<mml-snippet>
+
+<div class="m-box">
+<p class="m-text"><em>こんな時に必要になります</em></p>
+
+<p class="m-text">コンテンツ中の補足など、大きく見出しを表現する必要のない情報に使用するボックスになります。本テキストで使用しているのは定義リストをそのまま入れた例になります。</p>
+
+<p class="m-text">汎用ボックス小（デフォルト）</p>
+
+<p class="m-text">ここに任意のモジュールが入る</p>
+</div><!-- /.m-box -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-box m-box--large">
+<div class="m-box-hdg">
+<h3 class="m-box-hdg__title">汎用ボックス大用見出し1</h3>
+</div><!-- /.m-box-hdg -->
+
+<p class="m-text">大きく見出しを配置することのできるボックスです。いくつか見出しを用意しているので多岐にわたる情報が盛り込めます。</p>
+
+<div class="m-box-hdg-2">
+<h4 class="m-box-hdg-2__title">汎用ボックス大用見出し2</h4>
+</div><!-- /.m-box-hdg-2 -->
+
+<p class="m-text">大きく見出しを配置することのできるボックスです。いくつか見出しを用意しているので多岐にわたる情報が盛り込めます。テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+
+<p class="m-text">汎用ボックス大（デフォルト）</p>
+
+<p class="m-text">ここに任意のモジュールが入る</p>
+</div><!-- /.m-box -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>警告ボックス</h2><span>.m-box-warning</span></mml-title>
+<mml-description>
+- ボックス内固有の`.m-box-warning__title`以外はボックス内に任意のモジュールなど何かしらのコンテンツを許容します
+</mml-description>
+<mml-snippet>
+
+<div class="m-box-warning">
+<p class="m-box-warning__title"><em>警告ボックス見出し</em></p>
+
+<ul class="m-list">
+<li class="m-list__item">リストテキスト</li>
+<li class="m-list__item">リストテキストリストテキスト</li>
+</ul><!-- /.m-list -->
+</div><!-- /.m-box-warning -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>お問合せボックス</h2><span>.m-box-contact</span></mml-title>
+<mml-description>
+- 実際本モジュールが実装される際は、共通パーツ化等になっている場合が考えられるので設計者や実装者に詳細を確認しておきましょう
+- `.m-box-contact__info`には通常テキストモジュール・注釈モジュールを組み合わせたパターンとして反映しています。
+- `.m-box-contact`に以下のdata属性を付与することでカラム指定が可能
+    - `data-col`: SP時のカラム数（最大1カラム）
+    - `data-col-wide`: PC時のカラム数（1～3カラム）
+    - 指定しない場合: デフォルト100％
+</mml-description>
+<mml-snippet>
+
+<div class="m-box-contact">
+<div class="m-box-contact__body">
+<p class="m-box-contact__title">お問合せ先</p>
+<p class="m-box-contact__tel"><a href="tel:03-1234-5678" class="m-box-contact__link">03-1234-5678</a></p>
+<div class="m-box-contact__info">
+<p class="m-text">【受付時間】<br class="pc-hide">土日祝日及び年末年始を除く10：00～16：00</p>
+
+<ul class="m-list-note">
+<li class="m-list-note__item">
+<div class="m-list-note__symbol">※</div>
+<div class="m-list-note__content">照会内容の正確な把握のため、通話内容を録音させていただいております。</div>
+</li>
+</ul><!-- /.m-list-note -->
+</div>
+</div><!-- /.m-box-contact__body -->
+</div><!-- /.m-box-contact -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-box-contact" data-col="1" data-col-wide="3">
+<div class="m-box-contact__body">
+<p class="m-box-contact__title">お問合せ先A</p>
+<p class="m-box-contact__tel"><a href="tel:03-1234-5678" class="m-box-contact__link">03-1234-5678</a></p>
+</div><!-- /.m-box-contact__body -->
+
+<div class="m-box-contact__body">
+<p class="m-box-contact__title">お問合せ先B</p>
+<p class="m-box-contact__tel"><a href="tel:03-1234-5678" class="m-box-contact__link">03-1234-5678</a></p>
+</div><!-- /.m-box-contact__body -->
+
+<div class="m-box-contact__body">
+<p class="m-box-contact__title">お問合せ先C</p>
+<p class="m-box-contact__tel"><a href="tel:03-1234-5678" class="m-box-contact__link">03-1234-5678</a></p>
+</div><!-- /.m-box-contact__body -->
+</div><!-- /.m-box-contact -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-box-contact" data-col="1" data-col-wide="2">
+<div class="m-box-contact__body">
+<p class="m-box-contact__title">お問合せ先</p>
+<p class="m-box-contact__tel"><a href="tel:03-1234-5678" class="m-box-contact__link">03-1234-5678</a></p>
+</div><!-- /.m-box-contact__body -->
+
+<div class="m-box-contact__body">
+<p class="m-box-contact__title">お問合せ先</p>
+<p class="m-box-contact__tel"><a href="tel:03-1234-5678" class="m-box-contact__link">03-1234-5678</a></p>
+</div><!-- /.m-box-contact__body -->
+</div><!-- /.m-box-contact -->
+
+</mml-snippet>
+</mml-module>

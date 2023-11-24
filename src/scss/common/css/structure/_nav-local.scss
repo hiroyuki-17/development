@@ -1,0 +1,883 @@
+@charset "UTF-8";
+@use "../define/variable" as var;
+@use "../define/mixin" as *;
+@use "sass:math";
+@use "sass:map";
+
+// ローカルナビゲーション 下部（第4階層・第5階層回遊ナビゲーション）
+.str-nav-local {
+  background-color: var.$color-bg;
+
+  @include media-min {
+    background-color: var.$color-bg-02;
+    padding: 16px var.$content-padding-side;
+  }
+
+  &__btn {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: left;
+    color: var.$color-text;
+    background-color: var.$color-gray-04;
+    padding: 16px 46px 16px var.$content-padding-side;
+
+    &::after {
+      @include pseudo;
+
+      top: 0;
+      right: var.$content-padding-side;
+      bottom: 0;
+      margin: auto 0;
+      border-radius: 2px;
+      width: 20px;
+      height: 20px;
+      background-color: var.$color-gray-02;
+    }
+
+    @include media-min {
+      display: none;
+    }
+
+    > span {
+      &::before,
+      &::after {
+        @include pseudo;
+
+        top: 0;
+        right: var.$content-padding-side + 9px;
+        bottom: 0;
+        margin: auto;
+        width: 2px;
+        height: 12px;
+        background-color: #ffffff;
+        z-index: map.get(var.$z-index-map, "layer1");
+      }
+
+      &::after {
+        transform: rotate(90deg);
+      }
+    }
+
+    &[aria-expanded="true"] {
+      background-color: var.$color-bg;
+
+      &::after {
+        background-color: var.$color-green;
+      }
+
+      > span {
+        &::before {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+
+  &__close {
+    width: 100%;
+    padding: 18px var.$content-padding-side;
+    background-color: var.$color-bg;
+    color: var.$color-text;
+
+    @include media-min {
+      display: none;
+    }
+
+    > span {
+      @include media-max {
+        position: relative;
+        padding-right: 24px;
+      }
+
+      &::before,
+      &::after {
+        @include pseudo;
+
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+
+        @include media-min {
+          width: 10px;
+          height: 1px;
+          left: 0;
+          background-color: var.$color-black;
+        }
+
+        @include media-max {
+          right: 0;
+        }
+      }
+
+      &::before {
+        @include media-min {
+          transform: rotate(45deg);
+        }
+
+        @include media-max {
+          border-radius: 2px;
+          width: 16px;
+          height: 16px;
+          background-color: var.$color-green;
+        }
+      }
+
+      &::after {
+        @include media-min {
+          transform: rotate(-45deg);
+        }
+
+        @include media-max {
+          right: 3px;
+          width: 10px;
+          height: 2px;
+          background-color: #ffffff;
+        }
+      }
+    }
+  }
+
+  &__body {
+    max-width: var.$content-width;
+    margin: 0 auto;
+
+    @include on-js {
+      @include media-max {
+        transition: height var.$animation-duration var.$animation-function;
+        background-color: var.$color-bg;
+        overflow: hidden;
+
+        &:not(.is-open) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__inner {
+    padding: 17px var.$content-padding-side 15px;
+    background-color: var.$color-green-04;
+
+    // SP時の第5階層ナビゲーション入れ子構造調整
+    .str-nav-local-list {
+      position: relative;
+      background-color: #ffffff;
+      margin: 0 auto;
+      border-radius: 6px;
+
+      .str-nav-local-list {
+        &__link {
+          border-top-width: 1px;
+        }
+
+        &__item {
+          &:first-child {
+            .str-nav-local-list {
+              &__link {
+                border-top: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @include media-min {
+      display: none;
+    }
+  }
+
+  // .str-nav-local-list
+  &-list {
+    display: flex;
+    flex-direction: column;
+
+    @include media-min {
+      gap: 10px 32px;
+      flex-flow: row wrap;
+    }
+
+    &__link {
+      position: relative;
+      display: flex;
+      border-top: 2px solid var.$color-green-04;
+      color: var.$color-text;
+      padding: 16px 50px 16px 16px;
+
+      @include media-min {
+        padding: 0;
+        border: 0;
+
+        @include line-animation($height: 1px);
+      }
+
+      &.is-current {
+        font-weight: bold;
+      }
+
+      &::after {
+        @include pseudo;
+        @include create-arrow(9px, 9px, var.$color-green, right, 2px);
+
+        top: 0;
+        right: 33px;
+        bottom: 0;
+        margin: auto 0;
+
+        @include media-min {
+          display: none;
+        }
+      }
+    }
+
+    &__item {
+      &:last-child {
+        .str-nav-local-list {
+          &__link {
+            border-bottom: 2px solid var.$color-green-04;
+
+            @include media-min {
+              border: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // サブローカルナビ
+  &--sub {
+    @include media-max {
+      display: none;
+    }
+
+    @include media-min {
+      border-bottom: 1px solid var.$color-line;
+      background-color: #ffffff;
+    }
+
+    .str-nav-local {
+      &-list {
+        @include media-min {
+          overflow: hidden;
+          gap: 7px 32px;
+        }
+
+        &__link {
+          @include media-min {
+            font-size: 1.4rem;
+          }
+        }
+
+        &__item {
+          @include media-min {
+            position: relative;
+
+            &::before {
+              @include pseudo;
+
+              top: 0;
+              left: -16px;
+              width: 1px;
+              height: 100%;
+              background-color: var.$color-line;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// ローカルナビゲーション 下部（2・3階層回遊ナビゲーション）
+.str-nav-local-bottom {
+  background-color: var.$color-bg;
+  border-bottom: 2px solid var.$color-green;
+  padding: 40px var.$content-padding-side;
+
+  @include media-min {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  &__body {
+    max-width: var.$content-width;
+    margin: 0 auto;
+  }
+
+  // .str-nav-local-bottom-list
+  &-list {
+    &__link {
+      position: relative;
+      display: inline-block;
+      font-weight: bold;
+      padding-left: 24px;
+      font-size: 1.8rem;
+      color: var.$color-text;
+
+      @include line-animation($trantionPropertyArray: ("transform", "box-shadow", "border-color", "color"));
+
+      @include media-min {
+        font-size: 2rem;
+        padding-left: 0;
+        margin-left: 24px;
+      }
+
+      &::before {
+        @include pseudo;
+
+        top: 50%;
+        left: 0;
+        margin-top: math.div(16px, 2) * -1;
+        width: 16px;
+        height: 16px;
+        background-image: url("/common/img/icon_arrow01.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        transition: transform .3s var.$animation-function;
+
+        @include media-min {
+          left: -24px;
+        }
+      }
+
+      @include hover {
+        &::before {
+          transform: translateX(2px);
+        }
+      }
+    }
+
+    &--nest {
+      display: flex;
+      flex-direction: column;
+      margin-top: 18px;
+      gap: 12px;
+
+      @include media-min {
+        flex-flow: row wrap;
+        gap: 12px 10px;
+        margin-top: 24px;
+      }
+
+      .str-nav-local-bottom-list {
+        &__link {
+          display: flex;
+          flex-grow: 1;
+          align-items: center;
+          border-radius: 4px;
+          border: 2px solid transparent;
+          padding: 16px 33px 16px 16px;
+          background-color: #ffffff;
+          font-size: 1.4rem;
+          font-weight: normal;
+          box-shadow: 0 1px 2px rgba(#204a28, .12);
+          background-image: none;
+
+          @include media-min {
+            padding: 12px 31px 12px 24px;
+            margin-left: 0;
+          }
+
+          &::before {
+            display: none;
+          }
+
+          &::after {
+            @include pseudo;
+            @include create-arrow(9px, 9px, var.$color-green, right, 2px);
+
+            top: 0;
+            right: 15px;
+            bottom: 0;
+            margin: auto 0;
+            transition: right .3s var.$animation-function;
+          }
+
+          @include hover {
+            color: var.$color-text-green;
+            border-color: var.$color-green;
+            text-decoration: none;
+
+            &::after {
+              right: 12px;
+            }
+          }
+        }
+
+        &__item {
+          display: flex;
+          width: 100%;
+
+          @include media-min {
+            width: calc((100% - 30px) / 4);
+          }
+        }
+      }
+    }
+  }
+}
+
+// 特定配下固有のナビゲーション
+.str-nav-local-top {
+  position: relative;
+  background-color: var.$color-bg;
+
+  @include media-min {
+    padding: 0 var.$content-padding-side;
+  }
+
+  // .str-nav-local-top-list
+  &-list {
+    display: flex;
+    flex-direction: column;
+
+    @include on-js {
+      @include media-min {
+        flex-flow: row nowrap;
+        max-width: var.$content-width;
+        margin: 0 auto;
+      }
+    }
+
+    &__btn {
+      position: relative;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      height: 100%;
+      padding: 14px var.$content-padding-side;
+      color: var.$color-text;
+      background-color: transparent;
+      transition: background-color var.$animation-duration var.$animation-function;
+
+      // SPの時のボタン下線
+      &::before {
+        @include media-max {
+          @include pseudo;
+
+          right: 0;
+          bottom: 0;
+          left: 0;
+          margin: 0 auto;
+          width: calc(100% - #{var.$content-padding-side * 2});
+          height: 1px;
+          background-color: var.$color-green-04;
+        }
+      }
+
+      &::after {
+        @include pseudo;
+      }
+
+      @include media-min {
+        flex-direction: column-reverse;
+        justify-content: center;
+        padding: 22px 20px;
+
+        // 縦の点線部分を表現
+        &::after {
+          top: 0;
+          right: 0;
+          bottom: 0;
+          margin: auto 0;
+          width: 1px;
+          height: calc(100% - 44px);
+          background-size: 1px 6px;
+          background-image:
+            linear-gradient(
+              to bottom,
+              var.$color-green-03,
+              var.$color-green-03 3px,
+              transparent 3px,
+              transparent 6px
+            );
+          background-repeat: repeat-y;
+        }
+      }
+
+      @include on-js {
+        @include hover {
+          background-color: var.$color-green-04;
+        }
+
+        &[aria-expanded] {
+          position: relative;
+
+          &::after {
+            @include media-max {
+              top: 0;
+              right: var.$content-padding-side;
+              bottom: 0;
+              margin: auto 0;
+              border-radius: 2px;
+              width: 20px;
+              height: 20px;
+              background-color: var.$color-green;
+            }
+          }
+
+          > span {
+            @include media-min {
+              position: relative;
+              padding-right: 18px;
+            }
+
+            &::before,
+            &::after {
+              @include pseudo;
+
+              top: 0;
+              right: var.$content-padding-side + 9px;
+              bottom: 0;
+              margin: auto;
+              width: 2px;
+              height: 12px;
+              background-color: #ffffff;
+              z-index: map.get(var.$z-index-map, "layer1");
+            }
+
+            &::before {
+              @include media-min {
+                display: none;
+              }
+            }
+
+            &::after {
+              transform: rotate(90deg);
+
+              @include media-min {
+                @include create-arrow(9px, 9px, var.$color-green, bottom, 2px);
+
+                top: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto 0;
+                background-color: transparent;
+                transition: transform var.$animation-duration var.$animation-function;
+              }
+            }
+          }
+
+          // 開閉時
+          &[aria-expanded="false"] {
+            > span {
+              &::before {
+                transform: rotate(0);
+              }
+            }
+          }
+
+          &[aria-expanded="true"] {
+            background-color: var.$color-green-04;
+
+            > span {
+              &::before {
+                transform: rotate(90deg);
+              }
+
+              &::after {
+                @include media-min {
+                  top: 6px;
+                  transform: rotate(-135deg);
+                }
+              }
+            }
+
+            + .str-nav-local-top-menu {
+              background-color: var.$color-green-04;
+            }
+          }
+        }
+      }
+
+      img {
+        @include media-max {
+          width: 34px;
+          height: 34px;
+        }
+      }
+    }
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+
+      @include media-min {
+        width: 100%;
+        flex-grow: 1;
+      }
+
+      @include on-js {
+        @include media-min {
+          flex-flow: column nowrap;
+        }
+
+        &:last-child {
+          .str-nav-local-top-list {
+            &__btn {
+              &::before {
+                @include media-max {
+                  display: none;
+                }
+              }
+
+              &::after {
+                @include media-min {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // .str-nav-local-top-menu
+  &-menu {
+    padding: 0 var.$content-padding-side;
+
+    // 開閉コンテンツ内の制御
+    @include on-js {
+      transition: height .3s ease;
+      overflow: hidden;
+
+      @include media-min {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: map.get(var.$z-index-map, "localnavMenu");
+        width: 100%;
+        height: auto;
+        background-color: var.$color-green-04;
+      }
+
+      &:not(.is-open) {
+        display: none;
+      }
+    }
+
+    &__close {
+      color: var.$color-text;
+      background-color: transparent;
+      padding: 16px 0;
+      font-size: 1.4rem;
+      transition: opacity var.$animation-duration var.$animation-function;
+
+      @include hover {
+        opacity: .5;
+      }
+
+      @include media-min {
+        position: relative;
+        margin-top: 16px;
+        padding: 0 0 0 14px;
+      }
+
+      > span {
+        @include media-max {
+          position: relative;
+          padding-right: 24px;
+        }
+
+        &::before,
+        &::after {
+          @include pseudo;
+
+          top: 0;
+          bottom: 0;
+          margin: auto 0;
+
+          @include media-min {
+            width: 10px;
+            height: 1px;
+            left: 0;
+            background-color: var.$color-black;
+          }
+
+          @include media-max {
+            right: 0;
+          }
+        }
+
+        &::before {
+          @include media-min {
+            transform: rotate(45deg);
+          }
+
+          @include media-max {
+            border-radius: 2px;
+            width: 16px;
+            height: 16px;
+            background-color: var.$color-green;
+          }
+        }
+
+        &::after {
+          @include media-min {
+            transform: rotate(-45deg);
+          }
+
+          @include media-max {
+            right: 3px;
+            width: 10px;
+            height: 2px;
+            background-color: #ffffff;
+          }
+        }
+      }
+    }
+
+    &__link {
+      position: relative;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      padding: 12px 27px 12px 16px;
+      color: var.$color-text;
+      transition:
+        color var.$animation-duration var.$animation-function,
+        background-color var.$animation-duration var.$animation-function;
+
+      @include media-min {
+        padding: 12px 32px 12px 16px;
+        border-radius: 4px;
+
+        &::before {
+          @include pseudo;
+
+          right: 0;
+          bottom: 0;
+          left: 0;
+          margin: 0 auto;
+          width: calc(100% - 20px);
+          height: 1px;
+          background-color: var.$color-line;
+        }
+      }
+
+      &::after {
+        @include pseudo;
+        @include create-arrow(9px, 9px, #397c46, right, 2px);
+
+        top: 0;
+        right: 17px;
+        bottom: 0;
+        margin: auto 0;
+        transition: right var.$animation-duration var.$animation-function;
+      }
+
+      @include hover {
+        color: var.$color-text-green;
+        background-color: var.$color-bg;
+
+        &::after {
+          right: 14px;
+        }
+      }
+
+      &--icon {
+        &::after {
+          display: none;
+        }
+      }
+    }
+
+    &__item {
+      display: flex;
+      border-bottom: 1px solid var.$color-line-02;
+
+      @include media-min(1024px) {
+        width: 25%;
+      }
+
+      @include media-min {
+        position: relative;
+        width: 33.3%;
+        border: 0;
+
+        // 縦の点線部分を表現
+        &::before {
+          @include pseudo;
+
+          top: 0;
+          right: 0;
+          bottom: 0;
+          margin: auto 0;
+          width: 1px;
+          height: calc(100% - 20px);
+          background-size: 1px 6px;
+          background-image:
+            linear-gradient(
+              to bottom,
+              var.$color-green-03,
+              var.$color-green-03 3px,
+              transparent 3px,
+              transparent 6px
+            );
+          background-repeat: repeat-y;
+        }
+
+        @include media-min(1024px) {
+          &:nth-child(4n) {
+            &::before {
+              display: none;
+            }
+          }
+        }
+
+        @include media-max(1023px) {
+          &:nth-child(3n) {
+            &::before {
+              display: none;
+            }
+          }
+        }
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      background-color: #ffffff;
+
+      @include media-max {
+        border-radius: 4px;
+      }
+
+      @include media-min {
+        flex-flow: row wrap;
+        padding: 24px 40px;
+
+        @include on-js {
+          padding: 24px 40px 32px;
+          border-radius: 6px;
+        }
+      }
+    }
+
+    &__inner {
+      @include on-js {
+        display: flex;
+        flex-direction: column;
+
+        @include media-min {
+          align-items: flex-end;
+          max-width: var.$content-width;
+          margin: 0 auto;
+          padding: 40px 0 16px;
+        }
+      }
+    }
+  }
+}

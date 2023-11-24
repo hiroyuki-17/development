@@ -6,9 +6,10 @@ html:
         - '**/node_modules/**'
         - '_dev/**'
         - '**/inc/**'
+        - '**/common/**'
 css:
     vnu: https://av.mitsue.com/
     ignore:
         - '**/node_modules/**'
         - '_dev/**'
-
+        - '**/common/**'

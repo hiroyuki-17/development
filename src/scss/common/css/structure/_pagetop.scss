@@ -1,0 +1,70 @@
+@charset "UTF-8";
+@use "../define/variable" as var;
+@use "../define/mixin" as *;
+@use "sass:map";
+
+html {
+  scroll-behavior: smooth;
+}
+
+.str-pagetop {
+  position: fixed;
+  bottom: 10px;
+  right: var.$content-padding-side;
+  z-index: map.get(var.$z-index-map, "pagetop");
+
+  @include media-min {
+    bottom: 40px;
+  }
+
+  &__btn {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 1px solid var.$color-green;
+    bottom: 0;
+    transition:
+      bottom var.$animation-duration var.$animation-function,
+      background-color var.$animation-duration var.$animation-function;
+
+    &::before,
+    &::after {
+      @include pseudo;
+
+      right: 0;
+      left: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    &::before {
+      top: 0;
+      width: 2px;
+      height: 16px;
+      background-color: var.$color-green;
+      z-index: 1;
+    }
+
+    &::after {
+      top: -6px;
+      width: 8px;
+      height: 8px;
+      transform: rotate(-45deg);
+      border-top: 2px solid var.$color-green;
+      border-right: 2px solid var.$color-green;
+    }
+
+    @include hover {
+      background-color: var.$color-bg;
+      bottom: 5px;
+    }
+  }
+
+  &__text {
+    @include visually-hidden;
+  }
+}

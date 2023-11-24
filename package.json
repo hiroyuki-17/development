@@ -1,9 +1,13 @@
 {
-  "name": "development_assets",
-  "version": "4.7.5",
+  "name": "development",
+  "version": "1.0.0",
   "type": "module",
   "engines": {
     "node": ">=18"
+  },
+  "volta": {
+    "node": "18.16.0",
+    "npm": "9.5.1"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development DEBUG_ENV=true run-p watch:* server",
@@ -28,49 +32,55 @@
     "vlint:css": "vlint --css",
     "vlint:ignore:html": "vlint --rebaseline",
     "vlint:ignore:css": "vlint --css --rebaseline",
+    "textlint:check": "textlint \"src/ejs/**/*.ejs\"",
+    "textlint:report": "textlint \"src/ejs/**/*.ejs\" -o ./report-textlint.json -f json",
     "prepare": "husky install"
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.mitsue.com/mos/assets.git"
+    "url": "https://gitlab.mitsue.com/jaccs/jaccs-corporate/renewal.git"
   },
   "license": "UNLICENSED",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@mitsue/eslint-config": "^4.1.0",
     "@mitsue/vlint": "^0.9.1",
-    "@typescript-eslint/eslint-plugin": "^6.5.0",
-    "@typescript-eslint/parser": "^6.5.0",
-    "autoprefixer": "^10.4.15",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "autoprefixer": "^10.4.14",
     "browser-sync": "^2.29.3",
     "chokidar": "^3.5.3",
     "connect-ssi": "^1.1.1",
     "cross-env": "^7.0.3",
-    "css-declaration-sorter": "^7.0.3",
+    "css-declaration-sorter": "^7.0.0",
     "cssnano": "^6.0.1",
-    "eslint": "^8.48.0",
+    "csv-parser": "^3.0.0",
+    "eslint": "^8.41.0",
     "fs-extra": "^11.1.1",
-    "gh-pages": "^6.0.0",
-    "glob": "^10.3.4",
+    "gh-pages": "^5.0.0",
+    "glob": "^10.2.6",
     "husky": "^8.0.3",
     "imagemin": "^8.0.1",
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-jpegtran": "^7.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^10.0.1",
-    "lint-staged": "^14.0.1",
+    "lint-staged": "^13.2.2",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.29",
+    "postcss": "^8.4.24",
     "postcss-cli": "^10.1.0",
     "postcss-header": "^3.0.3",
-    "postcss-sort-media-queries": "^5.2.0",
-    "sass": "^1.66.1",
-    "stylelint": "^15.10.3",
-    "stylelint-config-standard-scss": "^11.0.0",
-    "stylelint-scss": "^5.1.0",
-    "typescript": "^5.2.2"
+    "postcss-sort-media-queries": "^5.1.0",
+    "sass": "^1.62.1",
+    "stylelint": "^15.6.2",
+    "stylelint-config-standard-scss": "^9.0.0",
+    "stylelint-scss": "^5.0.0",
+    "textlint": "^13.3.3",
+    "textlint-rule-prh": "^5.3.0",
+    "typescript": "^5.0.4"
   },
   "dependencies": {
+    "@splidejs/splide": "^4.1.4",
     "normalize.css": "^8.0.1"
   },
   "lint-staged": {

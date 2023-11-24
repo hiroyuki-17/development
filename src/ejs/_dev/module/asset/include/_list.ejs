@@ -1,0 +1,626 @@
+<mml-module>
+<mml-title><h2>通常リスト</h2><span>.m-list</span></mml-title>
+<mml-description>
+- このクラスに関する説明はありません
+</mml-description>
+<mml-snippet>
+
+<ul class="m-list">
+<li class="m-list__item">リストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキスト</li>
+<li class="m-list__item">リストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキスト</li>
+<li class="m-list__item">リストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキスト</li>
+</ul><!-- /.m-list -->
+
+</mml-snippet>
+<mml-snippet>
+
+<ul class="m-list">
+<li class="m-list__item">リストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキスト
+<ul class="m-list">
+<li class="m-list__item">リストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキスト</li>
+<li class="m-list__item">リストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキスト</li>
+<li class="m-list__item">リストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキスト</li>
+</ul>
+</li>
+<li class="m-list__item">リストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキスト</li>
+<li class="m-list__item">リストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキストリストテキスト</li>
+</ul><!-- /.m-list -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>順序リスト</h2><span>.m-list-order</span></mml-title>
+<mml-description>
+- 順序に意味がある場合は、`ol`要素でマークアップします
+- **ステップ系で使用する場合は基本●入り数字を使用、現行の関係上意図的に変えたい場合のみ他のナンバリングを使用してください。**
+- 以下のModifierが用意されています
+    - `.m-list-order__symbol--circle`: 数字部分のデザインをサークルへ
+    - `.m-list-order__symbol--brackets`: 数字部分のデザインを括弧付きへ
+    - `.m-list-order__symbol--dots`: 数字部分のデザインをドット付きへ
+</mml-description>
+<mml-snippet>
+
+<ul class="m-list-order">
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--circle">1</div>
+<div class="m-list-order__content">数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--circle">2</div>
+<div class="m-list-order__content">数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--circle">3</div>
+<div class="m-list-order__content">数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--circle">99</div>
+<div class="m-list-order__content">数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+</ul><!-- /.m-list-order -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<ul class="m-list-order">
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--circle">1</div>
+<div class="m-list-order__content"><p class="m-list-order__title">数字つきリストタイトル</p>数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--circle">2</div>
+<div class="m-list-order__content"><p class="m-list-order__title">数字つきリストタイトル</p>数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--circle">3</div>
+<div class="m-list-order__content"><p class="m-list-order__title">数字つきリストタイトル</p>数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--circle">99</div>
+<div class="m-list-order__content"><p class="m-list-order__title">数字つきリストタイトル</p>数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+</ul><!-- /.m-list-order -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<ul class="m-list-order">
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--brackets">1</div>
+<div class="m-list-order__content">数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--brackets">2</div>
+<div class="m-list-order__content">数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--brackets">3</div>
+<div class="m-list-order__content">数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--brackets">99</div>
+<div class="m-list-order__content">数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+</ul><!-- /.m-list-order -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<ul class="m-list-order">
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--dots">1</div>
+<div class="m-list-order__content">数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--dots">2</div>
+<div class="m-list-order__content">数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--dots">3</div>
+<div class="m-list-order__content">数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+<li class="m-list-order__item">
+<div class="m-list-order__symbol m-list-order__symbol--dots">99</div>
+<div class="m-list-order__content">数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト数字付きリスト</div>
+</li>
+</ul><!-- /.m-list-order -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>フローリスト（特殊） ※順序リスト（大）</h2><span>.m-list-order-flow</span></mml-title>
+<mml-description>
+- **指示が無い限り使用は控えてください**
+</mml-description>
+<mml-snippet>
+
+<ol class="m-list-order-flow">
+<li class="m-list-order-flow__item">
+<p class="m-list-order-flow__title"><span class="m-list-order-flow__symbol">1</span>見出しテキスト見出しテキスト見出しテキスト</p>
+<div class="m-list-order-flow__content">
+<p class="m-text">内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト</p>
+</div>
+</li><!-- /.m-list-order-flow__item -->
+
+<li class="m-list-order-flow__item">
+<p class="m-list-order-flow__title"><span class="m-list-order-flow__symbol">2</span>見出しテキスト見出しテキスト見出しテキスト</p>
+<div class="m-list-order-flow__content">
+<p class="m-text">内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト内容テキスト</p>
+</div>
+</li><!-- /.m-list-order-flow__item -->
+</ol><!-- /.m-list-order-flow -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>順序リスト（年表）</h2><span>.m-list-order-history</span></mml-title>
+<mml-description>
+- このクラスに関する説明はありません
+</mml-description>
+<mml-snippet>
+
+<div class="m-list-order-history">
+<ol class="m-list-order-history__body">
+<li class="m-list-order-history__item">
+<p class="m-list-order-history__date">2021.04.01</p>
+<div class="m-list-order-history__content">
+<p class="m-list-order-history__title">見出しテキスト見出しテキスト見出しテキスト</p>
+
+<div class="m-list-order-history__box">
+<dl class="m-list-def">
+<div class="m-list-def__body">
+<dt class="m-list-def__title">定義リストタイトル定義リストタイトル</dt>
+<dd class="m-list-def__content">定義リストテキスト定義リストテキスト定義リストテキスト</dd>
+</div><!-- /.m-list-def__body -->
+</dl><!-- /.m-list-def -->
+
+<ul class="m-link-list">
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+</ul><!-- /.m-link-list -->
+</div><!-- /.m-list-order-history__box -->
+</div><!-- /.m-list-order-history__content -->
+</li>
+<li class="m-list-order-history__item">
+<p class="m-list-order-history__date">9999.12.31</p>
+<div class="m-list-order-history__content">
+<p class="m-list-order-history__title">見出しテキスト見出しテキスト見出しテキスト</p>
+
+<div class="m-list-order-history__box">
+<dl class="m-list-def">
+<div class="m-list-def__body">
+<dt class="m-list-def__title">定義リストタイトル定義リストタイトル</dt>
+<dd class="m-list-def__content">定義リストテキスト定義リストテキスト定義リストテキスト</dd>
+</div><!-- /.m-list-def__body -->
+</dl><!-- /.m-list-def -->
+
+<ul class="m-link-list">
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+</ul><!-- /.m-link-list -->
+</div><!-- /.m-list-order-history__box -->
+</div><!-- /.m-list-order-history__content -->
+</li>
+<li class="m-list-order-history__item">
+<p class="m-list-order-history__date">2021.04.01</p>
+<div class="m-list-order-history__content">
+<p class="m-list-order-history__title">見出しテキスト見出しテキスト見出しテキスト</p>
+
+<div class="m-list-order-history__box">
+<dl class="m-list-def">
+<div class="m-list-def__body">
+<dt class="m-list-def__title">定義リストタイトル定義リストタイトル</dt>
+<dd class="m-list-def__content">定義リストテキスト定義リストテキスト定義リストテキスト</dd>
+</div><!-- /.m-list-def__body -->
+</dl><!-- /.m-list-def -->
+
+<ul class="m-link-list">
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+</ul><!-- /.m-link-list -->
+</div><!-- /.m-list-order-history__box -->
+</div><!-- /.m-list-order-history__content -->
+</li>
+</ol><!-- /.m-list-order-history__body -->
+</div><!-- /.m-list-order-history -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-list-order-history js-show-more">
+<ol class="m-list-order-history__body">
+<li class="m-list-order-history__item">
+<p class="m-list-order-history__date">2021.04.01</p>
+<div class="m-list-order-history__content">
+<p class="m-list-order-history__title">見出しテキスト見出しテキスト見出しテキスト</p>
+
+<div class="m-list-order-history__box">
+<dl class="m-list-def">
+<div class="m-list-def__body">
+<dt class="m-list-def__title">定義リストタイトル定義リストタイトル</dt>
+<dd class="m-list-def__content">定義リストテキスト定義リストテキスト定義リストテキスト</dd>
+</div><!-- /.m-list-def__body -->
+</dl><!-- /.m-list-def -->
+
+<ul class="m-link-list">
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+</ul><!-- /.m-link-list -->
+</div><!-- /.m-list-order-history__box -->
+</div><!-- /.m-list-order-history__content -->
+</li>
+<li class="m-list-order-history__item">
+<p class="m-list-order-history__date">9999.12.31</p>
+<div class="m-list-order-history__content">
+<p class="m-list-order-history__title">見出しテキスト見出しテキスト見出しテキスト</p>
+
+<div class="m-list-order-history__box">
+<dl class="m-list-def">
+<div class="m-list-def__body">
+<dt class="m-list-def__title">定義リストタイトル定義リストタイトル</dt>
+<dd class="m-list-def__content">定義リストテキスト定義リストテキスト定義リストテキスト</dd>
+</div><!-- /.m-list-def__body -->
+</dl><!-- /.m-list-def -->
+
+<ul class="m-link-list">
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+</ul><!-- /.m-link-list -->
+</div><!-- /.m-list-order-history__box -->
+</div><!-- /.m-list-order-history__content -->
+</li>
+<li class="m-list-order-history__item">
+<p class="m-list-order-history__date">2021.04.01</p>
+<div class="m-list-order-history__content">
+<p class="m-list-order-history__title">見出しテキスト見出しテキスト見出しテキスト</p>
+
+<div class="m-list-order-history__box">
+<dl class="m-list-def">
+<div class="m-list-def__body">
+<dt class="m-list-def__title">定義リストタイトル定義リストタイトル</dt>
+<dd class="m-list-def__content">定義リストテキスト定義リストテキスト定義リストテキスト</dd>
+</div><!-- /.m-list-def__body -->
+</dl><!-- /.m-list-def -->
+
+<ul class="m-link-list">
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+</ul><!-- /.m-link-list -->
+</div><!-- /.m-list-order-history__box -->
+</div><!-- /.m-list-order-history__content -->
+</li>
+<li class="m-list-order-history__item js-show-more-target">
+<p class="m-list-order-history__date">2021.04.01</p>
+<div class="m-list-order-history__content">
+<p class="m-list-order-history__title">見出しテキスト見出しテキスト見出しテキスト</p>
+
+<div class="m-list-order-history__box">
+<dl class="m-list-def">
+<div class="m-list-def__body">
+<dt class="m-list-def__title">定義リストタイトル定義リストタイトル</dt>
+<dd class="m-list-def__content">定義リストテキスト定義リストテキスト定義リストテキスト</dd>
+</div><!-- /.m-list-def__body -->
+</dl><!-- /.m-list-def -->
+
+<ul class="m-link-list">
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+</ul><!-- /.m-link-list -->
+</div><!-- /.m-list-order-history__box -->
+</div><!-- /.m-list-order-history__content -->
+</li>
+<li class="m-list-order-history__item js-show-more-target">
+<p class="m-list-order-history__date">2021.04.01</p>
+<div class="m-list-order-history__content">
+<p class="m-list-order-history__title">見出しテキスト見出しテキスト見出しテキスト</p>
+
+<div class="m-list-order-history__box">
+<dl class="m-list-def">
+<div class="m-list-def__body">
+<dt class="m-list-def__title">定義リストタイトル定義リストタイトル</dt>
+<dd class="m-list-def__content">定義リストテキスト定義リストテキスト定義リストテキスト</dd>
+</div><!-- /.m-list-def__body -->
+</dl><!-- /.m-list-def -->
+
+<ul class="m-link-list">
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+</ul><!-- /.m-link-list -->
+</div><!-- /.m-list-order-history__box -->
+</div><!-- /.m-list-order-history__content -->
+</li>
+<li class="m-list-order-history__item js-show-more-target">
+<p class="m-list-order-history__date">2021.04.01</p>
+<div class="m-list-order-history__content">
+<p class="m-list-order-history__title">見出しテキスト見出しテキスト見出しテキスト</p>
+
+<div class="m-list-order-history__box">
+<dl class="m-list-def">
+<div class="m-list-def__body">
+<dt class="m-list-def__title">定義リストタイトル定義リストタイトル</dt>
+<dd class="m-list-def__content">定義リストテキスト定義リストテキスト定義リストテキスト</dd>
+</div><!-- /.m-list-def__body -->
+</dl><!-- /.m-list-def -->
+
+<ul class="m-link-list">
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+</ul><!-- /.m-link-list -->
+</div><!-- /.m-list-order-history__box -->
+</div><!-- /.m-list-order-history__content -->
+</li>
+<li class="m-list-order-history__item js-show-more-target">
+<p class="m-list-order-history__date">2021.04.01</p>
+<div class="m-list-order-history__content">
+<p class="m-list-order-history__title">見出しテキスト見出しテキスト見出しテキスト</p>
+
+<div class="m-list-order-history__box">
+<dl class="m-list-def">
+<div class="m-list-def__body">
+<dt class="m-list-def__title">定義リストタイトル定義リストタイトル</dt>
+<dd class="m-list-def__content">定義リストテキスト定義リストテキスト定義リストテキスト</dd>
+</div><!-- /.m-list-def__body -->
+</dl><!-- /.m-list-def -->
+
+<ul class="m-link-list">
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+<li class="m-link-list__item"><a href="___dummy___" class="m-link-list__link"><span class="m-link-list__text">並列リンク</span><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></a></li>
+</ul><!-- /.m-link-list -->
+</div><!-- /.m-list-order-history__box -->
+</div><!-- /.m-list-order-history__content -->
+</li>
+</ol><!-- /.m-list-order-history__body -->
+
+<button type="button" class="m-list-order-history__more js-show-more-btn"><span>もっと見る</span></button>
+</div><!-- /.m-list-order-history -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>注釈リスト</h2><span>.m-list-note</span></mml-title>
+<mml-description>
+- リニューアル後の注釈リストの反映ルールは以下に統一となりました
+    - 注釈表記は`※`（英語サイトは`*`）で統一
+</mml-description>
+<mml-snippet>
+
+<ul class="m-list-note">
+<li class="m-list-note__item">
+<div class="m-list-note__symbol">※</div>
+<div class="m-list-note__content">注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト</div>
+</li>
+<li class="m-list-note__item">
+<div class="m-list-note__symbol">※</div>
+<div class="m-list-note__content">注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト</div>
+</li>
+<li class="m-list-note__item">
+<div class="m-list-note__symbol">※</div>
+<div class="m-list-note__content">注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト</div>
+</li>
+</ul><!-- /.m-list-note -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<ul class="m-list-note">
+<li class="m-list-note__item">
+<div class="m-list-note__symbol">※1</div>
+<div class="m-list-note__content">注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト</div>
+</li>
+<li class="m-list-note__item">
+<div class="m-list-note__symbol">※2</div>
+<div class="m-list-note__content">注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト</div>
+</li>
+<li class="m-list-note__item">
+<div class="m-list-note__symbol">※3</div>
+<div class="m-list-note__content">注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト注釈テキスト</div>
+</li>
+</ul><!-- /.m-list-note -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<ul class="m-list-note">
+<li class="m-list-note__item">
+<div class="m-list-note__symbol">*</div>
+<div class="m-list-note__content">これは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リスト</div>
+</li>
+<li class="m-list-note__item">
+<div class="m-list-note__symbol">*</div>
+<div class="m-list-note__content">これは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リスト</div>
+</li>
+<li class="m-list-note__item">
+<div class="m-list-note__symbol">*</div>
+<div class="m-list-note__content">これは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リスト</div>
+</li>
+</ul><!-- /.m-list-note -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<ul class="m-list-note">
+<li class="m-list-note__item">
+<div class="m-list-note__symbol">*1</div>
+<div class="m-list-note__content">これは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リスト</div>
+</li>
+<li class="m-list-note__item">
+<div class="m-list-note__symbol">*2</div>
+<div class="m-list-note__content">これは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リスト</div>
+</li>
+<li class="m-list-note__item">
+<div class="m-list-note__symbol">*3</div>
+<div class="m-list-note__content">これは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リストこれは英語ページで使う注釈リスト</div>
+</li>
+</ul><!-- /.m-list-note -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>定義リスト</h2><span>.m-list-def</span></mml-title>
+<mml-description>
+- このクラスに関する説明はありません
+</mml-description>
+<mml-snippet>
+
+<dl class="m-list-def">
+<div class="m-list-def__body">
+<dt class="m-list-def__title">定義リストタイトル定義リストタイトル</dt>
+<dd class="m-list-def__content">定義リストテキスト定義リストテキスト定義リストテキスト</dd>
+</div><!-- /.m-list-def__body -->
+<div class="m-list-def__body">
+<dt class="m-list-def__title">定義リストタイトル定義リストタイトル定義リストタイトル定義リストタイトル定義リストタイトル定義リストタイトル定義リストタイトル定義リストタイトル定義リストタイトル定義リストタイトル</dt>
+<dd class="m-list-def__content">定義リストテキスト定義リストテキスト定義リストテキスト</dd>
+</div><!-- /.m-list-def__body -->
+<div class="m-list-def__body">
+<dt class="m-list-def__title">定義リストタイトル定義リストタイトル</dt>
+<dd class="m-list-def__content">定義リストテキスト定義リストテキスト定義リストテキスト</dd>
+</div><!-- /.m-list-def__body -->
+</dl><!-- /.m-list-def -->
+
+</mml-snippet>
+</mml-module>
+
+
+<mml-module>
+<mml-title><h2>ボックス型定義リスト</h2><span>.m-list-def-box</span></mml-title>
+<mml-description>
+- このクラスに関する説明はありません
+</mml-description>
+<mml-snippet>
+
+<dl class="m-list-def-box">
+<div class="m-list-def-box__body">
+<dt class="m-list-def-box__title">定義リストタイトル</dt>
+<dd class="m-list-def-box__content">コンテンツコンテンツ</dd>
+</div><!-- /.m-list-def-box__body -->
+
+<div class="m-list-def-box__body">
+<dt class="m-list-def-box__title">定義リストタイトル</dt>
+<dd class="m-list-def-box__content">コンテンツコンテンツ</dd>
+</div><!-- /.m-list-def-box__body -->
+</dl><!-- /.m-list-def-box -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<dl class="m-list-def-box">
+<div class="m-list-def-box__body">
+<dt class="m-list-def-box__title">定義リストタイトル</dt>
+<dd class="m-list-def-box__content">コンテンツコンテンツ</dd>
+</div><!-- /.m-list-def-box__body -->
+
+<div class="m-list-def-box__body">
+<dt class="m-list-def-box__title">定義リストタイトル</dt>
+<dd class="m-list-def-box__content">コンテンツコンテンツ</dd>
+</div><!-- /.m-list-def-box__body -->
+
+<div class="m-list-def-box__body">
+<dt class="m-list-def-box__title">定義リストタイトル</dt>
+<dd class="m-list-def-box__content">コンテンツコンテンツ</dd>
+</div><!-- /.m-list-def-box__body -->
+
+<div class="m-list-def-box__body">
+<dt class="m-list-def-box__title">定義リストタイトル</dt>
+<dd class="m-list-def-box__content">コンテンツコンテンツ</dd>
+</div><!-- /.m-list-def-box__body -->
+</dl><!-- /.m-list-def-box -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<dl class="m-list-def-box">
+<div class="m-list-def-box__body">
+<dt class="m-list-def-box__title">定義リストタイトル</dt>
+<dd class="m-list-def-box__content">コンテンツコンテンツ</dd>
+</div><!-- /.m-list-def-box__body -->
+
+<div class="m-list-def-box__body">
+<dt class="m-list-def-box__title">定義リストタイトル</dt>
+<dd class="m-list-def-box__content">コンテンツコンテンツ</dd>
+</div><!-- /.m-list-def-box__body -->
+
+<div class="m-list-def-box__body">
+<dt class="m-list-def-box__title">定義リストタイトル</dt>
+<dd class="m-list-def-box__content">コンテンツコンテンツ</dd>
+</div><!-- /.m-list-def-box__body -->
+
+<div class="m-list-def-box__body">
+<dt class="m-list-def-box__title">定義リストタイトル</dt>
+<dd class="m-list-def-box__content">コンテンツコンテンツ</dd>
+</div><!-- /.m-list-def-box__body -->
+</dl><!-- /.m-list-def-box -->
+
+<dl class="m-list-def-box">
+<div class="m-list-def-box__body">
+<dt class="m-list-def-box__title">定義リストタイトル</dt>
+<dd class="m-list-def-box__content">コンテンツコンテンツ</dd>
+</div><!-- /.m-list-def-box__body -->
+
+<div class="m-list-def-box__body">
+<dt class="m-list-def-box__title">定義リストタイトル</dt>
+<dd class="m-list-def-box__content">コンテンツコンテンツ</dd>
+</div><!-- /.m-list-def-box__body -->
+
+<div class="m-list-def-box__body">
+<dt class="m-list-def-box__title">定義リストタイトル</dt>
+<dd class="m-list-def-box__content">コンテンツコンテンツ</dd>
+</div><!-- /.m-list-def-box__body -->
+
+<div class="m-list-def-box__body">
+<dt class="m-list-def-box__title">定義リストタイトル</dt>
+<dd class="m-list-def-box__content">コンテンツコンテンツ</dd>
+</div><!-- /.m-list-def-box__body -->
+</dl><!-- /.m-list-def-box -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>ニュースリスト</h2><span>.m-list-news</span></mml-title>
+<mml-description>
+- 小見出しをマークアップする際見出しレベルは適宜変更してください
+</mml-description>
+<mml-snippet>
+
+<div class="m-list-news">
+<h3 class="m-list-news__title">小見出しがある場合（見出しレベルは状況に応じて変更）</h3>
+
+<ul class="m-list-news__list">
+<li class="m-list-news__item">
+<a href="__dummy__" class="m-list-news__text m-list-news__text--link">
+<div class="m-list-news-info"><time class="m-list-news-info__date" datetime="2022-04-13">2022.04.13</time><span class="m-list-news-info__tags">制度タグ</span><span class="m-list-news-info__tags m-list-news-info__tags--white">テーマタグ</span></div>
+テキストテキストテキストテキストテキストテキストテキストテキスト
+</a>
+</li>
+<li class="m-list-news__item">
+<a href="__dummy__" class="m-list-news__text m-list-news__text--link">
+<div class="m-list-news-info"><time class="m-list-news-info__date" datetime="2022-04-13">2022.04.13</time><span class="m-list-news-info__tags">制度タグ</span><span class="m-list-news-info__tags m-list-news-info__tags--white">テーマタグ</span></div>
+テキストテキストテキストテキストテキストテキストテキストテキスト
+</a>
+</li>
+<li class="m-list-news__item">
+<div class="m-list-news__text">
+<div class="m-list-news-info"><time class="m-list-news-info__date" datetime="2022-04-13">2022.04.13</time><span class="m-list-news-info__tags">制度タグ</span><span class="m-list-news-info__tags m-list-news-info__tags--white">テーマタグ</span></div>
+テキストテキストテキストテキストテキストテキスト
+</div>
+</li>
+</ul><!-- /.m-list-news__list -->
+</div><!-- /.m-list-news -->
+
+</mml-snippet>
+</mml-module>
+

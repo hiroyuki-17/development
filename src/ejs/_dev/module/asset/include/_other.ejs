@@ -1,0 +1,50 @@
+<mml-module>
+<mml-title><h2>ページャー</h2><span>.m-pager</span></mml-title>
+<mml-description>
+- ページネーションパーツです
+    - 数字のページリンクは5ページ分を常に表示するイメージです
+    - 数字のページリンクに設定されている`aria-label`の属性値テキストはページ数に応じて調整するものです
+    - 現在のページ数に該当するリンクへ`aria-current="true"`を必ず付与してください
+- 下のサンプルは、英語ページで使うことがあれば反映するパターンサンプルです
+</mml-description>
+<mml-snippet>
+
+<nav class="m-pager" aria-label="Pagination">
+<ol class="m-pager__body">
+<li class="m-pager__item"><a href="__dummy__"><span>前へ</span></a></li>
+<li class="m-pager__item">
+<span class="WCMpaged">
+<a href="__dummy__">1</a>
+<a href="__dummy__" class="current">2</a>
+<a href="__dummy__">3</a>
+<a href="__dummy__">4</a>
+<a href="__dummy__">5</a>
+</span>
+</li>
+<li class="m-pager__item"><a href="__dummy__"><span>次へ</span></a></li>
+</ol>
+</nav><!-- /.m-pager -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<nav class="m-pager" aria-label="Pagination">
+<ol class="m-pager__body">
+<li class="m-pager__item"><a href="__dummy__"><span>Prev</span></a></li>
+<li class="m-pager__item">
+<span class="WCMpaged">
+<a href="__dummy__">1</a>
+<a href="__dummy__" class="current">2</a>
+<a href="__dummy__">3</a>
+<a href="__dummy__">4</a>
+<a href="__dummy__">5</a>
+</span>
+</li>
+<li class="m-pager__item"><a href="__dummy__"><span>Next</span></a></li>
+</ol>
+</nav><!-- /.m-pager -->
+
+</mml-snippet>
+</mml-module>
+

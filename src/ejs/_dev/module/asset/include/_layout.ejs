@@ -1,0 +1,194 @@
+<mml-module>
+<mml-title><h2>画像レイアウト（単一）</h2><span>.m-lyt-media</span></mml-title>
+<mml-description>
+- 基本的に`img`要素には`width` / `height`属性を反映してください
+</mml-description>
+<mml-snippet>
+
+<div class="m-lyt-media">
+<div class="m-lyt-media__body">
+<img src="/_dev/asset/img/800x400.jpg" width="800" height="400" alt="__dummy__">
+<div class="m-lyt-media__caption">
+<div class="m-lyt-media__caption-body">
+<p>キャプションテキストキャプションテキストキャプションテキストキャプションテキストキャプションテキストキャプションテキストキャプションテキストキャプションテキストキャプションテキスト</p>
+</div>
+</div>
+</div><!-- /.m-lyt-media__body -->
+</div><!-- /.m-lyt-media -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-lyt-media">
+<div class="m-lyt-media__body">
+<picture>
+<source srcset="/_dev/asset/img/800x400.jpg" media="(max-width: 767px)">
+<img src="/_dev/asset/img/800x400.jpg" alt="__dummy__">
+</picture>
+<div class="m-lyt-media__caption">
+<div class="m-lyt-media__caption-body">
+<p>デバイス幅で画像を切り替える際はpicture要素を使用します</p>
+</div>
+</div>
+</div><!-- /.m-lyt-media__body -->
+</div><!-- /.m-lyt-media -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>画像レイアウト（左右テキストレイアウト）</h2><span>.m-lyt-media-content</span></mml-title>
+<mml-description>
+- 基本的に`img`要素には`width` / `height`属性を反映してください
+- 画像とコンテンツを左右にレイアウトするパーツです
+- 画像の位置を以下のModifierで変更できます（PCのみ）
+    - `.m-lyt-media-content--media-left` : 画像左レイアウト
+    - `.m-lyt-media-content--media-right` : 画像右レイアウト
+- 画像エリア部分は、最大50％以上は広がらないような設計になっています
+</mml-description>
+<mml-snippet>
+
+<div class="m-lyt-media-content m-lyt-media-content--media-left">
+<div class="m-lyt-media-content__content">
+<p class="m-text">ここに任意のモジュールが入る</p>
+</div><!-- /.m-lyt-media-content__content -->
+
+<div class="m-lyt-media-content__media">
+<img src="/_dev/asset/img/800x400.jpg" width="600" height="300" alt="__dummy__">
+<p class="m-lyt-media-content__caption">キャプションテキストキャプションテキストキャプションテキストキャプションテキストキャプションテキストキャプションテキスト</p>
+</div><!-- /.m-lyt-media-content__media -->
+</div><!-- /.m-lyt-media-content -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-lyt-media-content m-lyt-media-content--media-right">
+<div class="m-lyt-media-content__content">
+<p class="m-text">ここに任意のモジュールが入る</p>
+</div><!-- /.m-lyt-media-content__content -->
+
+<div class="m-lyt-media-content__media">
+<img src="/_dev/asset/img/800x400.jpg" width="600" height="300" alt="__dummy__">
+<p class="m-lyt-media-content__caption">キャプションテキスト</p>
+</div><!-- /.m-lyt-media-content__media -->
+</div><!-- /.m-lyt-media-content -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>カラムレイアウト</h2><span>.m-lyt-grid</span></mml-title>
+<mml-description>
+- `.m-lyt-grid`に以下の`data`属性値を付与することでカラム数を指定します
+    - `data-col` : SP時のカラム数（1 ~ 2）
+    - `data-col-wide` : PC時のカラム数（1 ~ 5）
+- `.m-lyt-grid__col`内には任意のモジュールなどが入る想定です
+</mml-description>
+<mml-snippet>
+
+<div class="m-lyt-grid" data-col="1" data-col-wide="2">
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+</div><!-- /..m-lyt-grid -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-lyt-grid" data-col="1" data-col-wide="3">
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+</div><!-- /..m-lyt-grid -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-lyt-grid" data-col="1" data-col-wide="4">
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+</div><!-- /..m-lyt-grid -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-lyt-grid" data-col="1" data-col-wide="5">
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+</div><!-- /..m-lyt-grid -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-lyt-grid" data-col="2" data-col-wide="5">
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+
+<div class="m-lyt-grid__col">
+カラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツカラムコンテンツ
+</div><!-- /.m-lyt-grid__col -->
+</div><!-- /..m-lyt-grid -->
+
+</mml-snippet>
+</mml-module>

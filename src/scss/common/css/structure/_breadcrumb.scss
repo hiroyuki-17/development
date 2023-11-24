@@ -1,0 +1,71 @@
+@charset "UTF-8";
+@use "../define/variable" as var;
+@use "../define/mixin" as *;
+
+.str-breadcrumb {
+  padding: 12px var.$content-padding-side;
+
+  &__link {
+    color: var.$color-text;
+    font-size: 1.2rem;
+
+    &[href] {
+      &::after {
+        @include pseudo;
+        @include create-arrow(6px, 6px, var.$color-text, right, 1px);
+
+        top: 2px;
+        right: -16px;
+        bottom: 0;
+        margin: auto 0;
+      }
+
+      @include hover {
+        text-decoration: underline;
+      }
+    }
+
+    &[aria-current] {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+  }
+
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 30px;
+
+    @include media-min {
+      max-width: var.$content-width;
+      margin: 0 auto;
+    }
+  }
+
+  &--top {
+    @include media-max {
+      display: none;
+    }
+  }
+
+  &--bottom {
+    border-top: 1px solid var.$color-line;
+
+    @include media-min {
+      display: none;
+    }
+
+    @at-root {
+      // 第2階層回遊ナビゲーションと隣接した際のスタイル調整
+      .str-nav-local-bottom + .str-breadcrumb {
+        border-top: none;
+      }
+    }
+  }
+}

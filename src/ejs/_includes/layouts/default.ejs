@@ -22,11 +22,25 @@ addJs: [
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= pageTitle -%> | サンプルサイト</title>
 <%- include('/common/meta') -%>
 <%- include('/common/link') -%>
-<%- include('/common/scripts') -%>
+<%- include('/common/script') -%>
 </head>
 <body>
+<!--#include virtual="/common/header.html"-->
+
+<%- include('/common/breadcrumb', {isBottom: false}) -%>
+
+<div class="str-section">
+<div class="str-section__inner">
 <%- content -%>
+</div><!-- /.str-section__inner -->
+</div><!-- /.str-section -->
+
+<%- include('/common/breadcrumb', {isBottom: true}) -%>
+<%- include('/common/pagetop') -%>
+
+<!--#include virtual="/common/footer.html"-->
 </body>
 </html>

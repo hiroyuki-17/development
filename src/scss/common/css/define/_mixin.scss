@@ -1,10 +1,21 @@
+@charset "UTF-8";
 @use "./variable" as var;
+@use "sass:list";
+@use "sass:math";
+@use "sass:string";
+
+// フォントサイズが大きい設定（拡大モード）になっている場合のスタイル指定
+@mixin style-mode-large {
+  html[class="font-large"] & {
+    @content;
+  }
+}
 
 // ホバー時のスタイルを指定する際に使用
 // -------------------------------------
 @mixin hover() {
   &:hover,
-  &:focus-visible,
+  &:focus,
   &:active {
     @content;
   }
@@ -67,6 +78,30 @@
   transform: rotate(45deg);
 }
 
+// 下線アニメーションを指定するmixin
+// -------------------------------------
+@mixin line-animation($color: var.$color-text, $height: 2px, $trantionPropertyArray: ()) {
+  $property: "background";
+  $max: list.length($trantionPropertyArray);
+
+  @if $max != 0 {
+    @for $i from 1 through $max {
+      // $property : property1, property2, ...
+      $property: $property + ", " + list.nth($trantionPropertyArray, $i);
+    }
+  }
+
+  background: linear-gradient($color, $color) 0 100% / 0 $height no-repeat;
+  transition-duration: var.$animation-duration;
+  transition-timing-function: var.$animation-function;
+  transition-property: #{$property};
+  text-decoration: none;
+
+  @include hover {
+    background-size: 100% $height;
+  }
+}
+
 // ボックス内の最初（上マージン）・最後の要素（下マージン）に対するマージンを削除
 // -------------------------------------
 @mixin reset-inner-gutter() {
@@ -80,7 +115,7 @@
 }
 
 @mixin reset-last-gutter() {
-  & > :last-child {
+  > :last-child {
     margin-bottom: 0;
   }
 }
@@ -121,82 +156,6 @@
   }
 }
 
-/// マルチカラムレイアウト生成(CSS Flex Boxベースでスタイリングします)
-/// マルチカラムの指定は親要素の以下のdata属性値から切り替える想定
-///      data-col : SP時のカラム
-/// data-col-wide : PC時のカラム
-/// @param {number} $colElementName カラム要素に該当するクラス名を指定します
-/// @param {number} $maxColumnWide 最大カラム数[デフォルト: 4]
-/// @param {number} $maxColumn 最大カラム数[デフォルト: 4]
-/// @param {number} $gapColumn 左右内側の間隔を指定 ※
-/// @param {number} $gapRow 上下内側の間隔を指定 ※
-/// @param {number} $gapColumnSp 左右内側の間隔を指定（SP） ※
-/// @param {number} $gapRowSp 上下内側の間隔を指定（SP） ※
-/// ※ 間隔の指定数値は最終的にpx表記の値になります
-@mixin create-multi-column-flex(
-  $colElementName,
-  $maxColumnWide: 4,
-  $maxColumn: 0,
-  $gapColumn: 0,
-  $gapRow: 0,
-  $gapColumnSp: 0,
-  $gapRowSp: 0
-) {
-  display: flex;
-  flex-wrap: wrap;
-
-  $gap-column: $gapColumn;
-  $gap-column-sp: $gapColumnSp;
-
-  // PC
-  @for $column from 1 through $maxColumnWide {
-    &[data-col-wide="#{$column}"] {
-      @include media-min {
-        @if $gapColumn == $gapRow {
-          gap: #{$gapRow}px;
-        } @else {
-          gap: #{$gapRow}px #{$gapColumn}px;
-        }
-
-        .#{$colElementName} {
-          @if $column == 1 {
-            width: 100%;
-          } @else {
-            $adjust: ($gapColumn * ($column - 1));
-
-            width: calc((100% - #{$adjust}px) / #{$column});
-          }
-        }
-      }
-    }
-  }
-
-  // SP
-  @if $maxColumn != 0 {
-    @for $column from 1 through $maxColumn {
-      &[data-col="#{$column}"] {
-        @include media-max {
-          @if $gapRowSp == $gapColumnSp {
-            gap: #{$gapRowSp}px;
-          } @else {
-            gap: #{$gapRowSp}px #{$gapColumnSp}px;
-          }
-
-          .#{$colElementName} {
-            @if $column == 1 {
-              width: 100%;
-            } @else {
-              $adjust: ($gapColumnSp * ($column - 1));
-
-              width: calc((100% - #{$adjust}px) / #{$column});
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
 /// マルチカラムレイアウト生成(CSS Grid Layoutベースでスタイリングします)
 /// マルチカラムの指定は親要素の以下のdata属性値から切り替える想定
 ///      data-col : SP時のカラム
@@ -233,6 +192,208 @@
             grid-template-columns: repeat($column, 1fr);
           }
         }
+      }
+    }
+  }
+}
+
+/// マルチカラムレイアウト生成(CSS Flex Boxベースでスタイリングします)
+/// マルチカラムの指定は親要素の以下のdata属性値から切り替える想定
+///      data-col : SP時のカラム
+/// data-col-wide : PC時のカラム
+/// @param {number} $colElementName カラム要素に該当するクラス名を指定します
+/// @param {number} $maxColumnWide 最大カラム数[デフォルト: 4]
+/// @param {number} $maxColumn 最大カラム数[デフォルト: 4]
+/// @param {number} $gapColumn 左右内側の間隔を指定 ※
+/// @param {number} $gapRow 上下内側の間隔を指定 ※
+/// @param {number} $gapColumnSp 左右内側の間隔を指定（SP） ※
+/// @param {number} $gapRowSp 上下内側の間隔を指定（SP） ※
+/// ※ 間隔の指定数値は最終的にpx表記の値になります
+@mixin create-multi-column-flex(
+  $colElementName,
+  $maxColumnWide: 4,
+  $maxColumn: 0,
+  $gapColumn: 0,
+  $gapRow: 0,
+  $gapColumnSp: 0,
+  $gapRowSp: 0
+) {
+  display: flex;
+  flex-wrap: wrap;
+
+  $gap-column: $gapColumn;
+  $gap-column-sp: $gapColumnSp;
+
+  // PC
+  @for $column from 1 through $maxColumnWide {
+    &[data-col-wide="#{$column}"] {
+      @include media-min {
+        @if $gapColumn == $gapRow {
+          gap: #{$gapRow}px;
+        } @else {
+          gap: #{$gapColumn}px #{$gapRow}px;
+        }
+
+        .#{$colElementName} {
+          @if $column == 1 {
+            width: 100%;
+          } @else {
+            $adjust: ($gapColumn * ($column - 1));
+
+            width: calc((100% - #{$adjust}px) / #{$column});
+          }
+        }
+      }
+    }
+  }
+
+  // SP
+  @if $maxColumn != 0 {
+    @for $column from 1 through $maxColumn {
+      &[data-col="#{$column}"] {
+        @include media-max {
+          @if $gapRowSp == $gapColumnSp {
+            gap: #{$gapRowSp}px;
+          } @else {
+            gap: #{$gapColumnSp}px #{$gapRowSp}px;
+          }
+
+          .#{$colElementName} {
+            @if $column == 1 {
+              width: 100%;
+            } @else {
+              $adjust: ($gapColumn * ($column - 1));
+
+              width: calc((100% - #{$adjust}px) / #{$column});
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// パーツの余白ルールを呼び出して反映する
+/// @param {string} $ruleType ルールタイプを指定する※
+// 詳しくはデザインxdの「00_余白定義」アートボードを参照
+// ※ ルールタイプで指定する種別
+//  → "h1", "h2", "h3", "h4", "h5", "L要素", "M要素", "S要素", "リード文"
+@mixin component-rule-gutter($ruleType) {
+  // 見出し要素毎のルール
+  @if $ruleType == "h1" {
+    & + * {
+      margin-top: 40px;
+
+      @include media-min {
+        margin-top: 64px;
+      }
+    }
+  }
+
+  @if $ruleType == "h2" {
+    margin-top: 40px;
+
+    @include media-min {
+      margin-top: 80px;
+    }
+
+    & + * {
+      margin-top: 24px;
+
+      @include media-min {
+        margin-top: 40px;
+      }
+    }
+
+    & + h3 {
+      margin-top: 32px;
+
+      @include media-min {
+        margin-top: 48px;
+      }
+    }
+  }
+
+  @if $ruleType == "h3" {
+    margin-top: 40px;
+
+    @include media-min {
+      margin-top: 72px;
+    }
+
+    & + * {
+      margin-top: 24px;
+
+      @include media-min {
+        margin-top: 32px;
+      }
+    }
+  }
+
+  @if $ruleType == "h4" {
+    margin-top: 32px;
+
+    @include media-min {
+      margin-top: 56px;
+    }
+
+    & + * {
+      margin-top: 24px;
+
+      @include media-min {
+        margin-top: 32px;
+      }
+    }
+  }
+
+  @if $ruleType == "h5" {
+    margin-top: 24px;
+
+    @include media-min {
+      margin-top: 48px;
+    }
+
+    & + * {
+      margin-top: 16px;
+
+      @include media-min {
+        margin-top: 24px;
+      }
+    }
+  }
+
+  // コンポーネント種別ごとのルール
+  @if $ruleType == "L要素" {
+    margin-top: 40px;
+
+    @include media-min {
+      margin-top: 72px;
+    }
+  }
+
+  @if $ruleType == "M要素" {
+    margin-top: 32px;
+
+    @include media-min {
+      margin-top: 56px;
+    }
+  }
+
+  @if $ruleType == "S要素" {
+    margin-top: 24px;
+
+    @include media-min {
+      margin-top: 32px;
+    }
+  }
+
+  // リード文
+  @if $ruleType == "リード文" {
+    & + * {
+      margin-top: 16px;
+
+      @include media-min {
+        margin-top: 24px;
       }
     }
   }

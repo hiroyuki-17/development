@@ -1,0 +1,29 @@
+@charset "UTF-8";
+@use "../define/variable" as var;
+@use "../define/mixin" as *;
+
+.str-section {
+  padding: 40px var.$content-padding-side;
+
+  @include media-min {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    flex-grow: 1;
+  }
+
+  &__inner {
+    max-width: var.$content-width;
+    margin: 0 auto;
+
+    @include reset-inner-gutter;
+
+    // コンテンツ幅 中
+    &--contents-middle {
+      max-width: var.$content-width-medium;
+    }
+  }
+
+  &--bg-green {
+    background-color: var.$color-bg;
+  }
+}

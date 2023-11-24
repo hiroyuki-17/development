@@ -1,0 +1,878 @@
+<%
+const flgH1 = typeof h1 === 'undefined' ? false : h1;
+-%>
+
+<!-- Header -->
+<header class="str-header">
+<div class="str-header__inner">
+<div class="str-header__top">
+
+<button type="button" class="str-header__btn-back"><span class="js-sp-btn-back-label str-header__btn-back-label">戻る</span></button>
+
+<div class="str-header__logo">
+<% if (flgH1 === true) { -%>
+<h1>
+<a href="/" class="str-header__logo-link">
+<img src="/common/img/logo.png" width="240" height="47" alt="サンプルサイト" class="str-header__logo-main">
+</a>
+</h1>
+<% } else {-%>
+<a href="/" class="str-header__logo-link">
+<img src="/common/img/logo.png" width="240" height="47" alt="サンプルサイト" class="str-header__logo-main">
+</a>
+<% } -%>
+</div><!-- /.str-header__logo -->
+
+<div class="str-header-subcontent--top">
+<ul class="str-header-subcontent-link">
+<li class="str-header-subcontent-link__item">
+<a href="/sitemap/" class="str-header-subcontent-link__link">サイトマップ</a>
+</li>
+<li class="str-header-subcontent-link__item str-header-subcontent-link__item--search">
+<a href="#header-search-area" class="str-header-subcontent-link__link str-header-subcontent-link__link--search js-header-search-trigger">検索</a>
+
+<div id="header-search-area" class="str-header-search js-header-search">
+<form action="__dummy__" method="post" class="str-header-search__content">
+<div class="str-header-search__field">
+<input type="text" placeholder="サイト内検索" title="サイト内検索" class="str-header-search__input js-header-search-input">
+<button type="submit" class="str-header-search__submit"><span>検索</span></button>
+</div>
+</form>
+</div><!-- /.str-header-search -->
+</li>
+<li class="str-header-subcontent-link__item str-header-subcontent-link__item--size">
+<p class="str-header-size__title">文字サイズ</p>
+<ul class="str-header-size-list">
+<li><button class="str-header-size-list__btn js-change-font-size-btn is-selected" type="button" data-style="medium">標準</button></li>
+<li><button class="str-header-size-list__btn js-change-font-size-btn" type="button" data-style="large">拡大</button></li>
+</ul>
+</li>
+<li class="str-header-subcontent-link__item str-header-subcontent-link__item--global">
+<a href="/en/" class="str-header-subcontent-link__link"><span>English</span></a>
+</li>
+</ul>
+</div><!-- /.str-header-subcontent -->
+
+<div class="str-header-subcontent--bottom">
+<ul class="str-header-subcontent-link">
+<li class="str-header-subcontent-link__item">
+<a href="/statistics/" class="str-header-subcontent-link__link">統計情報</a>
+</li>
+<li class="str-header-subcontent-link__item">
+<a href="https://faq.jasdec.com/" target="_blank" class="str-header-subcontent-link__link">よくあるご質問（FAQ）</a>
+</li>
+<li class="str-header-subcontent-link__item">
+<a href="/inquiry/" class="str-header-subcontent-link__link">お問合せ</a>
+</li>
+<li class="str-header-subcontent-link__item">
+<a href="/recruit/" class="str-header-subcontent-link__link">採用情報</a>
+</li>
+</ul>
+</div><!-- /.str-header-subcontent -->
+
+<div class="str-header__btn-gnav">
+<button type="button" class="str-header__btn-gnav-trigger js-header-sp-gnav-trigger"><span class="str-header__btn-gnav-text"><span class="js-header-sp-gnav-trigger-label str-header__btn-gnav-label">メニュー</span></span>
+</button>
+</div><!-- /.str-header__btn-gnav -->
+</div><!-- /.str-header__top -->
+</div><!-- /.str-header__inner -->
+
+<div id="js-header-sp-menu" class="str-header-main">
+<div class="str-header-body">
+
+<nav class="str-header-nav">
+<ul class="str-header-nav-list-top">
+<li class="str-header-nav-list-top__item">
+<button type="button" class="str-header-nav-list-top__btn js-header-menu-trigger">
+<span class="str-header-nav-list-top__btn-label str-header-nav-list-top__btn-label--icon1">制度について</span>
+</button>
+
+<div class="str-header-dropdown js-gnav-tab">
+<div class="str-header-dropdown-hdg">
+<div class="str-header-dropdown-hdg__inner">
+<a href="/system/" class="str-header-dropdown-hdg__link">制度について</a>
+</div>
+</div>
+<div class="str-header-dropdown__content" data-col="1" data-col-wide="2">
+<ul class="str-header-dropdown__list str-header-dropdown-tab js-gnav-tab-list">
+<li class="str-header-dropdown__list-item"><a href="#tab-01-01" class="str-header-dropdown__list-link js-gnav-tab-trigger is-current"><span>株式等振替制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-01-02" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>外国株券等保管振替決済制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-01-03" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>一般債振替制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-01-04" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>短期社債振替制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-01-05" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>投資信託振替制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-01-06" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>一般振替DVP制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-01-07" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>決済照合システム</span></a></li>
+</ul>
+
+<div class="str-header-dropdown-tab__content">
+<div id="tab-01-01" class="str-header-dropdown-tab__content-item js-gnav-tab-panel"  data-col="1" data-col-wide="3">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/system/less/" class="str-header-dropdown-tab__content-item-hdg__link">株式等振替制度</a>
+</div>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">株式振替制度とは</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/system/less/outline/" class="str-header-dropdown__list-link">制度概要</a></li>
+</ul>
+</li>
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">規則・業務処理要領</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/rule/less/" class="str-header-dropdown__list-link">規則・業務処理要領（株式等振替制度）</a></li>
+</ul>
+</li>
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">取扱銘柄情報</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/description/less/" class="str-header-dropdown__list-link">取扱銘柄情報（株式等振替制度）</a></li>
+</ul>
+</li>
+</ul>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">各種手続</p>
+
+<ul class="str-header-dropdown__list--couple">
+<li class="str-header-dropdown__list-item"><a href="/procedure/issuer/" class="str-header-dropdown__list-link">振替株式等の発行者（上場会社等）の手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/etf-issuer/" class="str-header-dropdown__list-link">ETF・JDRの発行者の手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/amis/" class="str-header-dropdown__list-link">口座管理機関等の手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/shareholders/" class="str-header-dropdown__list-link">株主・相続人の手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/certificate/" class="str-header-dropdown__list-link">証明書等の手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/it/" class="str-header-dropdown__list-link">システム関連</a></li>
+</ul>
+</li>
+</ul>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">関連情報</p>
+
+<ul class="str-header-dropdown__list--couple">
+<li class="str-header-dropdown__list-item"><a href="/system/business/" class="str-header-dropdown__list-link">諮問委員会等</a></li>
+<li class="str-header-dropdown__list-item"><a href="/system/less/data/" class="str-header-dropdown__list-link">資料コーナー</a></li>
+</ul>
+</li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-01-02" class="str-header-dropdown-tab__content-item js-gnav-tab-panel">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/system/foreign/" class="str-header-dropdown-tab__content-item-hdg__link">外国株券等保管振替決済制度</a>
+</div>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">外国株券等保管振替決済制度とは</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/system/foreign/outline/" class="str-header-dropdown__list-link">制度概要</a></li>
+</ul>
+</li>
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">規則・業務処理要領</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/rule/foreign/" class="str-header-dropdown__list-link">規則・業務処理要領（外国株券等保管振替決済制度）</a></li>
+</ul>
+</li>
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">取扱銘柄情報</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/description/foreign/" class="str-header-dropdown__list-link">取扱銘柄情報（外国株券等保管振替決済制度）</a></li>
+</ul>
+</li>
+</ul>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">各種手続</p>
+
+<ul class="str-header-dropdown__list--couple">
+<li class="str-header-dropdown__list-item"><a href="/procedure/amis/" class="str-header-dropdown__list-link">口座管理機関等の手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/it/" class="str-header-dropdown__list-link">システム関連</a></li>
+</ul>
+</li>
+</ul>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">関連情報</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/system/business/" class="str-header-dropdown__list-link">諮問委員会等</a></li>
+</ul>
+</li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-01-03" class="str-header-dropdown-tab__content-item js-gnav-tab-panel">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/system/sb/" class="str-header-dropdown-tab__content-item-hdg__link">一般債振替制度</a>
+</div>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">一般債振替制度とは</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/system/sb/outline/" class="str-header-dropdown__list-link">制度概要</a></li>
+</ul>
+</li>
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">規則・業務処理要領</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/rule/sb/" class="str-header-dropdown__list-link">規則・業務処理要領（一般債振替制度）</a></li>
+</ul>
+</li>
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">取扱銘柄情報</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/description/sb/sbmei.html" class="str-header-dropdown__list-link">取扱銘柄情報（一般債振替制度）</a></li>
+</ul>
+</li>
+</ul>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">各種手続</p>
+
+<ul class="str-header-dropdown__list--couple">
+<li class="str-header-dropdown__list-item"><a href="/procedure/amis/" class="str-header-dropdown__list-link">口座管理機関等の手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/certificate/" class="str-header-dropdown__list-link">証明書等の手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/it/" class="str-header-dropdown__list-link">システム関連</a></li>
+</ul>
+</li>
+</ul>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">関連情報</p>
+
+<ul class="str-header-dropdown__list--couple">
+<li class="str-header-dropdown__list-item"><a href="/system/business/" class="str-header-dropdown__list-link">諮問委員会等</a></li>
+<li class="str-header-dropdown__list-item"><a href="/system/sb/transmission_service/" class="str-header-dropdown__list-link">社債情報伝達サービス</a></li>
+<li class="str-header-dropdown__list-item"><a href="/system/sb/data/" class="str-header-dropdown__list-link">資料コーナー</a></li>
+</ul>
+</li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-01-04" class="str-header-dropdown-tab__content-item js-gnav-tab-panel">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/system/cp/" class="str-header-dropdown-tab__content-item-hdg__link">短期社債振替制度</a>
+</div>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">短期社債振替制度とは</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/system/cp/outline/" class="str-header-dropdown__list-link">制度概要</a></li>
+</ul>
+</li>
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">規則・業務処理要領</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/rule/cp/" class="str-header-dropdown__list-link">規則・業務処理要領（短期社債振替制度）</a></li>
+</ul>
+</li>
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">取扱銘柄情報</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/description/cp/cpmei.html" class="str-header-dropdown__list-link">取扱銘柄情報（短期社債振替制度）</a></li>
+</ul>
+</li>
+</ul>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">統計情報</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/statistics/cprate/cprate_page.html" class="str-header-dropdown__list-link">短期社債等平均発行レート</a></li>
+</ul>
+</li>
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">各種手続</p>
+
+<ul class="str-header-dropdown__list--couple">
+<li class="str-header-dropdown__list-item"><a href="/procedure/amis/" class="str-header-dropdown__list-link">口座管理機関等の手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/certificate/" class="str-header-dropdown__list-link">証明書等の手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/it/" class="str-header-dropdown__list-link">システム関連</a></li>
+</ul>
+</li>
+</ul>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">関連情報</p>
+
+<ul class="str-header-dropdown__list--couple">
+<li class="str-header-dropdown__list-item"><a href="/system/business/" class="str-header-dropdown__list-link">諮問委員会等</a></li>
+<li class="str-header-dropdown__list-item"><a href="/system/cp/data/" class="str-header-dropdown__list-link">資料コーナー</a></li>
+</ul>
+</li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-01-05" class="str-header-dropdown-tab__content-item js-gnav-tab-panel">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/system/fund/" class="str-header-dropdown-tab__content-item-hdg__link">投資信託振替制度</a>
+</div>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">投資信託振替制度とは</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/system/fund/outline/" class="str-header-dropdown__list-link">制度概要</a></li>
+</ul>
+</li>
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">規則・業務処理要領</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/rule/fund/" class="str-header-dropdown__list-link">規則・業務処理要領（投資信託振替制度）</a></li>
+</ul>
+</li>
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">取扱銘柄情報</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/description/fund/" class="str-header-dropdown__list-link">取扱銘柄情報（投資信託振替制度）</a></li>
+</ul>
+</li>
+</ul>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">各種手続</p>
+
+<ul class="str-header-dropdown__list--couple">
+<li class="str-header-dropdown__list-item"><a href="/procedure/amis/" class="str-header-dropdown__list-link">口座管理機関等の手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/certificate/" class="str-header-dropdown__list-link">証明書等の手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/it/" class="str-header-dropdown__list-link">システム関連</a></li>
+</ul>
+</li>
+</ul>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">関連情報</p>
+
+<ul class="str-header-dropdown__list--couple">
+<li class="str-header-dropdown__list-item"><a href="/system/business/" class="str-header-dropdown__list-link">諮問委員会等</a></li>
+<li class="str-header-dropdown__list-item"><a href="/system/fund/data/" class="str-header-dropdown__list-link">資料コーナー</a></li>
+</ul>
+</li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-01-06" class="str-header-dropdown-tab__content-item js-gnav-tab-panel">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/system/dvp/" class="str-header-dropdown-tab__content-item-hdg__link">一般振替DVP制度</a>
+</div>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">一般振替DVP制度とは</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/system/dvp/outline/" class="str-header-dropdown__list-link">制度概要</a></li>
+</ul>
+</li>
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">規則・業務処理要領</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/rule/dvp/" class="str-header-dropdown__list-link">規則・手数料（一般振替DVP制度）</a></li>
+</ul>
+</li>
+</ul>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">各種手続</p>
+
+<ul class="str-header-dropdown__list--couple">
+<li class="str-header-dropdown__list-item"><a href="/procedure/amis/" class="str-header-dropdown__list-link">口座管理機関等の手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/certificate/" class="str-header-dropdown__list-link">証明書等の手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/it/" class="str-header-dropdown__list-link">システム関連</a></li>
+</ul>
+</li>
+</ul>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">関連情報</p>
+
+<ul class="str-header-dropdown__list--couple">
+<li class="str-header-dropdown__list-item"><a href="/system/business/" class="str-header-dropdown__list-link">諮問委員会等</a></li>
+<li class="str-header-dropdown__list-item"><a href="/system/dvp/data/" class="str-header-dropdown__list-link">資料コーナー</a></li>
+</ul>
+</li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-01-07" class="str-header-dropdown-tab__content-item js-gnav-tab-panel">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/system/finance/" class="str-header-dropdown-tab__content-item-hdg__link">決済照合システム</a>
+</div>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">決済照合システムとは</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/system/finance/outline/" class="str-header-dropdown__list-link">概要</a></li>
+</ul>
+</li>
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">規則・業務処理要領</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/rule/finance/" class="str-header-dropdown__list-link">規則・手数料（決済照合システム）</a></li>
+</ul>
+</li>
+</ul>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">各種手続</p>
+
+<ul class="str-header-dropdown__list--couple">
+<li class="str-header-dropdown__list-item"><a href="/procedure/amis/" class="str-header-dropdown__list-link">口座管理機関等の手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/it/" class="str-header-dropdown__list-link">システム関連</a></li>
+</ul>
+</li>
+</ul>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">関連情報</p>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/system/business/" class="str-header-dropdown__list-link">諮問委員会等</a></li>
+</ul>
+</li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+</div><!-- /.str-header-dropdown-tab__content -->
+</div><!-- /.str-header-dropdown__content -->
+</div><!-- /.str-header-dropdown -->
+</li><!-- /.str-header-nav-list-top__item -->
+
+<li class="str-header-nav-list-top__item">
+<button type="button" class="str-header-nav-list-top__btn js-header-menu-trigger">
+<span class="str-header-nav-list-top__btn-label str-header-nav-list-top__btn-label--icon2">各種手続</span>
+</button>
+
+<div class="str-header-dropdown js-gnav-tab">
+<div class="str-header-dropdown-hdg">
+<div class="str-header-dropdown-hdg__inner">
+<a href="/procedure/" class="str-header-dropdown-hdg__link">各種手続</a>
+</div>
+</div>
+
+<div class="str-header-dropdown__content" data-col="1" data-col-wide="3">
+<ul class="str-header-dropdown__list str-header-dropdown-tab js-gnav-tab-list">
+<li class="str-header-dropdown__list-item"><a href="#tab-02-01" class="str-header-dropdown__list-link js-gnav-tab-trigger is-current"><span>振替株式等の発行者（上場会社等）の手続</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-02-02" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>ETF・JDRの発行者の手続</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-02-03" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>口座管理機関等の手続</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-02-04" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>株主・相続人の手続</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-02-05" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>証明書等の手続</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-02-06" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>システム関連</span></a></li>
+</ul>
+
+<div class="str-header-dropdown-tab__content">
+<div id="tab-02-01" class="str-header-dropdown-tab__content-item js-gnav-tab-panel" data-col-wide="1">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/procedure/issuer/" class="str-header-dropdown-tab__content-item-hdg__link">振替株式等の発行者（上場会社等）の手続</a>
+</div>
+
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="3">
+<li class="str-header-dropdown__list-item"><a href="/procedure/issuer/participation/" class="str-header-dropdown__list-link">制度参加手続（新規上場時）</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/issuer/notice/" class="str-header-dropdown__list-link">コーポレートアクション等に関する通知（新株発行、株式分割、届出事項変更など）</a></li>
+<li class="str-header-dropdown__list-item"><a href="/assets/download/ds/sonota/800500.docx" class="str-header-dropdown__list-link str-header-dropdown__list-link--icon">名義書換完了等通知書<span class="m-btn__icon"><svg class="m-icon m-icon--word" role="img" aria-label="Wordを開く"><use href="#icon-word"></use></svg></span></a></li>
+<li class="str-header-dropdown__list-item"><a href="/assets/download/ds/sonota/ST80-21.docx" class="str-header-dropdown__list-link str-header-dropdown__list-link--icon">情報提供請求に関する届出書<span class="m-btn__icon"><svg class="m-icon m-icon--word" role="img" aria-label="Wordを開く"><use href="#icon-word"></use></svg></span></a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/issuer/dividend/" class="str-header-dropdown__list-link">配当金関係</a></li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-02-02" class="str-header-dropdown-tab__content-item js-gnav-tab-panel" data-col-wide="1">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/procedure/etf-issuer/" class="str-header-dropdown-tab__content-item-hdg__link">ETF・JDRの発行者の手続</a>
+</div>
+
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="3">
+<li class="str-header-dropdown__list-item"><a href="/procedure/etf-issuer/participation/" class="str-header-dropdown__list-link">制度参加手続（初めて発行する場合）</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/etf-issuer/decision/" class="str-header-dropdown__list-link">決定事項等に関する通知（新規発行、約款等変更、受益者確定日設定など）</a></li>
+<li class="str-header-dropdown__list-item"><a href="/assets/download/ds/sonota/ST80-21.docx" class="str-header-dropdown__list-link str-header-dropdown__list-link--icon">情報提供請求に関する届出書<span class="m-btn__icon"><svg class="m-icon m-icon--word" role="img" aria-label="Wordを開く"><use href="#icon-word"></use></svg></span></a></li>
+<li class="str-header-dropdown__list-item"><a href="/assets/download/ds/sonota/ST06-10.docx" class="str-header-dropdown__list-link str-header-dropdown__list-link--icon">リコンサイル不一致連絡票（発行者用）<span class="m-btn__icon"><svg class="m-icon m-icon--word" role="img" aria-label="Wordを開く"><use href="#icon-word"></use></svg></span></a></li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-02-03" class="str-header-dropdown-tab__content-item js-gnav-tab-panel" data-col-wide="1">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/procedure/amis/" class="str-header-dropdown-tab__content-item-hdg__link">口座管理機関等の手続</a>
+</div>
+
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="3">
+<li class="str-header-dropdown__list-item"><a href="/procedure/amis/participation-change/" class="str-header-dropdown__list-link">制度参加・変更・脱退手続</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/amis/operation/" class="str-header-dropdown__list-link">運用に関する手続</a></li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-02-04" class="str-header-dropdown-tab__content-item js-gnav-tab-panel" data-col-wide="1">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/procedure/shareholders/" class="str-header-dropdown-tab__content-item-hdg__link">株主・相続人の手続</a>
+</div>
+
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="3">
+<li class="str-header-dropdown__list-item"><a href="/procedure/shareholders/disclosure/" class="str-header-dropdown__list-link">登録済加入者情報の開示請求</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/shareholders/request/" class="str-header-dropdown__list-link">機構名義失念株式に係る共同請求手続</a></li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-02-05" class="str-header-dropdown-tab__content-item js-gnav-tab-panel" data-col-wide="1">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/procedure/certificate/" class="str-header-dropdown-tab__content-item-hdg__link">証明書等の手続</a>
+</div>
+
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="3">
+<li class="str-header-dropdown__list-item"><a href="/procedure/certificate/balance/" class="str-header-dropdown__list-link">残高証明書等の請求及び交付方法等</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/certificate/principal-and-interest/" class="str-header-dropdown__list-link">元利金請求内容情報及び決済予定額情報の請求方法（株式等振替制度　新株予約権付社債用）</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/certificate/principal-and-interest-sb/" class="str-header-dropdown__list-link">元利金請求内容情報及び決済予定額情報の請求方法（一般債用）</a></li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-02-06" class="str-header-dropdown-tab__content-item js-gnav-tab-panel" data-col-wide="1">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/procedure/it/" class="str-header-dropdown-tab__content-item-hdg__link">システム関連</a>
+</div>
+
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="3">
+<li class="str-header-dropdown__list-item"><a href="/procedure/it/recruitment/" class="str-header-dropdown__list-link">新規制度参加等に係る募集について</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/it/participation/" class="str-header-dropdown__list-link">システム関連手続書類</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/it/agent/" class="str-header-dropdown__list-link">代行会社・計算会社一覧</a></li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+</div><!-- /.str-header-dropdown-tab__content -->
+</div><!-- /.str-header-dropdown__content -->
+</div><!-- /.str-header-dropdown -->
+</li><!-- /.str-header-nav-list-top__item -->
+
+<li class="str-header-nav-list-top__item">
+<button type="button" class="str-header-nav-list-top__btn js-header-menu-trigger">
+<span class="str-header-nav-list-top__btn-label str-header-nav-list-top__btn-label--icon3">規則・業務処理要領</span>
+</button>
+
+<div class="str-header-dropdown js-gnav-tab">
+<div class="str-header-dropdown-hdg">
+<div class="str-header-dropdown-hdg__inner">
+<a href="/rule/" class="str-header-dropdown-hdg__link">規則・業務処理要領</a>
+</div>
+</div>
+
+<div class="str-header-dropdown__content" data-col="1" data-col-wide="3">
+<ul class="str-header-dropdown__list str-header-dropdown-tab js-gnav-tab-list">
+<li class="str-header-dropdown__list-item"><a href="#tab-03-01" class="str-header-dropdown__list-link js-gnav-tab-trigger is-current"><span>株式等振替制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-03-02" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>外国株券等保管振替決済制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-03-03" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>一般債振替制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-03-04" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>短期社債振替制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-03-05" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>投資信託振替制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-03-06" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>一般振替DVP制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-03-07" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>決済照合システム</span></a></li>
+</ul>
+
+<div class="str-header-dropdown-tab__content">
+<div id="tab-03-01" class="str-header-dropdown-tab__content-item js-gnav-tab-panel" data-col-wide="1">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/rule/less/" class="str-header-dropdown-tab__content-item-hdg__link">規則・業務処理要領（株式等振替制度）</a>
+</div>
+
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="3">
+<li class="str-header-dropdown__list-item"><a href="/rule/less/business-rules/" class="str-header-dropdown__list-link">業務規程・規則</a></li>
+<li class="str-header-dropdown__list-item"><a href="/rule/less/fee/" class="str-header-dropdown__list-link">手数料に関する規則</a></li>
+<li class="str-header-dropdown__list-item"><a href="/rule/less/management/" class="str-header-dropdown__list-link">業務処理要領</a></li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-03-02" class="str-header-dropdown-tab__content-item js-gnav-tab-panel" data-col-wide="1">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/rule/foreign/" class="str-header-dropdown-tab__content-item-hdg__link">規則・業務処理要領（外国株券等保管振替決済制度）</a>
+</div>
+
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="3">
+<li class="str-header-dropdown__list-item"><a href="/rule/foreign/fee/" class="str-header-dropdown__list-link">規則・手数料</a></li>
+<li class="str-header-dropdown__list-item"><a href="/rule/foreign/management/" class="str-header-dropdown__list-link">業務処理要領</a></li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-03-03" class="str-header-dropdown-tab__content-item js-gnav-tab-panel" data-col-wide="1">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/rule/sb/" class="str-header-dropdown-tab__content-item-hdg__link">規則・業務処理要領（一般債振替制度）</a>
+</div>
+
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="3">
+<li class="str-header-dropdown__list-item"><a href="/rule/sb/business-rules/" class="str-header-dropdown__list-link">業務規程・規則</a></li>
+<li class="str-header-dropdown__list-item"><a href="/rule/sb/fee/" class="str-header-dropdown__list-link">手数料に関する規則</a></li>
+<li class="str-header-dropdown__list-item"><a href="/rule/sb/management/" class="str-header-dropdown__list-link">業務処理要領</a></li>
+<li class="str-header-dropdown__list-item"><a href="/rule/sb/us/" class="str-header-dropdown__list-link">米国振替外債</a></li>
+<li class="str-header-dropdown__list-item"><a href="/assets/download/data/jouhoutsuuchi_kisoku.pdf" class="str-header-dropdown__list-link str-header-dropdown__list-link--icon">兼業規則（社債情報伝達サービス）<span class="m-btn__icon"><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></span></a></li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-03-04" class="str-header-dropdown-tab__content-item js-gnav-tab-panel" data-col-wide="1">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/rule/cp/" class="str-header-dropdown-tab__content-item-hdg__link">規則・業務処理要領（短期社債振替制度）</a>
+</div>
+
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="3">
+<li class="str-header-dropdown__list-item"><a href="/rule/cp/business-rules/" class="str-header-dropdown__list-link">業務規程・規則</a></li>
+<li class="str-header-dropdown__list-item"><a href="/rule/cp/fee/" class="str-header-dropdown__list-link">手数料に関する規則</a></li>
+<li class="str-header-dropdown__list-item"><a href="/rule/cp/management/" class="str-header-dropdown__list-link">業務処理要領</a></li>
+<li class="str-header-dropdown__list-item"><a href="/assets/download/data/rule_22.pdf" class="str-header-dropdown__list-link str-header-dropdown__list-link--icon">兼業規則（CP平均発行レート公表等）<span class="m-btn__icon"><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></span></a></li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-03-05" class="str-header-dropdown-tab__content-item js-gnav-tab-panel" data-col-wide="1">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/rule/fund/" class="str-header-dropdown-tab__content-item-hdg__link">規則・業務処理要領（投資信託振替制度）</a>
+</div>
+
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="3">
+<li class="str-header-dropdown__list-item"><a href="/rule/fund/business-rules/" class="str-header-dropdown__list-link">業務規程・規則</a></li>
+<li class="str-header-dropdown__list-item"><a href="/rule/fund/fee/" class="str-header-dropdown__list-link">手数料に関する規則</a></li>
+<li class="str-header-dropdown__list-item"><a href="/rule/fund/management/" class="str-header-dropdown__list-link">業務処理要領</a></li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-03-06" class="str-header-dropdown-tab__content-item js-gnav-tab-panel" data-col-wide="1">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/rule/dvp/" class="str-header-dropdown-tab__content-item-hdg__link">規則・手数料（一般振替DVP制度）</a>
+</div>
+
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="3">
+<li class="str-header-dropdown__list-item"><a href="/rule/dvp/whole/" class="str-header-dropdown__list-link">規則全文</a></li>
+<li class="str-header-dropdown__list-item"><a href="/rule/dvp/reform/" class="str-header-dropdown__list-link">改正の履歴</a></li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-03-07" class="str-header-dropdown-tab__content-item js-gnav-tab-panel" data-col-wide="1">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/rule/finance/" class="str-header-dropdown-tab__content-item-hdg__link">規則・手数料（決済照合システム）</a>
+</div>
+
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="3">
+<li class="str-header-dropdown__list-item"><a href="/rule/finance/fee/" class="str-header-dropdown__list-link">規則・手数料</a></li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+</div><!-- /.str-header-dropdown-tab__content -->
+</div><!-- /.str-header-dropdown__content -->
+</div><!-- /.str-header-dropdown -->
+</li><!-- /.str-header-nav-list-top__item -->
+
+<li class="str-header-nav-list-top__item">
+<button type="button" class="str-header-nav-list-top__btn js-header-menu-trigger">
+<span class="str-header-nav-list-top__btn-label str-header-nav-list-top__btn-label--icon4">制度参加者情報</span>
+</button>
+
+<div class="str-header-dropdown">
+<div class="str-header-dropdown-hdg">
+<div class="str-header-dropdown-hdg__inner">
+<a href="/system-participants/search_html.html" class="str-header-dropdown-hdg__link">制度参加者情報</a>
+</div>
+</div>
+
+<div class="str-header-dropdown__content" data-col="1" data-col-wide="1">
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="4">
+<li class="str-header-dropdown__list-item"><a href="/system-participants/transfer/" class="str-header-dropdown__list-link">制度参加者異動情報一覧</a></li>
+<li class="str-header-dropdown__list-item"><a href="/system-participants/number/list.html" class="str-header-dropdown__list-link">制度参加者数一覧</a></li>
+</ul>
+</div><!-- /.str-header-dropdown__content -->
+</div><!-- /.str-header-dropdown -->
+</li><!-- /.str-header-nav-list-top__item -->
+
+<li class="str-header-nav-list-top__item">
+<button type="button" class="str-header-nav-list-top__btn js-header-menu-trigger">
+<span class="str-header-nav-list-top__btn-label str-header-nav-list-top__btn-label--icon5">取扱銘柄情報</span>
+</button>
+
+<div class="str-header-dropdown js-gnav-tab">
+<div class="str-header-dropdown-hdg">
+<div class="str-header-dropdown-hdg__inner">
+<a href="/description/" class="str-header-dropdown-hdg__link">取扱銘柄情報</a>
+</div>
+</div>
+
+<div class="str-header-dropdown__content" data-col="1" data-col-wide="4">
+<ul class="str-header-dropdown__list str-header-dropdown-tab js-gnav-tab-list">
+<li class="str-header-dropdown__list-item"><a href="#tab-05-01" class="str-header-dropdown__list-link js-gnav-tab-trigger is-current"><span>株式等振替制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-05-02" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>外国株券等保管振替決済制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-05-03" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>一般債振替制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-05-04" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>短期社債振替制度</span></a></li>
+<li class="str-header-dropdown__list-item"><a href="#tab-05-05" class="str-header-dropdown__list-link js-gnav-tab-trigger"><span>投資信託振替制度</span></a></li>
+</ul>
+
+<div class="str-header-dropdown-tab__content">
+<div id="tab-05-01" class="str-header-dropdown-tab__content-item js-gnav-tab-panel">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/description/less/" class="str-header-dropdown-tab__content-item-hdg__link">取扱銘柄情報（株式等振替制度）</a>
+</div>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">取扱銘柄一覧</p>
+
+<ul class="str-header-dropdown__list--couple">
+<li class="str-header-dropdown__list-item"><a href="/assets/download/ds/meigara-yucho.xls" class="str-header-dropdown__list-link str-header-dropdown__list-link--icon">取扱銘柄一覧<span class="m-btn__icon"><svg class="m-icon m-icon--excel" role="img" aria-label="Excelを開く"><use href="#icon-excel"></use></svg></span></a></li>
+<li class="str-header-dropdown__list-item"><a href="/assets/download/ds/meigara-haishi.xls" class="str-header-dropdown__list-link str-header-dropdown__list-link--icon">取扱廃止銘柄一覧<span class="m-btn__icon"><svg class="m-icon m-icon--excel" role="img" aria-label="Excelを開く"><use href="#icon-excel"></use></svg></span></a></li>
+</ul>
+</li>
+</ul>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item">
+<p class="str-header-dropdown__list-hdg">銘柄公示情報</p>
+
+<ul class="str-header-dropdown__list--couple">
+<li class="str-header-dropdown__list-item"><a href="/description/less/publication_shares/publication_shares.html" class="str-header-dropdown__list-link">銘柄公示情報（振替株式等）</a></li>
+<li class="str-header-dropdown__list-item"><a href="/description/less/publication_etf/" class="str-header-dropdown__list-link">銘柄公示情報（ETF）</a></li>
+<li class="str-header-dropdown__list-item"><a href="/assets/download/fund/etfkoukoku.pdf" class="str-header-dropdown__list-link str-header-dropdown__list-link--icon">特例投資信託受益権（ETF）に係る発行者の同意の公告<span class="m-btn__icon"><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></span></a></li>
+<li class="str-header-dropdown__list-item"><a href="/description/less/publication_rights/publication_rights.html" class="str-header-dropdown__list-link">新株予約権・新投資口予約権行使請求の取次状況の公表</a></li>
+<li class="str-header-dropdown__list-item"><a href="/description/less/publication_fol/publication_fol.html" class="str-header-dropdown__list-link">外国人保有制限銘柄期中公表</a></li>
+</ul>
+</li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-05-02" class="str-header-dropdown-tab__content-item js-gnav-tab-panel">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/description/foreign/" class="str-header-dropdown-tab__content-item-hdg__link">取扱銘柄情報（外国株券等保管振替決済制度）</a>
+</div>
+
+<ul class="str-header-dropdown__list">
+<li class="str-header-dropdown__list-item"><a href="/assets/download/foreign/f_meigara_3.pdf" class="str-header-dropdown__list-link str-header-dropdown__list-link--icon">取扱銘柄情報（外国株券等保管振替決済制度）<span class="m-btn__icon"><svg class="m-icon m-icon--pdf" role="img" aria-label="PDFを開く"><use href="#icon-pdf"></use></svg></span></a></li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-05-03" class="str-header-dropdown-tab__content-item js-gnav-tab-panel">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/description/sb/sbmei.html" class="str-header-dropdown-tab__content-item-hdg__link">取扱銘柄情報（一般債振替制度）</a>
+</div>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-05-04" class="str-header-dropdown-tab__content-item js-gnav-tab-panel">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/description/cp/cpmei.html" class="str-header-dropdown-tab__content-item-hdg__link">取扱銘柄情報（短期社債振替制度）</a>
+</div>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+
+<div id="tab-05-05" class="str-header-dropdown-tab__content-item js-gnav-tab-panel" data-col-wide="1">
+<div class="str-header-dropdown-tab__content-item-hdg">
+<a href="/description/fund/" class="str-header-dropdown-tab__content-item-hdg__link">取扱銘柄情報（投資信託振替制度）</a>
+</div>
+
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="3">
+<li class="str-header-dropdown__list-item"><a href="/description/fund/itmei/itmei.html" class="str-header-dropdown__list-link">銘柄公示情報（投資信託受益権 公示銘柄）</a></li>
+<li class="str-header-dropdown__list-item"><a href="/description/fund/itsei/itsei.html" class="str-header-dropdown__list-link">限定開示銘柄</a></li>
+<li class="str-header-dropdown__list-item"><a href="/description/fund/agree/" class="str-header-dropdown__list-link">特例投資信託に係る発行者の同意の公告
+</a></li>
+</ul>
+</div><!-- /.str-header-dropdown-tab__content-item -->
+</div><!-- /.str-header-dropdown-tab__content -->
+</div><!-- /.str-header-dropdown__content -->
+</div><!-- /.str-header-dropdown -->
+</li><!-- /.str-header-nav-list-top__item -->
+
+<li class="str-header-nav-list-top__item">
+<button type="button" class="str-header-nav-list-top__btn js-header-menu-trigger">
+<span class="str-header-nav-list-top__btn-label str-header-nav-list-top__btn-label--icon6">一般投資家の皆様へ</span>
+</button>
+
+<div class="str-header-dropdown">
+<div class="str-header-dropdown-hdg">
+<div class="str-header-dropdown-hdg__inner">
+<a href="/investor/" class="str-header-dropdown-hdg__link">一般投資家の皆様へ</a>
+</div>
+</div>
+
+<div class="str-header-dropdown__content" data-col="1" data-col-wide="1">
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="4">
+<li class="str-header-dropdown__list-item"><a href="/system/less/outline/" class="str-header-dropdown__list-link">株式等振替制度とは</a></li>
+<li class="str-header-dropdown__list-item"><a href="/system/less/outline/organization/" class="str-header-dropdown__list-link">株式等振替制度の仕組み</a></li>
+<li class="str-header-dropdown__list-item"><a href="/system/less/data/investor/" class="str-header-dropdown__list-link">一般投資家向け資料</a></li>
+<li class="str-header-dropdown__list-item"><a href="/procedure/shareholders/disclosure/" class="str-header-dropdown__list-link">登録済加入者情報の開示請求</a></li>
+</ul>
+</div><!-- /.str-header-dropdown__content -->
+</div><!-- /.str-header-dropdown -->
+</li><!-- /.str-header-nav-list-top__item -->
+
+<li class="str-header-nav-list-top__item">
+<button type="button" class="str-header-nav-list-top__btn js-header-menu-trigger">
+<span class="str-header-nav-list-top__btn-label str-header-nav-list-top__btn-label--icon7">サンプルサイト<span class="disp-ib">について</span></span>
+</button>
+
+<div class="str-header-dropdown">
+<div class="str-header-dropdown-hdg">
+<div class="str-header-dropdown-hdg__inner">
+<a href="/about/" class="str-header-dropdown-hdg__link">サンプルサイトについて</a>
+</div>
+</div>
+
+<div class="str-header-dropdown__content" data-col="1" data-col-wide="1">
+<ul class="str-header-dropdown__list" data-col="1" data-col-wide="4">
+<li class="str-header-dropdown__list-item"><a href="/about/business/" class="str-header-dropdown__list-link">サンプルサイトとは</a></li>
+<li class="str-header-dropdown__list-item"><a href="/about/office/" class="str-header-dropdown__list-link">会社情報</a></li>
+<li class="str-header-dropdown__list-item"><a href="/about/action/" class="str-header-dropdown__list-link">活動報告</a></li>
+<li class="str-header-dropdown__list-item"><a href="/about/security/" class="str-header-dropdown__list-link">リスク管理等への取組み</a></li>
+<li class="str-header-dropdown__list-item"><a href="/about/jdcc/" class="str-header-dropdown__list-link">子会社 ほふりクリアリング</a></li>
+<li class="str-header-dropdown__list-item"><a href="/about/link/" class="str-header-dropdown__list-link">関連組織</a></li>
+</ul>
+</div><!-- /.str-header-dropdown__content -->
+</div><!-- /.str-header-dropdown -->
+</li><!-- /.str-header-nav-list-top__item -->
+</ul><!-- /.str-header-nav-list-top -->
+</nav><!-- /.str-header-nav -->
+
+<div class="str-header-subcontent-sp">
+<ul class="str-header-subcontent-link-sp-top">
+<li class="str-header-subcontent-link-sp-top__item">
+<a href="/statistics/" class="str-header-subcontent-link__link">統計情報</a>
+</li>
+<li class="str-header-subcontent-link-sp-top__item">
+<a href="https://faq.jasdec.com/" target="_blank" class="str-header-subcontent-link__link">よくあるご質問（FAQ）</a>
+</li>
+<li class="str-header-subcontent-link-sp-top__item">
+<a href="/inquiry/" class="str-header-subcontent-link__link">お問合せ</a>
+</li>
+<li class="str-header-subcontent-link-sp-top__item">
+<a href="/recruit/" class="str-header-subcontent-link__link">採用情報</a>
+</li>
+</ul>
+
+<ul class="str-header-subcontent-link-sp-bottom">
+<li class="str-header-subcontent-link-sp-bottom__item">
+<a href="/sitemap/" class="str-header-subcontent-link__link">サイトマップ</a>
+</li>
+<li class="str-header-subcontent-link-sp-bottom__item str-header-subcontent-link__item--global">
+<a href="/en/" class="str-header-subcontent-link__link"><span>English</span></a>
+</li>
+</ul>
+</div><!-- /.str-header-subcontent -->
+</div><!-- /.str-header-body -->
+</div><!-- /.str-header-main -->
+</header><!-- /.str-header -->
+<!-- Header -->

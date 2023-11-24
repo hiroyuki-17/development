@@ -1,0 +1,86 @@
+@charset "UTF-8";
+@use "../define/variable" as var;
+@use "../define/mixin" as *;
+
+// .m-icon : アイコンモジュール
+.m-icon {
+  margin-left: 8px;
+  vertical-align: middle;
+  width: 13px;
+  height: 15px;
+
+  &--blank {
+    width: 15px;
+    height: 14px;
+    fill: var.$color-gray-02;
+  }
+
+  &--zip {
+    width: 21px;
+    height: 14px;
+  }
+
+  @at-root {
+    .str-nav-local-top-menu {
+      &__link {
+        &--icon {
+          .m-icon {
+            position: absolute;
+            top: 0;
+            right: 14px;
+            bottom: 0;
+            margin: auto 0;
+          }
+        }
+      }
+    }
+
+    .m-btn {
+      // .m-btn__btn--icon : アイコン付きボタン調整用
+      &__btn--icon {
+        .m-icon {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          right: 8px;
+
+          &--zip {
+            right: 4px;
+          }
+        }
+      }
+
+      // .m-btn__btn--emphasis : 強調のアイコン付きボタン調整用
+      &__btn--emphasis {
+        .m-btn {
+          &__icon {
+            background-color: #ffffff;
+
+            .m-icon {
+              &--pdf {
+                right: 8px !important;
+              }
+
+              &--excel {
+                right: 8px !important;
+              }
+
+              &--zip {
+                right: 4px !important;
+              }
+            }
+          }
+        }
+
+        .m-icon {
+          right: 18px;
+
+          &--blank {
+            fill: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}

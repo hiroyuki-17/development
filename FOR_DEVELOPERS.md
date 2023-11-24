@@ -5,8 +5,8 @@
 
 |項目|バージョン|備考|
 |:--|:--|:--|
-|Node.js|18.13.0|必要に応じて、Nodeのバージョン切り替えを行ってください|
-|NPM|8.19.3|同上|
+|Node.js|18.16.0|必要に応じて、Nodeのバージョン切り替えを行ってください|
+|NPM|9.5.1|同上|
 |VSCode ※||※ 各自他のエディタを利用しても構いませんが、その場合後述の拡張機能を各自でインストールしてから案件の作業を進めてください|
 
 ### 拡張機能のインストール
@@ -18,7 +18,7 @@
 |[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)|JSのリンター拡張機能|
 |[StyleLint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)|CSSやSCSSのリンター拡張機能|
 |[EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)|エディターの設定をある程度統一させる機能を有効化する拡張機能|
-<!-- |[textlint](https://marketplace.visualstudio.com/items?itemName=taichi.vscode-textlint)|テキストのリンター機能| -->
+|[Textlint](https://marketplace.visualstudio.com/items?itemName=taichi.vscode-textlint)|テキストのリンター機能|
 
 ## 使用方法
 リポジトリクローン後、以下のコマンドを実行して開発環境をインストールします

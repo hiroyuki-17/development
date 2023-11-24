@@ -1,0 +1,346 @@
+<mml-module>
+<mml-title><h2>セレクトボックス</h2><span>.m-form-select</span></mml-title>
+<mml-description>
+- このクラスに関する説明はありません
+</mml-description>
+<mml-snippet>
+
+<div class="m-form-select">
+<select id="dummy-form-select-1" class="m-form-select__select">
+<option value="未選択">未選択</option>
+<option value="選択肢1">選択肢1</option>
+<option value="選択肢2">選択肢2</option>
+<option value="選択肢3">選択肢3</option>
+<option value="選択肢4">選択肢4</option>
+<option value="選択肢5">選択肢5</option>
+</select>
+</div><!-- /.m-form-select -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>テキスト入力フィールド</h2><span>.m-form-input</span></mml-title>
+<mml-description>
+- input要素について、`.m-form-input__input--error`を付与することでエラー用スタイルを適用できます
+    - 別途JS等による付与を想定しています
+</mml-description>
+<mml-snippet>
+
+<div class="m-form-input">
+<input type="text" id="dummy-form-input-1" placeholder="例：サンプル" class="m-form-input__input">
+</div><!-- /.m-form-input -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-form-input">
+<label for="dummy-form-input-6">ラベルテキストサンプル</label>
+<input type="text" id="dummy-form-input-6" placeholder="例：サンプル" class="m-form-input__input">
+</div><!-- /.m-form-input -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-form-input">
+<label for="dummy-form-input-7">ラベルテキストサンプル</label>
+<input type="text" id="dummy-form-input-7" placeholder="例：サンプル" class="m-form-input__input m-form-input__input--error">
+</div><!-- /.m-form-input -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>日付フィールド</h2><span>.m-form-input-date</span></mml-title>
+<mml-description>
+- `title`属性値は臨機応変に適切なものに調整または、不要であれば削除ください
+- input要素には`type="date"`のカレンダーUIデフォルトを採用しています
+    - 属性値など設定が必要な場合は適宜反映ください
+    - [input[type="date"] | MDN](https://developer.mozilla.org/ja/docs/Web/HTML/Element/input/date)
+    - デフォルトなので、各ブラウザによってカレンダーUIの振る舞いや見た目は異なります
+- input要素に`disabled`属性値が付与された際に非活性のルールセットが適用されます
+    - 別途JS等による付与を想定しています
+</mml-description>
+<mml-snippet>
+
+<div class="m-form-input-date">
+<label class="m-form-input-date__input-wrapper">
+<input type="date" max="9999-12-31" class="m-form-input-date__input" title="開始日を選択">
+</label>
+<span class="m-form-input-date__between">～</span>
+<label class="m-form-input-date__input-wrapper">
+<input type="date" max="9999-12-31" class="m-form-input-date__input" title="終了日を選択">
+</label>
+</div><!-- /.m-form-input-date -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-form-input-date">
+<label class="m-form-input-date__input-wrapper">
+<input type="date" max="9999-12-31" class="m-form-input-date__input" title="開始日を選択" disabled>
+</label>
+<span class="m-form-input-date__between">～</span>
+<label class="m-form-input-date__input-wrapper">
+<input type="date" max="9999-12-31" class="m-form-input-date__input" title="終了日を選択" disabled>
+</label>
+</div><!-- /.m-form-input-date -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>ラジオボタン</h2><span>.m-form-radio</span></mml-title>
+<mml-description>
+- 固定カラムレイアウトにする場合は以下のModifierおよびdata属性値を付与してください
+    - `.m-form-radio--grid`
+        - [data-col] : SPのカラム数（最大2カラム）
+        - [data-col-wide] : PCのカラム数（最大4カラム）
+</mml-description>
+<mml-snippet>
+
+<div class="m-form-radio">
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-1" id="dummy-form-radio-1" class="m-form-radio__radio">
+<label for="dummy-form-radio-1">選択肢</label>
+</div><!-- /.m-form-radio__item -->
+
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-1" id="dummy-form-radio-2" class="m-form-radio__radio">
+<label for="dummy-form-radio-2">選択肢選択肢選択肢選択肢</label>
+</div><!-- /.m-form-radio__item -->
+
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-1" id="dummy-form-radio-3" class="m-form-radio__radio">
+<label for="dummy-form-radio-3">選択肢選択肢選択肢選択肢</label>
+</div><!-- /.m-form-radio__item -->
+
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-1" id="dummy-form-radio-4" class="m-form-radio__radio">
+<label for="dummy-form-radio-4">選択肢選択肢</label>
+</div><!-- /.m-form-radio__item -->
+
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-1" id="dummy-form-radio-5" class="m-form-radio__radio">
+<label for="dummy-form-radio-5">選択肢選択肢選択肢選択肢</label>
+</div><!-- /.m-form-radio__item -->
+
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-1" id="dummy-form-radio-6" class="m-form-radio__radio">
+<label for="dummy-form-radio-6">選択肢選択肢</label>
+</div><!-- /.m-form-radio__item -->
+</div><!-- /.m-form-radio -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-form-radio m-form-radio--grid" data-col="2" data-col-wide="4">
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-1" id="dummy-form-radio-grid-1" class="m-form-radio__radio">
+<label for="dummy-form-radio-grid-1">選択肢</label>
+</div><!-- /.m-form-radio__item -->
+
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-1" id="dummy-form-radio-grid-2" class="m-form-radio__radio">
+<label for="dummy-form-radio-grid-2">選択肢選択肢選択肢選択肢</label>
+</div><!-- /.m-form-radio__item -->
+
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-1" id="dummy-form-radio-grid-3" class="m-form-radio__radio">
+<label for="dummy-form-radio-grid-3">選択肢選択肢選択肢選択肢</label>
+</div><!-- /.m-form-radio__item -->
+
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-1" id="dummy-form-radio-grid-4" class="m-form-radio__radio">
+<label for="dummy-form-radio-grid-4">選択肢選択肢</label>
+</div><!-- /.m-form-radio__item -->
+
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-1" id="dummy-form-radio-grid-5" class="m-form-radio__radio">
+<label for="dummy-form-radio-grid-5">選択肢選択肢選択肢選択肢</label>
+</div><!-- /.m-form-radio__item -->
+
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-1" id="dummy-form-radio-grid-6" class="m-form-radio__radio">
+<label for="dummy-form-radio-grid-6">選択肢選択肢</label>
+</div><!-- /.m-form-radio__item -->
+</div><!-- /.m-form-radio -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>チェックボックス</h2><span>.m-form-checkbox</span></mml-title>
+<mml-description>
+- 固定カラムレイアウトにする場合は以下のModifierおよびdata属性値を付与してください
+    - `.m-form-checkbox--grid`
+        - [data-col] : SPのカラム数（最大2カラム）
+        - [data-col-wide] : PCのカラム数（最大4カラム）
+</mml-description>
+<mml-snippet>
+
+<div class="m-form-checkbox">
+<div class="m-form-checkbox__item">
+<input type="checkbox" name="dummy-form-checkbox-group-1" id="dummy-form-checkbox-1" class="m-form-checkbox__checkbox">
+<label for="dummy-form-checkbox-1">選択肢選択肢選択肢選択肢</label>
+</div><!-- /.m-form-checkbox__item -->
+
+<div class="m-form-checkbox__item">
+<input type="checkbox" name="dummy-form-checkbox-group-1" id="dummy-form-checkbox-2" class="m-form-checkbox__checkbox">
+<label for="dummy-form-checkbox-2">選択肢選択肢</label>
+</div><!-- /.m-form-checkbox__item -->
+
+<div class="m-form-checkbox__item">
+<input type="checkbox" name="dummy-form-checkbox-group-1" id="dummy-form-checkbox-3" class="m-form-checkbox__checkbox">
+<label for="dummy-form-checkbox-3">選択肢選択肢選択肢選択肢</label>
+</div><!-- /.m-form-checkbox__item -->
+
+<div class="m-form-checkbox__item">
+<input type="checkbox" name="dummy-form-checkbox-group-1" id="dummy-form-checkbox-4" class="m-form-checkbox__checkbox">
+<label for="dummy-form-checkbox-4">選択肢</label>
+</div><!-- /.m-form-checkbox__item -->
+</div><!-- /.m-form-checkbox -->
+
+</mml-snippet>
+
+<mml-snippet>
+
+<div class="m-form-checkbox m-form-checkbox--grid" data-col="2" data-col-wide="4">
+<div class="m-form-checkbox__item">
+<input type="checkbox" name="dummy-form-checkbox-group-1" id="dummy-form-checkbox-grid-1" class="m-form-checkbox__checkbox">
+<label for="dummy-form-checkbox-grid-1">選択肢選択肢選択肢選択肢</label>
+</div><!-- /.m-form-checkbox__item -->
+
+<div class="m-form-checkbox__item">
+<input type="checkbox" name="dummy-form-checkbox-group-1" id="dummy-form-checkbox-grid-2" class="m-form-checkbox__checkbox">
+<label for="dummy-form-checkbox-grid-2">選択肢選択肢</label>
+</div><!-- /.m-form-checkbox__item -->
+
+<div class="m-form-checkbox__item">
+<input type="checkbox" name="dummy-form-checkbox-group-1" id="dummy-form-checkbox-grid-3" class="m-form-checkbox__checkbox">
+<label for="dummy-form-checkbox-grid-3">選択肢選択肢選択肢選択肢</label>
+</div><!-- /.m-form-checkbox__item -->
+
+<div class="m-form-checkbox__item">
+<input type="checkbox" name="dummy-form-checkbox-group-1" id="dummy-form-checkbox-grid-4" class="m-form-checkbox__checkbox">
+<label for="dummy-form-checkbox-grid-4">選択肢</label>
+</div><!-- /.m-form-checkbox__item -->
+</div><!-- /.m-form-checkbox -->
+
+</mml-snippet>
+</mml-module>
+
+<mml-module>
+<mml-title><h2>フォームレイアウト</h2><span>.m-form-lyt</span></mml-title>
+<mml-description>
+- `.m-form-lyt__title`の横幅は調整クラスでPC,SPを調整してください
+    - 詳しくは調整クラスのモジュールページを参照
+</mml-description>
+<mml-snippet>
+
+<div class="m-form-lyt">
+<dl class="m-form-lyt__body">
+<div class="m-form-lyt__item">
+<dt class="m-form-lyt__title w-20 w-sp-100"><label for="dummy-form-select-3" class="m-form-lyt__label">見出し</label></dt>
+<dd class="m-form-lyt__content">
+<div class="m-form-select">
+<select id="dummy-form-select-3" class="m-form-select__select">
+<option value="未選択">未選択</option>
+<option value="選択肢1">選択肢1</option>
+<option value="選択肢2">選択肢2</option>
+<option value="選択肢3">選択肢3</option>
+<option value="選択肢4">選択肢4</option>
+<option value="選択肢5">選択肢5</option>
+</select>
+</div><!-- /.m-form-select -->
+</dd>
+</div><!-- /.m-form-lyt__item -->
+
+<div class="m-form-lyt__item">
+<dt class="m-form-lyt__title w-20 w-sp-100"><span class="m-form-lyt__label">見出し</span></dt>
+<dd class="m-form-lyt__content">
+<div class="m-form-input">
+<label for="dummy-form-input-3">会社名（全角）</label>
+<input type="text" id="dummy-form-input-3" placeholder="例：サンプル" class="m-form-input__input">
+</div><!-- /.m-form-input -->
+
+<div class="m-form-input">
+<label for="dummy-form-input-4">カナ（全角）</label>
+<input type="text" id="dummy-form-input-4" placeholder="例：サンプル" class="m-form-input__input">
+</div><!-- /.m-form-input -->
+</dd>
+</div><!-- /.m-form-lyt__item -->
+
+<div class="m-form-lyt__item">
+<dt class="m-form-lyt__title w-20 w-sp-100"><span class="m-form-lyt__label">ラジオボタン</span></dt>
+<dd class="m-form-lyt__content">
+<div class="m-form-radio">
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-2" id="dummy-form-radio-2-1" class="m-form-radio__radio">
+<label for="dummy-form-radio-2-1">選択肢</label>
+</div><!-- /.m-form-radio__item -->
+
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-2" id="dummy-form-radio-2-2" class="m-form-radio__radio">
+<label for="dummy-form-radio-2-2">選択肢選択肢選択肢選択肢</label>
+</div><!-- /.m-form-radio__item -->
+
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-2" id="dummy-form-radio-2-3" class="m-form-radio__radio">
+<label for="dummy-form-radio-2-3">選択肢選択肢選択肢選択肢</label>
+</div><!-- /.m-form-radio__item -->
+
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-2" id="dummy-form-radio-2-4" class="m-form-radio__radio">
+<label for="dummy-form-radio-2-4">選択肢選択肢</label>
+</div><!-- /.m-form-radio__item -->
+
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-2" id="dummy-form-radio-2-5" class="m-form-radio__radio">
+<label for="dummy-form-radio-2-5">選択肢選択肢選択肢選択肢</label>
+</div><!-- /.m-form-radio__item -->
+
+<div class="m-form-radio__item">
+<input type="radio" name="dummy-form-radio-group-2" id="dummy-form-radio-2-6" class="m-form-radio__radio">
+<label for="dummy-form-radio-2-6">選択肢選択肢</label>
+</div><!-- /.m-form-radio__item -->
+</div><!-- /.m-form-radio -->
+</dd>
+</div><!-- /.m-form-lyt__item -->
+
+<div class="m-form-lyt__item">
+<dt class="m-form-lyt__title w-20 w-sp-100"><span class="m-form-lyt__label">チェックボックス</span></dt>
+<dd class="m-form-lyt__content">
+<div class="m-form-checkbox">
+<div class="m-form-checkbox__item">
+<input type="checkbox" name="dummy-form-checkbox-group-2" id="dummy-form-checkbox-2-1" class="m-form-checkbox__checkbox">
+<label for="dummy-form-checkbox-2-1">選択肢選択肢選択肢選択肢</label>
+</div><!-- /.m-form-checkbox__item -->
+
+<div class="m-form-checkbox__item">
+<input type="checkbox" name="dummy-form-checkbox-group-2" id="dummy-form-checkbox-2-2" class="m-form-checkbox__checkbox">
+<label for="dummy-form-checkbox-2-2">選択肢選択肢</label>
+</div><!-- /.m-form-checkbox__item -->
+
+<div class="m-form-checkbox__item">
+<input type="checkbox" name="dummy-form-checkbox-group-2" id="dummy-form-checkbox-2-3" class="m-form-checkbox__checkbox">
+<label for="dummy-form-checkbox-2-3">選択肢選択肢選択肢選択肢</label>
+</div><!-- /.m-form-checkbox__item -->
+
+<div class="m-form-checkbox__item">
+<input type="checkbox" name="dummy-form-checkbox-group-2" id="dummy-form-checkbox-2-4" class="m-form-checkbox__checkbox">
+<label for="dummy-form-checkbox-2-4">選択肢</label>
+</div><!-- /.m-form-checkbox__item -->
+</div><!-- /.m-form-checkbox -->
+</dd>
+</div><!-- /.m-form-lyt__item -->
+</dl><!-- /.m-form-lyt__body -->
+</div><!-- /.m-form-lyt -->
+
+</mml-snippet>
+</mml-module>
+

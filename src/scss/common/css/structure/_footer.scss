@@ -1,2 +1,73 @@
+@charset "UTF-8";
 @use "../define/variable" as var;
-@use "../define/mixin";
+@use "../define/mixin" as *;
+
+.str-footer {
+  padding: var.$content-padding-side;
+  background-color: var.$color-bg-02;
+
+  @include media-min {
+    min-height: 94px;
+    padding: 15px 40px 14px;
+  }
+
+  &__inner {
+    @include media-min {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+  }
+
+  .str-footer-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include media-max {
+      margin-top: 8px;
+
+      &__item {
+        width: 50%;
+      }
+
+      &__item:nth-child(n + 3) {
+        margin-top: 12px;
+      }
+    }
+
+    &__link {
+      font-size: 1.2rem;
+      color: var.$color-text;
+      padding: 0;
+      border: 0;
+      background: linear-gradient(#333333, #333333) 0 100%/0 1px no-repeat;
+      text-decoration: none;
+      transition-duration: var.$animation-duration;
+      transition-property: background;
+      transition-timing-function: var.$animation-function;
+
+      @include hover {
+        background-size: 100% 1px;
+      }
+    }
+
+    & + .str-footer-copyright {
+      margin-top: 20px;
+    }
+  }
+
+  .str-footer-copyright {
+    font-size: 1.2rem;
+    padding-right: 50px;
+  }
+
+  @include media-min {
+    .str-footer-list {
+      flex-direction: row;
+
+      &__item:nth-child(n + 2) {
+        margin-left: 24px;
+      }
+    }
+  }
+}

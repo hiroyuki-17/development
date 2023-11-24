@@ -1,0 +1,414 @@
+@charset "UTF-8";
+@use "../define/variable" as var;
+@use "../define/mixin" as *;
+@use "sass:map";
+
+.js-toggle-content {
+  overflow: hidden;
+  transition: height var.$animation-duration var.$animation-function;
+
+  @include on-js {
+    &:not(.is-open) {
+      display: none;
+    }
+  }
+}
+
+.m-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include component-rule-gutter("M要素");
+
+  @include media-min {
+    gap: 24px;
+  }
+
+  &__inner,
+  &__btn {
+    padding: 0 16px;
+
+    @include media-min {
+      padding: 0 40px;
+    }
+  }
+
+  &__title {
+    font-size: 1.6rem;
+
+    @include media-min {
+      font-size: 2.4rem;
+    }
+
+    @include reset-inner-gutter;
+  }
+
+  &__title-sub {
+    display: block;
+    font-weight: normal;
+    margin-top: 8px;
+  }
+
+  &__btn {
+    display: block;
+    width: 100%;
+    padding-top: 15px;
+    padding-right: 50px;
+    padding-bottom: 15px;
+    color: var.$color-text;
+    font-weight: bold;
+    text-align: left;
+    line-height: 1.4;
+    background-color: transparent;
+    background-color: var.$color-green-05;
+    transition: color var.$animation-duration var.$animation-function;
+
+    @include hover {
+      color: var.$color-text-green;
+    }
+
+    @include on-js {
+      background-color: #ffffff;
+    }
+
+    @include media-min {
+      padding-top: 24px;
+      padding-right: 78px;
+      padding-bottom: 24px;
+    }
+
+    &[aria-expanded] {
+      position: relative;
+
+      &::after {
+        @include pseudo;
+
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        right: 16px;
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        background-color: var.$color-green;
+
+        @include media-min {
+          right: 37px;
+          width: 32px;
+          height: 32px;
+        }
+      }
+
+      > span {
+        &::before,
+        &::after {
+          @include pseudo;
+
+          top: 0;
+          right: 22px;
+          bottom: 0;
+          margin: auto 0;
+          width: 12px;
+          height: 2px;
+          background-color: #ffffff;
+          z-index: map.get(var.$z-index-map, "layer1");
+          transition: transform var.$animation-duration var.$animation-function;
+
+          @include media-min {
+            right: 45px;
+            width: 16px;
+            height: 3px;
+          }
+        }
+      }
+    }
+
+    &[aria-expanded="true"] {
+      @include on-js {
+        background-color: var.$color-green-05;
+      }
+
+      > span {
+        &::before {
+          transform: rotate(0);
+        }
+      }
+    }
+
+    &[aria-expanded="false"] {
+      > span {
+        &::before {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+  }
+
+  &__close {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 0 16px;
+    color: var.$color-text;
+    background-color: transparent;
+
+    &::before {
+      @include pseudo;
+
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: calc(100% - 32px);
+      height: 1px;
+      background-color: var.$color-line;
+
+      @include media-min {
+        width: calc(100% - 80px);
+      }
+    }
+
+    > span {
+      position: relative;
+      padding-right: 26px;
+
+      @include media-min {
+        padding-right: 28px;
+      }
+
+      &::after {
+        @include pseudo;
+
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto 0;
+        width: 16px;
+        height: 16px;
+        border-radius: 2px;
+        background-color: var.$color-gray-02;
+
+        @include media-min {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      > span {
+        &::before {
+          @include pseudo;
+
+          top: 0;
+          right: 4px;
+          bottom: 0;
+          margin: auto 0;
+          width: 9px;
+          height: 2px;
+          background-color: #ffffff;
+          z-index: map.get(var.$z-index-map, "layer1");
+
+          @include media-min {
+            right: 4px;
+            width: 12px;
+            height: 2px;
+          }
+        }
+      }
+    }
+  }
+
+  &__inner {
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    @include reset-inner-gutter;
+
+    @include media-min {
+      padding-top: 40px;
+      padding-bottom: 32px;
+    }
+  }
+
+  &__item {
+    overflow: hidden;
+    border: 2px solid var.$color-green;
+    border-radius: 6px;
+
+    @include media-min {
+      border-width: 3px;
+    }
+
+    @include on-js {
+      position: relative;
+
+      &::before {
+        @include pseudo;
+
+        opacity: 0;
+      }
+
+      &:not(.is-open) {
+        border: 1px solid var.$color-line;
+        border-left-color: var.$color-green;
+        border-radius: 0 6px 6px 0;
+        background-color: #ffffff;
+
+        &::before {
+          opacity: 1;
+          top: 0;
+          left: 0;
+          width: 3px;
+          height: 100%;
+          background-color: var.$color-green;
+          z-index: map.get(var.$z-index-map, "layer1");
+        }
+      }
+    }
+  }
+
+  &--small,
+  &--extra-small {
+    gap: 12px;
+
+    @include media-min {
+      gap: 16px;
+    }
+
+    .m-toggle {
+      &__btn,
+      &__inner {
+        padding: 0 16px;
+
+        @include media-min {
+          padding: 0 24px;
+        }
+      }
+
+      &__title {
+        font-size: 1.6rem;
+      }
+
+      &__btn {
+        font-size: 1.6rem;
+        padding-top: 16px;
+        padding-right: 42px;
+        padding-bottom: 16px;
+
+        @include media-min {
+          padding-top: 30px;
+          padding-right: 54px;
+          padding-bottom: 30px;
+        }
+
+        &[aria-expanded] {
+          &::after {
+            right: 16px;
+            width: 16px;
+            height: 16px;
+
+            @include media-min {
+              right: 24px;
+              width: 20px;
+              height: 20px;
+            }
+
+            @include media-max {
+              border-radius: 2px;
+            }
+          }
+
+          > span {
+            &::before,
+            &::after {
+              right: 19px;
+              width: 10px;
+              height: 2px;
+
+              @include media-min {
+                right: 28px;
+                width: 12px;
+                height: 2px;
+              }
+            }
+          }
+        }
+      }
+
+      &__inner {
+        padding-top: 16px;
+        padding-bottom: 16px;
+
+        @include media-min {
+          padding-top: 32px;
+          padding-bottom: 32px;
+        }
+      }
+
+      &__item {
+        border-width: 1px;
+
+        @include on-js {
+          &::before {
+            display: none;
+          }
+
+          &:not(.is-open) {
+            border-radius: 6px;
+            border-left-color: var.$color-line;
+          }
+        }
+      }
+    }
+  }
+
+  &--extra-small {
+    .m-toggle {
+      &__title {
+        font-size: 1.4rem;
+
+        @include media-min {
+          font-size: 1.6rem;
+        }
+      }
+
+      &__btn {
+        font-size: 1.4rem;
+        padding-top: 16px;
+        padding-bottom: 16px;
+
+        @include media-min {
+          font-size: 1.6rem;
+          padding-top: 16px;
+          padding-bottom: 16px;
+        }
+      }
+    }
+  }
+
+  // .m-toggle--grid
+  &--grid {
+    display: grid;
+    gap: 16px 10px;
+    grid-template-rows: 1fr;
+    grid-template-columns: 100%;
+
+    @include media-min {
+      gap: 24px 40px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__col {
+      @include reset-inner-gutter;
+    }
+  }
+
+  & + & {
+    margin-top: 16px;
+
+    @include media-min {
+      margin-top: 24px;
+    }
+  }
+}

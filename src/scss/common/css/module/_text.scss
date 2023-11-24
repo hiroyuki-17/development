@@ -1,0 +1,39 @@
+@charset "UTF-8";
+@use "../define/variable" as var;
+@use "../define/mixin" as *;
+
+.m-text {
+  @include component-rule-gutter("S要素");
+
+  & + &,
+  & + .m-table,
+  & + .m-link-list {
+    margin-top: 10px;
+  }
+
+  strong {
+    color: var.$color-text-warning;
+  }
+
+  a {
+    color: var.$color-text-green;
+    text-decoration: underline;
+
+    @include hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.m-text-lead {
+  font-weight: bold;
+  line-height: 1.4;
+  font-size: 1.6rem;
+
+  @include media-min {
+    font-size: 2.2rem;
+  }
+
+  @include component-rule-gutter("S要素");
+  @include component-rule-gutter("リード文");
+}

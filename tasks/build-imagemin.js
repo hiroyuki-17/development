@@ -42,7 +42,7 @@ const imageminPluginSettings = [
  * 通常のimageminだと階層を保って画像を出力できないので、それを実現するパイプ関数。同時に非圧縮画像の出力も行います。
  *
  * @param {string} imageFilePath imageminでビルドする画像のパス
- * @returns {Promise<import('imagemin').Result[]>}
+ * @returns {Promise<Result[]>}
  * @see {@link https://github.com/imagemin/imagemin}
  */
 const pipeImagemin = (imageFilePath) => {

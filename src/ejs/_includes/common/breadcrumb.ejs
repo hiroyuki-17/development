@@ -1,0 +1,33 @@
+<%#
+パンくずを読み込む場合は、Frontmatterで以下のように指定を記述します。
+第1階層目は固定なので反映しません。第2階層以上から情報を列挙します。
+
+---
+breadcrumb: [
+    {
+        "title": "第2階層",
+        "path": "__dummy__"
+    },
+    {
+        "title": "第3階層",
+        "path": "__dummy__"
+    }
+]
+---
+-%>
+<%_
+// ※ パンくずのソースコードインデント、改行をすべて取って1行で表現する
+
+// Frontmatterの項目指定がされてきているかチェックする
+const isSpecified = typeof breadcrumb !== 'undefined';
+
+if (isSpecified) { -%>
+<%_ if (!isBottom) { -%><nav class="str-breadcrumb str-breadcrumb--top" aria-label="Breadcrumb"><%_ } else { -%><nav class="str-breadcrumb str-breadcrumb--bottom" aria-label="Breadcrumb"><%_ } -%><ol class="str-breadcrumb__body"><li class="str-breadcrumb__item"><a href="/" class="str-breadcrumb__link">トップページ</a></li>
+<%_
+const len = breadcrumb.length;
+
+for (var i = 0; i < len; i++) {
+const data = breadcrumb[i];
+_%>
+<%_ if (i !== (len - 1) ) {_%><li class="str-breadcrumb__item"><a href="<%= data.path %>" class="str-breadcrumb__link"><%= data.title %></a></li><%_ } else { _%><li class="str-breadcrumb__item"><a href="<%= data.path %>" class="str-breadcrumb__link" aria-current="true"><%= data.title %></a></li><%_ } _%><%_ } _%></nav><!-- /.str-breadcrumb__body --></ol><!-- /.str-breadcrumb -->
+<%_ } _%>

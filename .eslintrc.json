@@ -5,7 +5,7 @@
   },
   "rules": {
     // ↓ 案件の改行コードがCRLFの場合は下のルールコメントを解除
-    // "linebreak-style": [2, "windows"],
+    "linebreak-style": [2, "windows"],
     "lines-between-class-members": "off"
   },
   "overrides": [
@@ -24,7 +24,7 @@
       },
       "rules": {
         // ↓ 案件の改行コードがCRLFの場合は下のルールコメントを解除
-        // "linebreak-style": [2, "windows"],
+        "linebreak-style": [2, "windows"],
         "lines-between-class-members": "off"
       }
     }

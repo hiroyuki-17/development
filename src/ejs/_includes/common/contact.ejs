@@ -1,0 +1,9 @@
+<%#
+お問合せエリアのマークアップをEJSで生成する
+※電話番号以降に「その他情報」の記載を必要とする場合、別で生成する必要があります
+-%>
+
+<div class="m-box-contact__body">
+<p class="m-box-contact__title"><%- contactInformation.title %></p>
+<p class="m-box-contact__tel"><a href="tel:<%= contactInformation.tel %>" class="m-box-contact__link"><%= contactInformation.tel %></a></p>
+</div><!-- /.m-box-contact__body -->

@@ -1,13 +1,80 @@
+@charset "UTF-8";
+
+// ----- animation -----
+$animation-function: ease;
+$animation-duration: .2s;
+
 // ----- Break Point Settings -----
-$breakpoint-sp: 768px;
-$breakpoint-pc: 769px;
+$breakpoint-sp: 767px;
+$breakpoint-pc: 768px;
+
+// ----- コンテンツ幅 -----
+$content-width: 1200px;
+$content-width-medium: 960px;
+
+// ----- コンテンツ左右余白幅 -----
+$content-padding-side: 16px;
 
 // ----- フォント指定 -----
-$font-family: "メイリオ", "Meiryo", "MS Pゴシック", "MS PGothic", sans-serif;
+$font-family: "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+$font-family-en: "Arial", "Helvetica Neue", "Helvetica", sans-serif;
 $font-size-base: 1.6rem;
+$font-size-base-sp: 1.4rem;
 
 // ----- ベース行間 -----
-$base-line-height: 1.5;
+$base-line-height: 1.6;
+
+// ----- z-indexを管理するmap -----
+$z-index-map: (
+  "overlay": 5000,
+  "siteHeader": 4000,
+  "pagetop": 3000,
+  "localnavMenu": 2000,
+  "layer2": 10,
+  "layer1": 5,
+  "layerback": -1,
+  "default": 0
+);
 
 // ----- カラーセット -----
-$color-text: #333333;
+$color-black: #333333;
+$color-black-02: #000000;
+$color-green: #397c46;
+$color-green-02: #23532c;
+$color-green-03: #88b891;
+$color-green-04: #cfe9d4;
+$color-green-05: #ebf6ed;
+$color-blue: #009cc8;
+$color-red: #ce213e;
+$color-red-02: #ffece8;
+$color-gray: #666666;
+$color-gray-02: #808080;
+$color-gray-03: #d3d3d3;
+$color-gray-04: #f2f2f2;
+$color-gray-05: #e9e9e9;
+$color-yellow: #fef8cc;
+$color-yellow-02: #956600;
+
+// ----- アクセントカラー -----
+$color-accent: $color-blue;
+$color-accent-02: $color-red;
+$color-accent-03: $color-yellow-02;
+
+// ----- テキスト・リンクカラー -----
+$color-text: $color-black;
+$color-text-black: $color-black-02;
+$color-text-green: $color-green;
+$color-text-notes: $color-black;
+$color-text-warning: $color-red;
+
+// ----- 罫線・枠線カラー -----
+$color-line: $color-gray-03;
+$color-line-02: $color-gray-04;
+$color-line-03: $color-red;
+$color-line-04: $color-yellow-02;
+
+// ----- 背景カラー -----
+$color-bg: $color-green-05;
+$color-bg-02: $color-gray-04;
+$color-bg-03: $color-yellow;
+$color-bg-04: $color-red-02;

@@ -1,0 +1,714 @@
+@charset "UTF-8";
+@use "../define/variable" as var;
+@use "../define/mixin" as *;
+
+.m-hdg-lv1 {
+  position: relative;
+  border-bottom: 4px solid var.$color-gray-04;
+  padding: 24px var.$content-padding-side;
+  line-height: 1.2;
+
+  @include component-rule-gutter("h1");
+
+  @include media-min {
+    border-bottom-width: 6px;
+    padding-top: 52px;
+    padding-bottom: 87px;
+  }
+
+  &::after {
+    @include pseudo;
+
+    width: 80px;
+    height: 4px;
+    background-image:
+      linear-gradient(
+        to right,
+        var.$color-green 0 40px,
+        var.$color-blue 40px 80px
+      );
+    background-repeat: no-repeat;
+    bottom: -4px;
+    left: var.$content-padding-side;
+
+    @include media-min {
+      right: 0;
+      left: 0;
+      margin: 0 auto;
+      width: 120px;
+      height: 6px;
+      bottom: -6px;
+      background-image:
+        linear-gradient(
+          to right,
+          var.$color-green 0 60px,
+          var.$color-blue 60px 120px
+        );
+    }
+  }
+
+  &__title {
+    font-size: 2.6rem;
+    font-weight: normal;
+    color: var.$color-text-green;
+
+    @include media-min {
+      font-size: 5rem;
+      text-align: center;
+    }
+  }
+
+  &--deep {
+    border-bottom: 1px solid var.$color-line;
+
+    @include media-min {
+      border-bottom-width: 1px;
+      padding-top: 26px;
+      padding-bottom: 40px;
+    }
+
+    &::after {
+      display: none;
+    }
+
+    .m-hdg-lv1 {
+      &__title {
+        font-size: 2.4rem;
+        text-align: left;
+
+        @include media-min {
+          font-size: 4.8rem;
+          max-width: var.$content-width;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  // 隣接要素がローカルナビBlockの場合の調整
+  & + .str-nav-local {
+    position: relative;
+    margin-top: 0 !important;
+
+    &::before {
+      @include pseudo;
+
+      width: 100%;
+      height: 1px;
+      background-color: var.$color-bg-02;
+      bottom: 100%;
+      left: 0;
+    }
+  }
+
+  // 隣接要素がセクション要素の場合の調整
+  & + .str-section {
+    padding-top: 0 !important;
+  }
+}
+
+.m-hdg-lv1-news {
+  border-bottom: 1px solid var.$color-line;
+  padding: 24px var.$content-padding-side;
+  line-height: 1.2;
+
+  @include component-rule-gutter("h1");
+
+  &__title {
+    font-size: 2.4rem;
+    font-weight: normal;
+    color: var.$color-text-green;
+
+    @include media-min {
+      font-size: 4.8rem;
+    }
+  }
+
+  &__tag {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    padding: 3px 8px;
+    font-size: 1.2rem;
+
+    &--green {
+      background-color: var.$color-green;
+      color: #ffffff;
+    }
+
+    &--white {
+      border: 1px solid var.$color-green;
+      color: var.$color-green;
+    }
+  }
+
+  &__item {
+    &--tags {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 4px;
+
+      @include media-min {
+        gap: 8px;
+      }
+    }
+
+    &--date {
+      padding-top: 2px;
+      font-size: 1.4rem;
+      color: var.$color-gray-02;
+    }
+  }
+
+  &__list {
+    order: -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    @include media-min {
+      gap: 16px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: var.$content-width;
+    margin: 0 auto;
+  }
+
+  // 隣接要素がセクション要素の場合の調整
+  & + .str-section {
+    padding-top: 0 !important;
+  }
+}
+
+.m-hdg-lv2 {
+  position: relative;
+  padding: 12px 16px;
+  background-color: var.$color-bg-02;
+  line-height: 1.4;
+
+  @include component-rule-gutter("h2");
+
+  @include media-min {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  &::before,
+  &::after {
+    @include pseudo;
+
+    left: 0;
+    width: 4px;
+    height: 50%;
+
+    @include media-min {
+      width: 6px;
+    }
+  }
+
+  &::before {
+    top: 0;
+    background-color: var.$color-green;
+  }
+
+  &::after {
+    bottom: 0;
+    background-color: var.$color-blue;
+  }
+
+  &__title-sub {
+    font-size: 1.2rem;
+
+    @include media-min {
+      font-size: 2rem;
+    }
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    font-weight: normal;
+    font-size: 2rem;
+
+    @include media-min {
+      gap: 8px;
+      font-size: 3.6rem;
+    }
+
+    > a {
+      position: relative;
+      color: var.$color-text;
+      transition: color var.$animation-duration var.$animation-function;
+      padding-right: 26px;
+      text-decoration: none;
+
+      @include media-min {
+        padding-right: 35px;
+      }
+
+      @include hover {
+        color: var.$color-green;
+
+        &::before {
+          right: -10px;
+        }
+
+        &::after {
+          right: -4px;
+
+          @include media-min {
+            right: 0;
+          }
+        }
+      }
+
+      &::before,
+      &::after {
+        @include pseudo;
+
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto 0;
+        transition: right var.$animation-duration var.$animation-function;
+      }
+
+      &::before {
+        width: 16px;
+        height: 16px;
+        right: 0;
+        border-radius: 50%;
+        background-color: var.$color-green;
+
+        @include media-min {
+          width: 26px;
+          height: 26px;
+        }
+      }
+
+      &::after {
+        @include create-arrow(5px, 5px, #ffffff, right, 2px);
+
+        right: 6px;
+
+        @include media-min {
+          width: 8px;
+          height: 8px;
+          right: 10px;
+        }
+      }
+    }
+
+    // ステップ番号付き
+    &--with-step {
+      position: relative;
+      flex-flow: row nowrap;
+      gap: 8px;
+
+      @include media-min {
+        gap: 16px;
+      }
+    }
+  }
+
+  &__title-step {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 16px;
+    min-height: 16px;
+    padding: 2px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    color: #ffffff;
+    background-color: var.$color-green;
+
+    @include media-min {
+      min-width: 33px;
+      min-height: 33px;
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.m-hdg-lv2-contact {
+  position: relative;
+  padding-bottom: 22px;
+
+  @include media-min {
+    padding-bottom: 42px;
+  }
+
+  & + * {
+    margin-top: 24px;
+
+    @include media-min {
+      margin-top: 48px;
+    }
+  }
+
+  &::before,
+  &::after {
+    @include pseudo;
+
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto;
+
+    @include media-min {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  &::before {
+    transform: translateX(calc(-50% - 4px));
+    background-color: var.$color-green;
+
+    @include media-min {
+      transform: translateX(calc(-50% - 7px));
+    }
+  }
+
+  &::after {
+    transform: translateX(calc(50% + 4px));
+    background-color: var.$color-blue;
+
+    @include media-min {
+      transform: translateX(calc(50% + 7px));
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: normal;
+    text-align: center;
+
+    @include media-min {
+      font-size: 3.6rem;
+    }
+  }
+}
+
+.m-hdg-lv3 {
+  position: relative;
+  border-bottom: 1px solid var.$color-line;
+  padding-bottom: 9px;
+  line-height: 1.4;
+
+  @include component-rule-gutter("h3");
+
+  @include media-min {
+    padding-bottom: 25px;
+  }
+
+  &::after {
+    @include pseudo;
+
+    bottom: -1px;
+    left: 0;
+    width: 51px;
+    height: 3px;
+    background-image:
+      linear-gradient(
+        to right,
+        var.$color-green 0 24px,
+        transparent 24px 27px,
+        var.$color-blue 27px 51px
+      );
+    background-repeat: no-repeat;
+
+    @include media-min {
+      width: 63px;
+      height: 4px;
+      background-image:
+        linear-gradient(
+          to right,
+          var.$color-green 0 30px,
+          transparent 30px 33px,
+          var.$color-blue 33px 63px
+        );
+    }
+  }
+
+  &__title {
+    font-weight: normal;
+    font-size: 2rem;
+    line-height: 1.4;
+
+    @include media-min {
+      font-size: 3rem;
+    }
+
+    > a {
+      display: block;
+      position: relative;
+      color: var.$color-text;
+      transition: color var.$animation-duration var.$animation-function;
+      padding-right: 46px;
+      text-decoration: none;
+
+      @include media-min {
+        padding-right: 56px;
+      }
+
+      @include hover {
+        color: var.$color-green;
+
+        &::before {
+          right: 10px;
+        }
+
+        &::after {
+          right: 16px;
+
+          @include media-min {
+            right: 20px;
+          }
+        }
+      }
+
+      &::before,
+      &::after {
+        @include pseudo;
+
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto 0;
+        transition: right var.$animation-duration var.$animation-function;
+      }
+
+      &::before {
+        width: 16px;
+        height: 16px;
+        right: 20px;
+        border-radius: 50%;
+        background-color: var.$color-green;
+
+        @include media-min {
+          width: 26px;
+          height: 26px;
+        }
+      }
+
+      &::after {
+        @include create-arrow(5px, 5px, #ffffff, right, 2px);
+
+        right: 26px;
+
+        @include media-min {
+          width: 8px;
+          height: 8px;
+          right: 30px;
+        }
+      }
+    }
+
+    // ステップ番号付き
+    &--with-step {
+      position: relative;
+      display: flex;
+      flex-flow: row nowrap;
+      gap: 8px;
+
+      @include media-min {
+        gap: 16px;
+      }
+    }
+  }
+
+  &__title-step {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 16px;
+    min-height: 16px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    color: #ffffff;
+    background-color: var.$color-green;
+    padding: 2px;
+
+    @include media-min {
+      min-width: 33px;
+      min-height: 33px;
+      font-size: 1.8rem;
+    }
+  }
+
+  &__title-sub {
+    display: block;
+    font-size: 1.2rem;
+
+    @include media-min {
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.m-hdg-lv4 {
+  position: relative;
+  padding: 3px 0 3px 17px;
+  line-height: 1.4;
+
+  @include component-rule-gutter("h4");
+
+  @include media-min {
+    font-size: 2.2rem;
+    padding-left: 20px;
+  }
+
+  &::before,
+  &::after {
+    @include pseudo;
+
+    left: 0;
+    width: 3px;
+    height: calc(50% - 1.5px);
+
+    @include media-min {
+      width: 4px;
+    }
+  }
+
+  &::before {
+    top: 0;
+    background-color: var.$color-green;
+  }
+
+  &::after {
+    bottom: 0;
+    background-color: var.$color-blue;
+  }
+
+  // ステップ番号付き
+  &--with-step {
+    padding: 0 !important;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  &__title {
+    font-size: 1.6rem;
+
+    @include media-min {
+      font-size: 2.2rem;
+    }
+
+    > a {
+      color: var.$color-green;
+      transition: background var.$animation-duration var.$animation-function;
+      background: linear-gradient(var.$color-green, var.$color-green) 0 100% / 0 1px no-repeat;
+      background-size: 100% 1px;
+      text-decoration: none;
+
+      @include hover {
+        color: var.$color-green;
+        background-size: 0 1px;
+      }
+    }
+
+    // ステップ番号付き
+    &--with-step {
+      display: flex;
+      flex-flow: row nowrap;
+      gap: 8px;
+
+      @include media-min {
+        gap: 16px;
+      }
+    }
+  }
+
+  &__title-step {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 16px;
+    min-height: 16px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #ffffff;
+    background-color: var.$color-green;
+    padding: 2px;
+
+    @include media-min {
+      min-width: 24px;
+      min-height: 24px;
+      font-size: 1.4rem;
+    }
+  }
+
+  &__title-sub {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: normal;
+
+    @include media-min {
+      margin-bottom: 2px;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.m-hdg-lv5 {
+  position: relative;
+  padding-left: 24px;
+  line-height: 1.4;
+
+  @include component-rule-gutter("h5");
+
+  &::before {
+    @include pseudo;
+
+    top: calc(.5em - 4px);
+    left: 0;
+    width: 14px;
+    height: 14px;
+    background-color: var.$color-green;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+
+    @include media-min {
+      font-size: 1.8rem;
+    }
+
+    > a {
+      color: var.$color-green;
+      transition: background var.$animation-duration var.$animation-function;
+      background: linear-gradient(var.$color-green, var.$color-green) 0 100% / 0 1px no-repeat;
+      background-size: 100% 1px;
+      text-decoration: none;
+
+      @include hover {
+        color: var.$color-green;
+        background-size: 0 1px;
+      }
+    }
+  }
+}
