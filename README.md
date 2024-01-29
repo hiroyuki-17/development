@@ -32,4 +32,4 @@
 
 ## Wiki
 
-- [モジュール一覧](/module/)
+- [モジュール一覧](https://square.staba.jp/_dev/module/)
